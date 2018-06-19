@@ -16,6 +16,8 @@ This repository will shake letters in a sentence in a humorful way, f.e. "Ich ka
 
 ## Hauptprogramm
 - Import Module
+- Import verwendete Python-Bibliotheken
+- Import Toolboxen
 - Start
 - Ende
 
