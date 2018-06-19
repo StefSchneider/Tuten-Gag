@@ -17,10 +17,11 @@ This repository will shake letters in a sentence in a humorful way, f.e. "Ich ka
 
 
 ## Regeln für Rating
+- Für jede Kombination werden Grundpunkte und ein Zusatzfaktor vergeben.
 - Neu kombinierte Woerter, die in einem Woerterbuch vorkommen, erhalten eine hoehere Punktzahl.
 - Neu kombinierte Woerter, die von vorherigen Nutzern als gut gekennzeichnet wurden, erhalten eine hoehere Punktzahl.
 - Je naeher die beiden neu kombinierten Woerter zusammenstehen, umso hoeher ist die Punktzahl, bei einem Tausch der Wortbestandteile innerhalb eines Wortes gibt es nur die minimalen Grundpunkte.
-- Für jede Kombination werden Grundpunkte und ein Zusatzfaktor vergeben.
+- Je mehr Buchstaben die beiden Wortbestandteile (Summe) bei einem Tausch hat, umso hoeher ist die Punktzahl.
 
 
 ## Toolboxen
