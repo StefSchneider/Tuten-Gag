@@ -22,7 +22,7 @@
 
 
 ## Toolboxen
-- AVLTree
+- AVLTree (TB_AVLTree)
 
 
 ## Config-Daten
@@ -33,7 +33,7 @@
 - Punkteskala fuer Rating
 
 
-## Hauptprogramm
+## Hauptprogramm (Program Tuten Gag)
 - Import Module
 - Import verwendete Python-Bibliotheken
 - Import Toolboxen
