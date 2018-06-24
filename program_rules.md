@@ -11,6 +11,7 @@
 6)	Funktionen
 7)	Hauptcode
 
+## Regeln
 - Der Code einer Methode darf nie länger als eine Bildschirmseite sein, sonst wird die Methode aufgespalten.
 
 - Klassen werden nur mit den nötigsten Methoden und Variablen ausgestattet, bei Ableitungen wird die Vererbung eingesetzt.
