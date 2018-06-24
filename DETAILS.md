@@ -22,7 +22,7 @@
 
 
 ## Toolboxen
-- AVLTree (TB_AVLTree)
+- AVLTree (TB_AVLTree.py)
 
 
 ## Config-Daten
