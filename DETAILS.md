@@ -6,10 +6,11 @@
 - Wortbestandteile, die mit schwachen Konsonanten beginnen, sind vom Tausch ausgeschlossen.
 - Artikel - bestimmt oder unbestimmt - dürfen nicht für einen Tausch herangezoegen werden, z.B. "das", "einer"
 - Satzzeichen dürfen nicht für einen Tausch herangezogen werden.
-- Es darf maximal innerhalb von vier Woertern getauscht werden, Satzzeichen werden bei der Spanne nicht gezaehlt.
+- Es darf maximal innerhalb von vier Woertern getauscht werden, Satzzeichen oder Artikel werden bei der Spanne nicht gezaehlt.
 - Es dürfen auch Wortbestandteile - nach den oben aufgeführten Regeln - innerhalb des Wortes getauscht werden.
 - Woerter, die vor dem Tausch der Wortbestandteile gross geschrieben werden, werden auch nach dem Tausch der Bestandteile gross geschrieben.
 - Es dürfen auch Wortbestandteile, die mit einen Grossbuchstaben beginnen, mit Worbestandteilen, die mit einem Kleinbuchsaben beginnen, getauscht werden.
+- Zwischen zwei Wörtern oder dem Satzzeichen "-" steht immer nur ein Leerzeichen. Überflüssige Leerzeichen werden gelöscht.
 
 
 ## Regeln für Rating
@@ -43,14 +44,14 @@
 ## Architektur Module
 
 
-### Modul Config
+### Modul Config (M_Config.py)
 
 #### Funktionen
 - Config-Daten aus Datei einlesen
 - Config-Daten verarbeiten
 
 
-### Modul Woerterbuecher
+### Modul Woerterbuecher (M_Dictionaries.py)
 
 #### Funktionen
 - Woerterbuecher auslesen
@@ -59,7 +60,7 @@
 - Wort in Woerterbuch suchen
 
 
-### Modul Menu/Steuerung
+### Modul Menu/Steuerung (M_Menu.py)
 
 #### Funktionen
 - Menueaufbau
@@ -67,7 +68,7 @@
 - Steuerung der Programmteile nach Benutzerauswahl
 
 
-### Modul Eingabe
+### Modul Eingabe (M_Input.py)
 
 #### Funktionen
 - Eingabefeld auslesen
@@ -75,7 +76,7 @@
 - Satz auf Richtigkeit ueberpruefen
 
 
-### Modul Zerlegen
+### Modul Zerlegen (M_Split.py)
 
 #### Funktionen
 - überschuessige Leerzeichen entfernen
@@ -86,7 +87,7 @@
 - Wortbestandteile in Kleinbuchstaben umwandeln
 
 
-### Modul Analysieren
+### Modul Analysieren (M_Analyze.py)
 
 #### Funktionen
 - bestimmen, ob Wortaenderung moeglich ist
@@ -94,14 +95,14 @@
 - bestimmen, mit welchem Wortbestandteil das Wort anfaengt
 
 
-### Modul Kombinationen
+### Modul Kombinationen (M_Combine.py)
 
 #### Funktionen
 - ueberpruefen, welche Woerter sich kombinieren lassen
 - Wortbestandteile verschiedener Woerter miteinander kombinieren
 
 
-### Modul KI
+### Modul Künstliche Intelligenz (M_AI.py)
 
 #### Funktionen
 - Benutzer über die beste Kombination eines Satzes entscheiden lassen
@@ -109,7 +110,7 @@
 - Regeln für gelungene Kombinationen entwickeln und in Rating einfließen lassen
 
 
-### Modul Rating
+### Modul Rating (M_Rating.py)
 
 #### Funktionen
 - Bewertung der Wortbestandteil-Kombinationen
@@ -121,13 +122,13 @@
 - KI: Abgleich mit als gut bewerteten Wortbestandteil-Kombinationen, falls vorhanden Punktezuschlag
 
 
-### Modul Zusammensetzen
+### Modul Zusammensetzen (M_Build.py)
 
 #### Funktionen
 - Einzelne Woerter mit der neuen Wortbestandteile-Kombination in finalen Satz aufnehmen
 - Grossschreibung wieder aufnehmen
 
-### Modul Ausgabe
+### Modul Ausgabe (M_Output.py)
 
 #### Funktionen
 - Ausgabegerät steuern
