@@ -8,8 +8,10 @@
 ### Dictionary
 
 #### Methoden
-- xxx
-- xxx
+- load: Lädt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.
+- save: Speichert einen Woerterbuch-Baum in einer Woertrebuch-Datei ab.
+- check_size: Ermittelt die Groesse (= Anzahl der Eintraege) der Woerterbuch-Datei.
+- check_status: Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.
 
 ### Sentence
 
