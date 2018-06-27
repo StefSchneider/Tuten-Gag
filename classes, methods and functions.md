@@ -16,7 +16,7 @@
 ### Sentence
 
 #### Methoden
-- create_node: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil.
+- create_node: Erzeugt einen neuen Knoten für einen Satzbestandteil.
 - xxx
 
 ### Word
@@ -24,7 +24,7 @@
 - xxx
 
 
-## Funkionen
+## Funktionen
 
 ### split_text
 Teilt den Gesamttext in Sätze auf. Aufteilung nach '.', '!' oder '?'
@@ -39,6 +39,11 @@ Es wird eine interne Variable number_sentence (Typ: int) eingesetzt, die die lau
 Teilt den jeweiligen Satz in Satzbestandteile (Woerter, Satzzeichen etc.) auf
 ### split_word
 Teil das jeweilige Wort in Wortbestandteile auf.
+#### Regeln
+Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende.
+Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. (Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
+Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden.
+Es wird eine interne Variable number_sentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_sentence (self, number_sentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.) NOCH ZU BEARBEITEN
 ### check_capital
 Prueft, ob das Wort mit einem Großbuchstaben anfängt und setzt - falls ja - das Attribut auf 'True'
 
