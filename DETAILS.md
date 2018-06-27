@@ -8,6 +8,7 @@
 - Satzzeichen dürfen nicht für einen Tausch herangezogen werden.
 - Es darf maximal innerhalb von vier Woertern getauscht werden, Satzzeichen oder Artikel werden bei der Spanne nicht gezaehlt.
 - Es dürfen auch Wortbestandteile - nach den oben aufgeführten Regeln - innerhalb des Wortes getauscht werden.
+- Wird innerhalb eines Wortes ein Bindestrich verwendetn, werden die beiden Woerter getrennt behandelt und bevorzugt getauscht.
 - Woerter, die vor dem Tausch der Wortbestandteile gross geschrieben werden, werden auch nach dem Tausch der Bestandteile gross geschrieben.
 - Es dürfen auch Wortbestandteile, die mit einen Grossbuchstaben beginnen, mit Worbestandteilen, die mit einem Kleinbuchsaben beginnen, getauscht werden.
 - Zwischen zwei Wörtern oder dem Satzzeichen "-" steht immer nur ein Leerzeichen. Überflüssige Leerzeichen werden gelöscht.
@@ -19,6 +20,7 @@
 - Neu kombinierte Woerter, die von vorherigen Nutzern als gut gekennzeichnet wurden, erhalten eine hoehere Punktzahl.
 - Je naeher die beiden neu kombinierten Woerter zusammenstehen, umso hoeher ist die Punktzahl, bei einem Tausch der Wortbestandteile innerhalb eines Wortes gibt es nur die minimalen Grundpunkte.
 - Je mehr Buchstaben die beiden Wortbestandteile (Summe) bei einem Tausch haben, umso hoeher ist die Punktzahl.
+- Tauschoperationen innerhalb eines gekoppelten Wortes erhalten sollen bevorzugt getauscht werden und erhalten eine hohe Punktzahl.
 
 
 ## Toolboxen
