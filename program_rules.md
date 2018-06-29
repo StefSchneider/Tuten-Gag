@@ -24,9 +24,9 @@
 
 - Hinter einer Variablen steht eine kurze Erläuterung inkl. des Datentyps.
 
-- Klassen und Variablen beginnen mit einem Großbuchstaben.
+- Klassen, Variablen und Attribute beginnen mit einem Großbuchstaben, bestehen sie aus mehreren Woertern werden diese hintereinander, beginnend mit einem Großbuchstaben geschrieben.
 
-- Methoden und Funktionen beginnen mit einem Kleinbuchstaben.
+- Methoden und Funktionen beginnen mit einem Kleinbuchstaben, bestehen sie aus mehreren Woertern werden diese hintereinander, getrennt von einem Unterstrich geschrieben.
 
 - Es werden keine Umlaute verwendet.
 
