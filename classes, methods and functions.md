@@ -23,6 +23,15 @@
 - check_capital: Prueft, ob das Wort mit einem Großbuchstaben anfängt und setzt - falls ja - das Attribut auf 'True'
 - xxx
 
+### Combination
+
+#### Attribute
+- Points: Gibt die Gesamtpunktzahl der Komibination für das Ranking an.
+- Part1: Liste aus Nummer Wort 1, Position in Wort 1
+- Part2: Liste aus Nummer Wort 2, Position in Wort 2
+
+#### Methoden
+- rate_in_dictionary: Ueberprueft, 
 
 ## Funktionen
 
