@@ -12,6 +12,7 @@
 - Woerter, die vor dem Tausch der Wortbestandteile gross geschrieben werden, werden auch nach dem Tausch der Bestandteile gross geschrieben.
 - Es dürfen auch Wortbestandteile, die mit einen Grossbuchstaben beginnen, mit Worbestandteilen, die mit einem Kleinbuchsaben beginnen, getauscht werden.
 - Zwischen zwei Wörtern oder dem Satzzeichen "-" steht immer nur ein Leerzeichen. Überflüssige Leerzeichen werden gelöscht.
+- Ein Wort, das bereits zu einem Tausch der Wortbestandteile herangezogen wurde, ist von weiteren Tauschopartionen ausgeschlossen.
 
 
 ## Regeln für Rating
