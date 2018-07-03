@@ -19,7 +19,7 @@
 - Für jede Kombination werden Grundpunkte und ein Zusatzfaktor vergeben.
 - Neu kombinierte Woerter, die in einem Woerterbuch vorkommen, erhalten eine hoehere Punktzahl.
 - Neu kombinierte Woerter, die von vorherigen Nutzern als gut gekennzeichnet wurden, erhalten eine hoehere Punktzahl.
-- Je naeher die beiden neu kombinierten Woerter zusammenstehen, umso hoeher ist die Punktzahl, bei einem Tausch der Wortbestandteile innerhalb eines Wortes gibt es nur die minimalen Grundpunkte.
+- Je naeher die beiden neu kombinierten Woerter zusammenstehen, umso hoeher ist die Punktzahl, auch bei einem Tausch der Wortbestandteile innerhalb eines Wortes gibt es Punkte.
 - Je mehr Buchstaben die beiden Wortbestandteile (Summe) bei einem Tausch haben, umso hoeher ist die Punktzahl.
 - Tauschoperationen innerhalb eines gekoppelten Wortes erhalten sollen bevorzugt getauscht werden und erhalten eine hohe Punktzahl.
 
