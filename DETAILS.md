@@ -33,7 +33,7 @@
 - Zuordnung der Satzbestandteile, z.B. Woerter, Satzzeichen, Artikel
 - Zuordnung der Wortbestandteile, z.B. Vokale, Konsonanten_stark
 - Zuordnung, welche Satzbestandteile nicht getauscht werden dürfen
-- Punkteskala fuer Rating
+- Punkteskala und Faktoren fuer Rating
 
 
 ## Hauptprogramm (Program Tuten Gag)
