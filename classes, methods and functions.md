@@ -20,6 +20,11 @@
 - xxx
 
 ### Word
+
+#### Attribute
+- ConnectedWith (Typ Dictionary {NumberWord:NumberSentence}): Gibt an, mit welchem anderen Wort das jeweilige Wort ueber eine Kooplung verbunden ist. 
+
+#### Methoden
 - check_capital: Prueft, ob das Wort mit einem Großbuchstaben anfängt und setzt - falls ja - das Attribut auf 'True'
 - xxx
 
