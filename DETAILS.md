@@ -1,7 +1,7 @@
 ## Regeln für Tausch
 - Es werden immer Wortbestandteile getauscht, diese können aus einzelnen oder mehreren Buchstaben bestehen.
 - Ein Wortbestandteil besteht aus mehreren Buchstaben der gleichen Art, z.B. Vokale ("A", "au") oder Konsonanten ("Kl", "Schn")
-- Wortbestandteile, die mit Vokalen oder Umlauten beginnen, dürfen nur gegen solche Wortbestandteile getauscht werden.
+- Wortbestandteile, die mit Vokalen oder Umlauten beginnen, dürfen nur gegen Wortbestandteile, die entweder Vokale oder Umlaute enthalten, getauscht werden.
 - Wortbestandteile, die mit starken Konsonanten beginnen, dürfen nur gegen solche Wortbestandteile getauscht werden.
 - Wortbestandteile, die mit schwachen Konsonanten beginnen, sind vom Tausch ausgeschlossen.
 - Artikel - bestimmt oder unbestimmt - dürfen nicht für einen Tausch herangezoegen werden, z.B. "das", "einer"
