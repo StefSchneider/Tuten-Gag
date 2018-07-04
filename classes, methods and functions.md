@@ -22,10 +22,11 @@
 ### Word
 
 #### Attribute
-- ConnectedWith (Typ Dictionary {NumberWord:NumberSentence}): Gibt an, mit welchem anderen Wort das jeweilige Wort ueber eine Kooplung verbunden ist. 
+- ConnectedWith (NumberWord, Typ Int): Gibt an, mit welchem anderen Wort das jeweilige Wort ueber eine Kooplung verbunden ist.
+- Capital (Boolean): Gibt an, ob das Wort mit einem Großbuchstaben anfängt
 
 #### Methoden
-- check_capital: Prueft, ob das Wort mit einem Großbuchstaben anfängt und setzt - falls ja - das Attribut auf 'True'
+- check: Steuert die Ueberpruefungen der einzelnen Woerter, zum Beispiel auf Grossbuchstaben
 - xxx
 
 ### Combination
@@ -78,3 +79,9 @@ Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordEleme
 - preorder_traverse: Liest den Baum nach der Regel Wurzel_Links-Rechts aus.
 - postorder_traverse: Liest den Baum nach der Regel Links-Rechts-Wurzel aus.
 - levelorder_traverse: Liest den Baum etagenweise aus.
+
+
+### Variablen
+
+#### kurzzeitig einsetzbar
+- Counter: benoetigt für Zaehloperationen in Schleifen
