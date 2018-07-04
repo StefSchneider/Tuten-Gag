@@ -16,18 +16,24 @@
 ### Sentence
 
 #### Methoden
-- create_node: Erzeugt einen neuen Knoten für einen Satzbestandteil.
+- create_node: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil (Klasse Word) und setzt die Grundeinstellungen der Attribute von Klasse Word
 - xxx
 
 ### Word
 
 #### Attribute
-- ConnectedWith (NumberWord, Typ Int): Gibt an, mit welchem anderen Wort das jeweilige Wort ueber eine Kooplung verbunden ist.
-- Capital (Boolean): Gibt an, ob das Wort mit einem Großbuchstaben anfängt
+- SwapAllowed: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Typ: Boolean / Grundeistellung: 'False'
+- ConnectedWith (NumberWord, Typ Int): Gibt an, mit welchem anderen Wort das jeweilige Wort ueber eine Kooplung verbunden ist. / Grundeinstellung: 'None'
+- Capital (Typ Boolean): Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False'
+- SwitchPartOwn (Typ Int): Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None'
+- SwitchPartForeign (NumberWord : NumberPart, Typ Dic): Gibt an, welcher Teil welches fremden Wortes getauscht werden soll. / Grundeinstellung: 'None' : 'None'
+- Initial: Gibt an, zu welchem Typ der Wortbestandteile der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None'
 
 #### Methoden
-- check: Steuert die Ueberpruefungen der einzelnen Woerter, zum Beispiel auf Grossbuchstaben
-- xxx
+- create_node: Erzeugt einen neuen Kinderknoten für einen Wortbestandteil
+- check: Steuert die Ueberpruefungen der einzelnen Woerter, zum Beispiel auf Grossbuchstaben / ruft alle anderen Pruef-Methoden in der richtigen Reihenfolge auf.
+- check_swap_allowed: Ueberprueft, ob das Wort ueberhaupt zum Tausch der Bestandteile freigegeben ist.
+- check_capital: Ueberprüft, ob das Wort mit einem Grossbuchstaben beginnt. Rueckgabewert 'True' oder 'False'
 
 ### Combination
 
