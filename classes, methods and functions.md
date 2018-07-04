@@ -3,7 +3,7 @@
 ### Text (Datenstruktur Baum)
 
 #### Methoden
-- create_node: Erzeugt einen neuen Kindenknoten für einen Satz.
+- create_node: Erzeugt einen neuen Kinderknoten für einen Satz.
 
 ### Dictionary (Datenstruktur AVL-Baum)
 
