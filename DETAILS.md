@@ -8,6 +8,7 @@
 - Satzzeichen dürfen nicht für einen Tausch herangezogen werden.
 - Es darf maximal innerhalb von vier Woertern getauscht werden, Satzzeichen oder Artikel werden bei der Spanne nicht gezaehlt.
 - Es dürfen auch Wortbestandteile - nach den oben aufgeführten Regeln - innerhalb des Wortes getauscht werden.
+- Werden Wortbestandteile innerhalb eines Wortes getauscht, gilt dieser Tausch auch für dieselben Woerter im weiteren Text.
 - Wird innerhalb eines Wortes ein Bindestrich verwendetn, werden die beiden Woerter getrennt behandelt und bevorzugt getauscht.
 - Woerter, die vor dem Tausch der Wortbestandteile gross geschrieben werden, werden auch nach dem Tausch der Bestandteile gross geschrieben.
 - Es dürfen auch Wortbestandteile, die mit einen Grossbuchstaben beginnen, mit Worbestandteilen, die mit einem Kleinbuchsaben beginnen, getauscht werden.
