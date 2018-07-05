@@ -45,6 +45,8 @@
 #### Methoden
 - rate_in_dictionary: Ueberprueft, 
 
+-----------------------------
+
 ## Funktionen
 
 ### split_text
@@ -68,6 +70,7 @@ Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer 
 Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
 Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordElementEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberElement (Typ: int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt -> Methode: insert_wordelement (self, NumberElement). Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.
 
+------------------------
 
 ### AvlTree (aus Toolbox AVLTree)
 
@@ -86,6 +89,7 @@ Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordEleme
 - postorder_traverse: Liest den Baum nach der Regel Links-Rechts-Wurzel aus.
 - levelorder_traverse: Liest den Baum etagenweise aus.
 
+----------------------
 
 ### Variablen
 
