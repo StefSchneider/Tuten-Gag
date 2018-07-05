@@ -107,5 +107,5 @@ Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordEleme
       |       |
     Part(1) Part(2)
     
- *Attributs*
- - 
+ *Attributes*
+ - xxx
