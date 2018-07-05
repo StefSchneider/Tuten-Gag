@@ -95,3 +95,17 @@ Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordEleme
 
 #### kurzzeitig einsetzbar
 - Counter: benoetigt für Zaehloperationen in Schleifen
+
+-----------------------
+### Baumstruktur
+
+                                              Text
+                       |                                         |
+                   Sentence(1)                              Sentence(2)
+         |          |         |         |           
+       Word(1)    Word(2)   Word(3)   Word(4)
+      |       |
+    Part(1) Part(2)
+    
+ *Attributs*
+ - 
