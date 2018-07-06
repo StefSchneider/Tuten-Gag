@@ -35,6 +35,14 @@
 - check_swap_allowed: Ueberprueft, ob das Wort ueberhaupt zum Tausch der Bestandteile freigegeben ist.
 - check_capital: Ueberprüft, ob das Wort mit einem Grossbuchstaben beginnt. Rueckgabewert 'True' oder 'False'
 
+### Stock
+Grenzt Vokale oder Konsonanten ab und nimmt sie in eine Menge auf.
+
+#### Methoden
+- add_to (self, AufnahmeInMenge, AufzunehmenderBuchstabe): Fügt den jeweiligen Buchstaben zur jeweiligen Menge zu.
+- search_in (self, ZuUeberpruefendeMenge, ZuUeberpruefenderBuchstabe): Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück (Variable: InStock), Grundeinstellung: 'False'
+- initiate (self, NeueMenge): Legt die neue Menge an.
+
 ### Combination
 
 #### Attribute
