@@ -1,6 +1,8 @@
 ## Klassen
 
-### Text (Datenstruktur Baum)
+### Tree (Datenstruktur Baum)
+
+Text = Tree
 
 #### Methoden
 - create_node: Erzeugt einen neuen Kinderknoten für einen Satz.
@@ -16,8 +18,11 @@
 ### Sentence
 
 #### Methoden
-- create_node: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil (Klasse Word) und setzt die Grundeinstellungen der Attribute von Klasse Word
+- create_node: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil (Klasse Word) 
 - xxx
+
+##### Attribute
+- NumberSentence: Enthält die Nummer der Reihenfolge des Satzes im Text.
 
 ### Word
 
@@ -30,10 +35,14 @@
 - Initial: Gibt an, zu welchem Typ der Wortbestandteile der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None'
 
 #### Methoden
-- create_node: Erzeugt einen neuen Kinderknoten für einen Wortbestandteil
+- create_node: Erzeugt einen neuen Kinderknoten für einen Wort und setzt die Attribute auf die Grundeisntellungen 
 - check: Steuert die Ueberpruefungen der einzelnen Woerter, zum Beispiel auf Grossbuchstaben / ruft alle anderen Pruef-Methoden in der richtigen Reihenfolge auf.
 - check_swap_allowed: Ueberprueft, ob das Wort ueberhaupt zum Tausch der Bestandteile freigegeben ist.
 - check_capital: Ueberprüft, ob das Wort mit einem Grossbuchstaben beginnt. Rueckgabewert 'True' oder 'False'
+
+### Part
+Enthaelt die einzelnen Bestandteile des Wortes, z.B. St|e|f|a|n
+- create_node: Erzeugt einen neuen Kinderknoten für einen Wortbestandteil
 
 ### Stock
 Grenzt Vokale oder Konsonanten ab und nimmt sie in eine Menge auf.
@@ -83,12 +92,15 @@ Sucht in der vorgegebenen Spanne nach passenden Tauschpartnern mit der gleichen 
 #### Regeln
 Falls die Spanne '0' ist, wird innerhalb desselben Wortes gesucht. Oder: Falls innerhalb der vorgegebenen Spanne kein passender Tauschpartner gefunden wird, wird die Spanne auf '0' gesetzt (NOCH ZU KLAEREN)
 
+### check_word
+Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist, meldet zurück, wenn eines fehlt und fragt in diesem Fall, ob das Wort neu aufgenommmen werden soll (in Woerterbuch 'Fremd')
+
 ------------------------
 
 ### AvlTree (aus Toolbox AVLTree)
 
 #### Methoden
-- insert: Fuegt einen neuen Knoten in den Baum ein.
+- insert: Fuegt einen neuen Knoten für ein neues Wort in den Baum ein.
 - insert_without_double: Fuegt einen neuen Knoten in den Baum ein, aber nur wenn das keyword nicht bereits existiert.
 - rebalance: Richtet den Baum neu aus.
 - update_heights: Ermittelt die aktuelle Höhe des Baums.
