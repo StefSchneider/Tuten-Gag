@@ -146,11 +146,11 @@ An die Funktion rank_list werden die entsprechenden Daten zu den Kombinationen u
 
  
  #### *Attributes*
- - SwapAllowed
- - ConnectedWith
- - Capital
- - SwitchPartOwn
- - SwitchPartForeign
- - Initial
+ - SwapAllowed: True/False
+ - ConnectedWith: Number
+ - Capital: True/False
+ - SwitchPartOwn: Number
+ - SwitchPartForeign: Number
+ - Initial: Stock
  
  
