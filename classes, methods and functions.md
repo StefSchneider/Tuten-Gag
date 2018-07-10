@@ -5,65 +5,68 @@
 Text = Tree
 
 #### Methoden
-- create_node: Erzeugt einen neuen Kinderknoten für einen Satz.
+- **create_node**: Erzeugt einen neuen Kinderknoten für einen Satz.
 
 ### Dictionary (Datenstruktur AVL-Baum)
 
 #### Methoden
-- load: Lädt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.
-- save: Speichert einen Woerterbuch-Baum in einer Woertrebuch-Datei ab.
-- check_size: Ermittelt die Groesse (= Anzahl der Eintraege) der Woerterbuch-Datei.
-- check_status: Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.
+- **load**: Lädt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.
+- **save**: Speichert einen Woerterbuch-Baum in einer Woertrebuch-Datei ab.
+- **check_size**: Ermittelt die Groesse (= Anzahl der Eintraege) der Woerterbuch-Datei.
+- **check_status**: Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.
 
 ### Sentence
 
 #### Methoden
-- create_node: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil (Klasse Word) 
+- **create_node**: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil (Klasse Word) 
 - xxx
 
 ##### Attribute
-- NumberSentence: Enthält die Nummer der Reihenfolge des Satzes im Text.
+- **NumberSentence**: Enthält die Nummer der Reihenfolge des Satzes im Text.
 
 ### Word
 
 #### Attribute
-- SwapAllowed: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Typ: Boolean / Grundeistellung: 'False'
-- ConnectedWith (NumberWord, Typ Int): Gibt an, mit welchem anderen Wort das jeweilige Wort ueber eine Kooplung verbunden ist. / Grundeinstellung: 'None'
-- Capital (Typ Boolean): Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False'
-- SwitchPartOwn (Typ Int): Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None'
-- SwitchPartForeign (NumberWord : NumberPart, Typ Dic): Gibt an, welcher Teil welches fremden Wortes getauscht werden soll. / Grundeinstellung: 'None' : 'None'
-- Initial: Gibt an, zu welchem Typ der Wortbestandteile der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None'
+- **SwapAllowed**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Typ: Boolean / Grundeistellung: 'False'
+- **ConnectedWith (NumberWord, Typ Int)**: Gibt an, mit welchem anderen Wort das jeweilige Wort ueber eine Kooplung verbunden ist. / Grundeinstellung: 'None'
+- **Capital (Typ Boolean)**: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False'
+- **SwitchPartOwn (Typ Int)**: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None'
+- **SwitchPartForeign (NumberWord : NumberPart, Typ Dic)**: Gibt an, welcher Teil welches fremden Wortes getauscht werden soll. / Grundeinstellung: 'None' : 'None'
+- **Initial**: Gibt an, zu welchem Typ der Wortbestandteile der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None'
 
 #### Methoden
-- create_node: Erzeugt einen neuen Kinderknoten für einen Wort und setzt die Attribute auf die Grundeisntellungen 
-- check: Steuert die Ueberpruefungen der einzelnen Woerter, zum Beispiel auf Grossbuchstaben / ruft alle anderen Pruef-Methoden in der richtigen Reihenfolge auf.
-- check_swap_allowed: Ueberprueft, ob das Wort ueberhaupt zum Tausch der Bestandteile freigegeben ist.
-- check_capital: Ueberprüft, ob das Wort mit einem Grossbuchstaben beginnt. Rueckgabewert 'True' oder 'False'
+- **create_node**: Erzeugt einen neuen Kinderknoten für einen Wort und setzt die Attribute auf die Grundeisntellungen 
+- **check**: Steuert die Ueberpruefungen der einzelnen Woerter, zum Beispiel auf Grossbuchstaben / ruft alle anderen Pruef-Methoden in der richtigen Reihenfolge auf.
+- **check_swap_allowed**: Ueberprueft, ob das Wort ueberhaupt zum Tausch der Bestandteile freigegeben ist.
+- **check_capital**: Ueberprüft, ob das Wort mit einem Grossbuchstaben beginnt. Rueckgabewert 'True' oder 'False'
 
 ### Part
 Enthaelt die einzelnen Bestandteile des Wortes, z.B. St|e|f|a|n
-- create_node: Erzeugt einen neuen Kinderknoten für einen Wortbestandteil
+- **create_node**: Erzeugt einen neuen Kinderknoten für einen Wortbestandteil
 
 ### Stock
 Grenzt Vokale oder Konsonanten ab und nimmt sie in eine Menge auf.
 
 #### Methoden
-- add_to (self, AufnahmeInMenge, AufzunehmenderBuchstabe): Fügt den jeweiligen Buchstaben zur jeweiligen Menge zu.
-- search_in (self, ZuUeberpruefendeMenge, ZuUeberpruefenderBuchstabe): Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück (Variable: InStock), Grundeinstellung: 'False'
-- initiate (self, NeueMenge): Legt die neue Menge an.
+- **add_to (self, AufnahmeInMenge, AufzunehmenderBuchstabe)**: Fügt den jeweiligen Buchstaben zur jeweiligen Menge zu.
+- **search_in (self, ZuUeberpruefendeMenge, ZuUeberpruefenderBuchstabe)**: Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück (Variable: InStock), Grundeinstellung: 'False'
+- **initiate (self, NeueMenge)**: Legt die neue Menge an.
 
 ### Combination
 
 #### Attribute
-- Points: Gibt die Gesamtpunktzahl der Komibination für das Ranking an.
+- SumPoints: Gibt die Gesamtpunktzahl der Komibination für das Ranking an.
 - Part1: Liste aus Nummer Wort 1, Position in Wort 1
 - Part2: Liste aus Nummer Wort 2, Position in Wort 2
 
 #### Methoden
-- rate_in_dictionary: Ueberprueft, ob eines oder die beiden Woerter in einem der Woerterbuecher auftauchen. Falls ja, werden die Punkte von RateInDictionary mit dem jweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
-- rate_in_user: Ueberprueft, ob eines oder die beiden Woerter im Woerterbuch der User als beliebtes Wort auftauchen. Falls ja, werden die Punkte von RateInUser mit dem jeweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
-- rate_number_letters: Ueberprueft, wie viele Buchstaben insgesamt in der Kombination der beiden Worte getauscht wurden und addiert pro Buchstaben die Punkte fuer RateNumberLetters mit dem jeweiligen Faktor zur Gesamtpunktzahl.
-- rate_words_linked: Ueberprueft, ob die Kombination aus zwei miteinander gekoppelten Worten besteht und addiert fuer diesen Fall die Punkte von RateWordsLinked mit dem Faktor zur Gesamtpunktzahl hinzu.
+- **combine**: Steuert das Kombinieren von Wortbestandteilen
+- **combine_inner**: Tauscht die beiden Anfangswortbestandteile eines gekoppelten Wortes
+
+- **rate_in_dictionary**: Ueberprueft, ob eines oder die beiden Woerter in einem der Woerterbuecher auftauchen. Falls ja, werden die Punkte von RateInDictionary mit dem jweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
+- **rate_in_user**: Ueberprueft, ob eines oder die beiden Woerter im Woerterbuch der User als beliebtes Wort auftauchen. Falls ja, werden die Punkte von RateInUser mit dem jeweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
+- **rate_number_letters**: Ueberprueft, wie viele Buchstaben insgesamt in der Kombination der beiden Worte getauscht wurden und addiert pro Buchstaben die Punkte fuer RateNumberLetters mit dem jeweiligen Faktor zur Gesamtpunktzahl.
+- **rate_words_linked**: Ueberprueft, ob die Kombination aus zwei miteinander gekoppelten Worten besteht und addiert fuer diesen Fall die Punkte von RateWordsLinked mit dem Faktor zur Gesamtpunktzahl hinzu.
 
 -----------------------------
 
@@ -109,19 +112,19 @@ An die Funktion rank_list werden die entsprechenden Daten zu den Kombinationen u
 ### AvlTree (aus Toolbox AVLTree)
 
 #### Methoden
-- insert: Fuegt einen neuen Knoten für ein neues Wort in den Baum ein.
-- insert_without_double: Fuegt einen neuen Knoten in den Baum ein, aber nur wenn das keyword nicht bereits existiert.
-- rebalance: Richtet den Baum neu aus.
-- update_heights: Ermittelt die aktuelle Höhe des Baums.
-- update_balances: Ermittelt, ob der Baum ausbalanciert ist.
-- rotate_right: Fuehrt eine Rechtsrotation im Knoten durch.
-- rotate_left: Fuehrt eine Linksrotation im Knoten durch.
-- delete: Loescht einen Knoten aus dem Baum.
-- search: Sucht ein keyword in dem Baum.
-- inorder_traverse: Liest den Baum nach der Regel Links-Wurzel-Rechts aus.
-- preorder_traverse: Liest den Baum nach der Regel Wurzel_Links-Rechts aus.
-- postorder_traverse: Liest den Baum nach der Regel Links-Rechts-Wurzel aus.
-- levelorder_traverse: Liest den Baum etagenweise aus.
+- **insert**: Fuegt einen neuen Knoten für ein neues Wort in den Baum ein.
+- **insert_without_double**: Fuegt einen neuen Knoten in den Baum ein, aber nur wenn das keyword nicht bereits existiert.
+- **rebalance**: Richtet den Baum neu aus.
+- **update_heights**: Ermittelt die aktuelle Höhe des Baums.
+- **update_balances**: Ermittelt, ob der Baum ausbalanciert ist.
+- **rotate_right**: Fuehrt eine Rechtsrotation im Knoten durch.
+- **rotate_left**: Fuehrt eine Linksrotation im Knoten durch.
+- **delete**: Loescht einen Knoten aus dem Baum.
+- **search**: Sucht ein keyword in dem Baum.
+- **inorder_traverse**: Liest den Baum nach der Regel Links-Wurzel-Rechts aus.
+- **preorder_traverse**: Liest den Baum nach der Regel Wurzel_Links-Rechts aus.
+- **postorder_traverse**: Liest den Baum nach der Regel Links-Rechts-Wurzel aus.
+- **levelorder_traverse**: Liest den Baum etagenweise aus.
 
 ----------------------
 
