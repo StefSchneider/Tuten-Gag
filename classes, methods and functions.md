@@ -63,7 +63,7 @@ Grenzt Vokale oder Konsonanten ab und nimmt sie in eine Menge auf.
 ### Combination
 
 #### Attribute
-- SumPoints: Gibt die Gesamtpunktzahl der Komibination für das Ranking an.
+- SumPoints: Gibt die Gesamtpunktzahl der Kombination für das Ranking an.
 - Part1: Liste aus Nummer Wort 1, Position in Wort 1
 - Part2: Liste aus Nummer Wort 2, Position in Wort 2
 
