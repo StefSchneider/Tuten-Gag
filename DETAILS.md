@@ -19,6 +19,7 @@
 
 ## Regeln für Rating
 - Für jede Kombination werden Grundpunkte und ein Zusatzfaktor vergeben.
+- Es wird der Gesamttausch, d.h. die beiden betroffenen Woerter bewertet, Ausnahme: Es werden Buchtaben innerhalb eines Wortes getauscht.
 - Neu kombinierte Woerter, die in einem Woerterbuch vorkommen, erhalten eine hoehere Punktzahl.
 - Neu kombinierte Woerter, die von vorherigen Nutzern als gut gekennzeichnet wurden, erhalten eine hoehere Punktzahl.
 - Je naeher die beiden neu kombinierten Woerter zusammenstehen, umso hoeher ist die Punktzahl, auch bei einem Tausch der Wortbestandteile innerhalb eines Wortes gibt es Punkte.
