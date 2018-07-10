@@ -54,9 +54,11 @@ Grenzt Vokale oder Konsonanten ab und nimmt sie in eine Menge auf.
 
 ### CombinationList
 #### Methoden
-- insert:
-- delete:
-- sort:
+- **insert**: Fuegt eine neue Wortkombination mit der Gesamtpunktzahl in die Liste ein.
+- **delete**: Loescht eine Wortkombination aus der Liste.
+- **sort**: Sortiert die Liste nach der Gesamtpunktzahl. Algorithmus: Bubble-Sort.
+- **rank_list (Word1:Part1, Word2:Part2, Points)**: Sortiert die Liste aus Kombinationen in die richtige Reihenfolge, gemessen an der Gesamtpunktzahl pro Kombination. Anschließend gibt die Funktion die Daten der am höchsten bewerteten Kombination zurück: Word1:Part1, Word2:Part2 / Regeln: An die Funktion rank_list werden die entsprechenden Daten zu den Kombinationen uebergeben und in eine Liste geschrieben. Sollten keine weiteren Kombinationen zur Verfügung stehen, wird die Funktion noch einmal aufgerufen, aber mit den Argumenten 'None:None', 'None:None', '0'. Die Funktion uberprueft zuerst ob diese Werte uebergeben wurden. Falls nein, werden die Werte in eine Liste geschrieben. Falls ja, startet die Sortierung der Liste und die Daten der Kombination mit der hoechsten Punktezahl wird zurueckgegeben.
+
 
 ### Combination
 
@@ -69,6 +71,7 @@ Grenzt Vokale oder Konsonanten ab und nimmt sie in eine Menge auf.
 - **combine**: Steuert das Kombinieren von Wortbestandteilen
 - **combine_inner**: Tauscht die beiden Anfangswortbestandteile eines gekoppelten Wortes
 
+- **rate**: Steuert, welche Ratings der Wortkombinationen durchgefuehrt werden sollen.
 - **rate_in_dictionary**: Ueberprueft, ob eines oder die beiden Woerter in einem der Woerterbuecher auftauchen. Falls ja, werden die Punkte von RateInDictionary mit dem jweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
 - **rate_in_user**: Ueberprueft, ob eines oder die beiden Woerter im Woerterbuch der User als beliebtes Wort auftauchen. Falls ja, werden die Punkte von RateInUser mit dem jeweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
 - **rate_number_letters**: Ueberprueft, wie viele Buchstaben insgesamt in der Kombination der beiden Worte getauscht wurden und addiert pro Buchstaben die Punkte fuer RateNumberLetters mit dem jeweiligen Faktor zur Gesamtpunktzahl.
