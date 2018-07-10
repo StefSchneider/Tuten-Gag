@@ -52,6 +52,12 @@ Grenzt Vokale oder Konsonanten ab und nimmt sie in eine Menge auf.
 - **search_in (self, ZuUeberpruefendeMenge, ZuUeberpruefenderBuchstabe)**: Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück (Variable: InStock), Grundeinstellung: 'False'
 - **initiate (self, NeueMenge)**: Legt die neue Menge an.
 
+### CombinationList
+#### Methoden
+- insert:
+- delete:
+- sort:
+
 ### Combination
 
 #### Attribute
