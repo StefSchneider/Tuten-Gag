@@ -132,5 +132,12 @@ Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist, meldet zurüc
       |       |
     Part(1) Part(2)
     
- *Attributes*
- - xxx
+ #### *Attributes*
+ - SwapAllowed
+ - ConnectedWith
+ - Capital
+ - SwitchPartOwn
+ - SwitchPartForeign
+ - Initial
+ 
+ 
