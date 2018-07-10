@@ -60,7 +60,10 @@ Grenzt Vokale oder Konsonanten ab und nimmt sie in eine Menge auf.
 - Part2: Liste aus Nummer Wort 2, Position in Wort 2
 
 #### Methoden
-- rate_in_dictionary: Ueberprueft, 
+- rate_in_dictionary: Ueberprueft, ob eines oder die beiden Woerter in einem der Woerterbuecher auftauchen. Falls ja, werden die Punkte von RateInDictionary mit dem jweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
+- rate_in_user: Ueberprueft, ob eines oder die beiden Woerter im Woerterbuch der User als beliebtes Wort auftauchen. Falls ja, werden die Punkte von RateInUser mit dem jeweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
+- rate_number_letters: Ueberprueft, wie viele Buchstaben insgesamt in der Kombination der beiden Worte getauscht wurden und addiert pro Buchstaben die Punkte fuer RateNumberLetters mit dem jeweiligen Faktor zur Gesamtpunktzahl.
+- rate_words_linked: Ueberprueft, ob die Kombination aus zwei miteinander gekoppelten Worten besteht und addiert fuer diesen Fall die Punkte von RateWordsLinked mit dem Faktor zur Gesamtpunktzahl hinzu.
 
 -----------------------------
 
@@ -95,6 +98,12 @@ Falls die Spanne '0' ist, wird innerhalb desselben Wortes gesucht. Oder: Falls i
 ### check_word
 Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist, meldet zurück, wenn eines fehlt und fragt in diesem Fall, ob das Wort neu aufgenommmen werden soll (in Woerterbuch 'Fremd')
 
+### rank_list (Word1:Part1, Word2:Part2, Points)
+Sortiert die Liste aus Kombinationen in die richtige Reihenfolge, gemessen an der Gesamtpunktzahl pro Kombination. Anschließend gibt die Funktion die Daten der am höchsten bewerteten Kombination zurück: Word1:Part1, Word2:Part2
+#### Regeln
+An die Funktion rank_list werden die entsprechenden Daten zu den Kombinationen uebergeben und in eine Liste geschrieben. Sollten keine weiteren Kombinationen zur Verfügung stehen, wird die Funktion noch einmal aufgerufen, aber mit den Argumenten 'None:None', 'None:None', '0'. Die Funktion uberprueft zuerst ob diese Werte uebergeben wurden. Falls nein, werden die Werte in eine Liste geschrieben. Falls ja, startet die Sortierung der Liste und die Daten der Kombination mit der hoechsten Punktezahl wird zurueckgegeben.
+
+
 ------------------------
 
 ### AvlTree (aus Toolbox AVLTree)
@@ -123,7 +132,6 @@ Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist, meldet zurüc
 
 -----------------------
 ### Baumstruktur
-
                                               Text
                        |                                         |
                    Sentence(1)                              Sentence(2)
@@ -131,7 +139,9 @@ Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist, meldet zurüc
        Word(1)    Word(2)   Word(3)   Word(4)
       |       |
     Part(1) Part(2)
-    
+ 
+
+ 
  #### *Attributes*
  - SwapAllowed
  - ConnectedWith
