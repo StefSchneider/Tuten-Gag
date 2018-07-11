@@ -22,6 +22,8 @@
 
 - Zwischen einem Methoden- bzw. Funktionsnamen und der Klammer wird kein Leerzeichen gesetzt.
 
+- Werden mehrere Variablen oder Attribute durch Kommata getrennt, steht hinter jedem Komma ein Leerzeichen. 
+
 - Hinter einer Variablen steht eine kurze Erläuterung inkl. des Datentyps.
 
 - Klassen, Variablen und Attribute beginnen mit einem Großbuchstaben, bestehen sie aus mehreren Woertern werden diese hintereinander, beginnend mit einem Großbuchstaben geschrieben.
