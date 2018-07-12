@@ -1,13 +1,29 @@
 ## Klassen
 
-### Tree (Datenstruktur Baum)
+### Stocks  
+*Geeignet zur Erfassung von Buchstabengruppen, z.B. Vokale oder Konsonanten, oder Wortklassen, z.B. Artikel, in einer Menge*  
+Aufbau im Modul M_Config
+
+#### Attribute
+
+#### Methoden
+**init(self, NewStock)**
+
+**add_to (self, Stock, Component)**  
+*Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.*  
+>skdksdjksjdksj
+- **search_in (self, ZuUeberpruefendeMenge, ZuUeberpruefenderBuchstabe)**: Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück (Variable: InStock), Grundeinstellung: 'False'
+
+
+
+### Trees (Datenstruktur Baum)
 
 Text = Tree
 
 #### Methoden
 - **create_node**: Erzeugt einen neuen Kinderknoten für einen Satz.
 
-### Dictionary (Datenstruktur AVL-Baum)
+### Dictionaries (Datenstruktur AVL-Baum)
 
 #### Methoden
 - **load**: Lädt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.
@@ -16,8 +32,9 @@ Text = Tree
 - **check_status**: Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.
 
 
-### Strings
-1. Aufruf im Modul M_Input
+### Strings  
+*Geeignet zur Erfassung von Texten, Saetzen, Satzbestandteilen und Wortstandteilen*  
+Aufbau im Modul M_Input
 
 #### Attribute
 - String
@@ -26,7 +43,7 @@ Text = Tree
 
 
 ### TextInput (Vererbung Strings)
-1. Aufruf im Modul M_Input
+Aufbau im Modul M_Input
 
 #### Attribute
 
@@ -40,7 +57,7 @@ Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die lauf
 
 
 ### TextOutput (Vererbung Strings)
-1. Aufruf im Modul M_Input
+Aufbau im Modul M_Input
 
 #### Attribute
 
@@ -48,7 +65,7 @@ Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die lauf
 
 
 ### Sentences (Vererbung Strings)
-1. Aufruf im Modul M_Input
+Aufbau im Modul M_Input
 
 #### Attribute
 - **Number (Typ Int)**: Erfasst die Nummer der Reihenfolge des Satzes im Text.
@@ -85,13 +102,7 @@ Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die lauf
 Enthaelt die einzelnen Bestandteile des Wortes, z.B. St|e|f|a|n
 - **create_node**: Erzeugt einen neuen Kinderknoten für einen Wortbestandteil
 
-### Stock
-Grenzt Vokale oder Konsonanten ab und nimmt sie in eine Menge auf.
 
-#### Methoden
-- **add_to (self, AufnahmeInMenge, AufzunehmenderBuchstabe)**: Fügt den jeweiligen Buchstaben zur jeweiligen Menge zu.
-- **search_in (self, ZuUeberpruefendeMenge, ZuUeberpruefenderBuchstabe)**: Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück (Variable: InStock), Grundeinstellung: 'False'
-- **initiate (self, NeueMenge)**: Legt die neue Menge an.
 
 ### CombinationList
 #### Methoden
@@ -122,24 +133,7 @@ Grenzt Vokale oder Konsonanten ab und nimmt sie in eine Menge auf.
 
 ## Funktionen
 
-### split_text
-Teilt den Gesamttext in Sätze auf. Aufteilung nach '.', '!' oder '?'
-#### Regeln
-Der Text wird Buchstabe für Buchstabe überprüft.
-Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende.
-Wird eines der genannten Satzzeichen gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
-Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden.
-Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_sentence (self, number_sentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.
 
-### split_sentence
-Teilt den jeweiligen Satz in Satzbestandteile (Woerter, Satzzeichen etc.) auf
-#### Regeln
-Vor jedes Satzzeichen wird ein Leerzeichen gesetzt. Dann wird der Saz überprüft: Sind mehr als zwei Leerzeichen nacheinander vorhanden, wird das erste davon geloescht. Anschließend wird der Satz bei jedem Leerzeichen getrennt und die einzelnen Satzbestandteile als String in einen Baum gehangen, versehen mit der Nummer der Position, an der es gestanden hat. Zudem wird als Attribut (SwitchPermit) mitgegeben, ob es sich um einen Satzbestandteil handelt, bei dem die Wortbestandteile getauscht werden duerfen ('True') oder nicht ('False'). Nicht getauscht werden duerfen zum Beispiel Artikel oder Satzzeichen.
-
-### split_word
-Teil das jeweilige Wort in Wortbestandteile auf.
-#### Regeln
-Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende. Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter. Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordElementEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberElement (Typ: int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt -> Methode: insert_wordelement (self, NumberElement). Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.
 
 ### search_equal (Buchstabenart, Spanne)
 Sucht in der vorgegebenen Spanne nach passenden Tauschpartnern mit der gleichen Buchstabenart.
