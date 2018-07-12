@@ -1,5 +1,3 @@
-# KLASSEN VERERBEN
-
 ## Klassen
 
 ### Tree (Datenstruktur Baum)
@@ -21,15 +19,30 @@ Text = Tree
 ### String
 1. Aufruf im Modul M_Input
 
+#### Attribute
+
 #### Methoden
 
 
-### Text (Vererbung String)
+### TextInput (Vererbung String)
+1. Aufruf im Modul M_Input
+
+#### Attribute
 
 #### Methoden
 - **split_string**: Teilt den Text in mehrere Wörter auf.
 
-### Sentence (Vererbung Text)
+
+### TextOutput (Vererbung String)
+1. Aufruf im Modul M_Input
+
+#### Attribute
+
+#### Methoden
+- **split_string**: Teilt den Text in mehrere Wörter auf.
+
+
+### Sentence (Vererbung String)
 
 #### Methoden
 - **create_node**: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil (Klasse Word) 
