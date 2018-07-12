@@ -16,7 +16,30 @@ Text = Tree
 - **check_status**: Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.
 
 
-### String
+### Strings
+1. Aufruf im Modul M_Input
+
+#### Attribute
+- String
+
+#### Methoden
+
+
+### TextInput (Vererbung Strings)
+1. Aufruf im Modul M_Input
+
+#### Attribute
+
+#### Methoden
+**split_string**  
+*Teilt den Gesamtext in mehrere Saetze auf.*  
+>Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.
+Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
+Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden.
+Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_sentence (self, number_sentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.
+
+
+### TextOutput (Vererbung Strings)
 1. Aufruf im Modul M_Input
 
 #### Attribute
@@ -24,45 +47,35 @@ Text = Tree
 #### Methoden
 
 
-### TextInput (Vererbung String)
+### Sentences (Vererbung Strings)
 1. Aufruf im Modul M_Input
 
 #### Attribute
+- **Number (Typ Int)**: Erfasst die Nummer der Reihenfolge des Satzes im Text.
 
 #### Methoden
-- **split_string**: Teilt den Text in mehrere Wörter auf.
+**create_node**: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil 
+
+**split_string** 
+*Teilt den jeweiligen Satz in Satzbestandteile (Woerter, Satzzeichen etc.) auf* | Methode wird uerberschrieben
+>Vor jedes Satzzeichen wird ein Leerzeichen gesetzt. Dann wird der Saz überprüft: Sind mehr als zwei Leerzeichen nacheinander vorhanden, wird das erste davon geloescht. Anschließend wird der Satz bei jedem Leerzeichen getrennt und die einzelnen Satzbestandteile als String in einen Baum gehangen, versehen mit der Nummer der Position, an der es gestanden hat. Zudem wird als Attribut (SwitchPermit) mitgegeben, ob es sich um einen Satzbestandteil handelt, bei dem die Wortbestandteile getauscht werden duerfen ('True') oder nicht ('False'). Nicht getauscht werden duerfen zum Beispiel Artikel oder Satzzeichen.
 
 
-### TextOutput (Vererbung String)
-1. Aufruf im Modul M_Input
+### Words (Vererbung Sentences)
 
 #### Attribute
-
-#### Methoden
-- **split_string**: Teilt den Text in mehrere Wörter auf.
-
-
-### Sentence (Vererbung String)
-
-#### Methoden
-- **create_node**: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil (Klasse Word) 
-- **split_string**: Teilt den Satz in mehrere Wörter auf. (Methode wird uerberschrieben)
-
-##### Attribute
-- **NumberSentence**: Enthält die Nummer der Reihenfolge des Satzes im Text.
-
-### Word (Vererbung Sentence)
-
-#### Attribute
-- **SwapAllowed**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Typ: Boolean / Grundeistellung: 'False'
+- **Number (Typ Int)**: Erfasst die Nummer der Reihenfolge des Wortes im jeweiligen Satz.
+- **SwapAllowed (Typ Bol)**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False'
 - **ConnectedWith (NumberWord, Typ Int)**: Gibt an, mit welchem anderen Wort das jeweilige Wort ueber eine Kooplung verbunden ist. / Grundeinstellung: 'None'
-- **Capital (Typ Boolean)**: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False'
+- **Capital (Typ Bol)**: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False'
 - **SwitchPartOwn (Typ Int)**: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None'
 - **SwitchPartForeign (NumberWord : NumberPart, Typ Dic)**: Gibt an, welcher Teil welches fremden Wortes getauscht werden soll. / Grundeinstellung: 'None' : 'None'
 - **Initial**: Gibt an, zu welchem Typ der Wortbestandteile der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None'
 
 #### Methoden
-- **split_string**: Teilt das jeweilige Wort in mehrere Wortbestandteile auf (Methode wird ueberschrieben)
+- **split_string**:   
+*Teilt das jeweilige Wort in mehrere Wortbestandteile auf* | Methode wird ueberschrieben  
+>Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende. Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter. Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordElementEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberElement (Typ: int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt -> Methode: insert_wordelement (self, NumberElement). Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.
 - **create_node**: Erzeugt einen neuen Kinderknoten für einen Wort und setzt die Attribute auf die Grundeisntellungen 
 - **check**: Steuert die Ueberpruefungen der einzelnen Woerter, zum Beispiel auf Grossbuchstaben / ruft alle anderen Pruef-Methoden in der richtigen Reihenfolge auf.
 - **check_swap_allowed**: Ueberprueft, ob das Wort ueberhaupt zum Tausch der Bestandteile freigegeben ist.
@@ -126,9 +139,7 @@ Vor jedes Satzzeichen wird ein Leerzeichen gesetzt. Dann wird der Saz überprüf
 ### split_word
 Teil das jeweilige Wort in Wortbestandteile auf.
 #### Regeln
-Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende.
-Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
-Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordElementEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberElement (Typ: int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt -> Methode: insert_wordelement (self, NumberElement). Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.
+Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende. Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter. Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordElementEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberElement (Typ: int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt -> Methode: insert_wordelement (self, NumberElement). Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.
 
 ### search_equal (Buchstabenart, Spanne)
 Sucht in der vorgegebenen Spanne nach passenden Tauschpartnern mit der gleichen Buchstabenart.
