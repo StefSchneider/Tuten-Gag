@@ -17,16 +17,27 @@ Text = Tree
 - **check_size**: Ermittelt die Groesse (= Anzahl der Eintraege) der Woerterbuch-Datei.
 - **check_status**: Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.
 
-### Sentence
+
+### String
+
+#### Methoden
+
+
+### Text (Vererbung String)
+
+#### Methoden
+- **split_string**: Teilt den Text in mehrere Wörter auf.
+
+### Sentence (Vererbung Text)
 
 #### Methoden
 - **create_node**: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil (Klasse Word) 
-- xxx
+- **split_string**: Teilt den Satz in mehrere Wörter auf. (Methode wird uerberschrieben)
 
 ##### Attribute
 - **NumberSentence**: Enthält die Nummer der Reihenfolge des Satzes im Text.
 
-### Word
+### Word (Vererbung Sentence)
 
 #### Attribute
 - **SwapAllowed**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Typ: Boolean / Grundeistellung: 'False'
@@ -37,6 +48,7 @@ Text = Tree
 - **Initial**: Gibt an, zu welchem Typ der Wortbestandteile der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None'
 
 #### Methoden
+- **split_string**: Teilt das jeweilige Wort in mehrere Wortbestandteile auf (Methode wird ueberschrieben)
 - **create_node**: Erzeugt einen neuen Kinderknoten für einen Wort und setzt die Attribute auf die Grundeisntellungen 
 - **check**: Steuert die Ueberpruefungen der einzelnen Woerter, zum Beispiel auf Grossbuchstaben / ruft alle anderen Pruef-Methoden in der richtigen Reihenfolge auf.
 - **check_swap_allowed**: Ueberprueft, ob das Wort ueberhaupt zum Tausch der Bestandteile freigegeben ist.
