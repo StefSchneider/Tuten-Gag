@@ -1,6 +1,8 @@
 ## Klassen
 
-### Stocks  
+### ConfigData
+
+### Stocks (Vererbung ConfigData)  
 *Geeignet zur Erfassung von Buchstabengruppen, z.B. Vokale oder Konsonanten, oder Wortklassen, z.B. Artikel, in einer Menge*  
 Aufbau im Modul M_Config
 
