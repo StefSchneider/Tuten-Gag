@@ -9,7 +9,9 @@ Aufbau im Modul M_Config
 ### Attribute
 
 ### Methoden
-**init(self, NewStock)**
+**initiate (self, NewStock)**  
+*Legt einen neue, leere Menge, String, Liste oder Dictionary an*  
+>NewStock uebergibt dabei die Art des Stocks, der angelegt werden soll.
 
 **add_to (self, Stock, Component)**  
 *Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.*  
