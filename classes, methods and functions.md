@@ -14,16 +14,15 @@ Parameter:
 - NewStock: Enthaelt die Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste)
 
 *Legt einen neue, leere Menge, String, Liste oder Dictionary an*  
->ayasasasasas
+>Enthaelt NewStock den Wert 'String', wird ein leerer String "" angelegt; enthaelt NewStock den Wert 'Set', wird eine leere Menge () angelegt; enthaelt NewStock den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt NewStock den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen.
 
 **add_to (self, Stock, Component)**  
 Parameter:  
 - Stock: Enthaelt den namentlichen Bestand, in den der Buchstabe eingefuegt werden soll.
 - Component: Enthaelt den jeweiligen Buchstaben oder die Wortklasse, die eingefuegt werden soll.  
 
-*Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.*  
-
->skdksdjksjdksj
+*Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.*
+>Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. In Abhaengigkeit von der Bestandsart wird der neue Buchstabe zum Bestands hinzugefuegt.
 
 **search_in (self, CheckStock, CheckComponent)**  
 Parameter:  
@@ -31,7 +30,7 @@ Parameter:
 - CheckComponent: Enthaelt den Buchstaben, der in diesem Bestand gesucht werden soll.  
 
 *Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück (Variable: InStock), Grundeinstellung: 'False'*
-
+>Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. Wird der Buchstabe innerhalb des Bestands gefunden, wird die der Rueckgabewert 'InStock' auf 'True' gesetzt. Fallback fuer 'InStock' ist 'False'. 
 
 
 ### Trees (Datenstruktur Baum)
