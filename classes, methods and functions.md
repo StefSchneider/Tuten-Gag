@@ -29,7 +29,7 @@ Parameter:
 - CheckStock: Enthaelt den Namen des Bestandes, der ueberprueft werden soll.
 - CheckComponent: Enthaelt den Buchstaben, der in diesem Bestand gesucht werden soll.  
 
-*Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück*   
+*Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück.*   
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. Wird der Buchstabe innerhalb des Bestands gefunden, wird die der Rueckgabewert 'InStock' auf 'True' gesetzt. Grundeinstellung/Fallback fuer 'InStock' ist 'False'. 
 
 
