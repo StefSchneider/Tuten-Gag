@@ -10,21 +10,25 @@ Aufbau im Modul M_Config
 
 ### Methoden
 **initiate (self, NewStock)**  
-Parameter:
-- NewStock: Enthaelt die Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste)  
+Parameter:  
+- NewStock: Enthaelt die Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste)
+
 *Legt einen neue, leere Menge, String, Liste oder Dictionary an*  
 
 **add_to (self, Stock, Component)**  
-Parameter:
+Parameter:  
 - Stock: Enthaelt den namentlichen Bestand, in den der Buchstabe eingefuegt werden soll.
 - Component: Enthaelt den jeweiligen Buchstaben oder die Wortklasse, die eingefuegt werden soll.  
+
 *Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.*  
+
 >skdksdjksjdksj
 
 **search_in (self, CheckStock, CheckComponent)**  
-Parameter:
+Parameter:  
 - CheckStock: Enthaelt den Namen des Bestandes, der ueberprueft werden soll.
 - CheckComponent: Enthaelt den Buchstaben, der in diesem Bestand gesucht werden soll.  
+
 *Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück (Variable: InStock), Grundeinstellung: 'False'*
 
 
