@@ -10,13 +10,22 @@ Aufbau im Modul M_Config
 
 ### Methoden
 **initiate (self, NewStock)**  
+Parameter:
+- NewStock: Enthaelt die Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste)  
 *Legt einen neue, leere Menge, String, Liste oder Dictionary an*  
->NewStock uebergibt dabei die Art des Stocks, der angelegt werden soll.
 
 **add_to (self, Stock, Component)**  
+Parameter:
+- Stock: Enthaelt den namentlichen Bestand, in den der Buchstabe eingefuegt werden soll.
+- Component: Enthaelt den jeweiligen Buchstaben oder die Wortklasse, die eingefuegt werden soll.  
 *Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.*  
 >skdksdjksjdksj
-- **search_in (self, ZuUeberpruefendeMenge, ZuUeberpruefenderBuchstabe)**: Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück (Variable: InStock), Grundeinstellung: 'False'
+
+**search_in (self, CheckStock, CheckComponent)**  
+Parameter:
+- CheckStock: Enthaelt den Namen des Bestandes, der ueberprueft werden soll.
+- CheckComponent: Enthaelt den Buchstaben, der in diesem Bestand gesucht werden soll.  
+*Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück (Variable: InStock), Grundeinstellung: 'False'*
 
 
 
@@ -54,10 +63,8 @@ Aufbau im Modul M_Input
 #### Methoden
 **split_string**  
 *Teilt den Gesamtext in mehrere Saetze auf.*  
->Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.
-Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
-Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden.
-Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_sentence (self, number_sentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.
+>Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.  Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
+Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_sentence (self, number_sentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.   
 
 
 ### TextOutput (Vererbung Strings)
@@ -148,7 +155,7 @@ Falls die Spanne '0' ist, wird innerhalb desselben Wortes gesucht. Oder: Falls i
 Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist, meldet zurück, wenn eines fehlt und fragt in diesem Fall, ob das Wort neu aufgenommmen werden soll (in Woerterbuch 'Fremd')
 
 ### rank_list (Word1:Part1, Word2:Part2, Points)
-Sortiert die Liste aus Kombinationen in die richtige Reihenfolge, gemessen an der Gesamtpunktzahl pro Kombination. Anschließend gibt die Funktion die Daten der am höchsten bewerteten Kombination zurück: Word1:Part1, Word2:Part2
+Sortiert die Liste aus Kombinationen in die richtige Reihenfolge, gemessen an der Gesamtpunktzahl pro Kombination. Anschließend gibt die Funktion die Daten der am höchsten bewerteten Kombination zurück: Word1:Part1, Word2:Part2 
 #### Regeln
 An die Funktion rank_list werden die entsprechenden Daten zu den Kombinationen uebergeben und in eine Liste geschrieben. Sollten keine weiteren Kombinationen zur Verfügung stehen, wird die Funktion noch einmal aufgerufen, aber mit den Argumenten 'None:None', 'None:None', '0'. Die Funktion uberprueft zuerst ob diese Werte uebergeben wurden. Falls nein, werden die Werte in eine Liste geschrieben. Falls ja, startet die Sortierung der Liste und die Daten der Kombination mit der hoechsten Punktezahl wird zurueckgegeben.
 
