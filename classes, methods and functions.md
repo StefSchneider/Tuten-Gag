@@ -2,9 +2,9 @@
 
 ## ConfigData
 
-## Stocks (Vererbung ConfigData)  
+## Stocks (ConfigData)  
 *Geeignet zur Erfassung von Buchstabengruppen, z.B. Vokale oder Konsonanten, oder Wortklassen, z.B. Artikel, in einer Menge*  
-Aufbau im Modul M_Config
+Aufbau im Modul `M_Config`
 
 ### Attribute
 
@@ -38,13 +38,24 @@ Parameter:
 Text = Tree
 
 #### Methoden
-- **create_node**: Erzeugt einen neuen Kinderknoten für einen Satz.
+- **create_node**: Erzeugt einen neuen Kinderknoten für einen Satz.  
 
-### Dictionaries (Datenstruktur AVL-Baum)
+## Dictionaries  
+*Geeignet zur Erfassung der Woerterbuecher in einem AVL-Baum*  
+Aufbau im Modul `M_Dictionaries`
 
-#### Methoden
-- **load**: Lädt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.
-- **save**: Speichert einen Woerterbuch-Baum in einer Woertrebuch-Datei ab.
+### Attribute
+
+### Methoden
+**load (self, InDictionary, FromDictionary)**  
+Parameter:
+- InDictionary: Enthaelt das Woerterbuch (AVL-Baum), in das die Woerterbuch-Datei geladen werden soll.
+- FromDictionary: Enthaelt den Dateinamen inkl. Pfad, aus dem die Woerter fuer das Woerterbuch geladen werden sollen.
+
+*Lädt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.*
+>Die einzelnen Woerter werden aus der Woerterbuch-Datei ausgelesen und in das Woerterbuch eingefuegt, solange bis das Ende der Datei erreicht ist. Doppelte Woerter werden nicht eingefuegt.
+
+**save**: Speichert einen Woerterbuch-Baum in einer Woertrebuch-Datei ab.
 - **check_size**: Ermittelt die Groesse (= Anzahl der Eintraege) der Woerterbuch-Datei.
 - **check_status**: Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.
 
