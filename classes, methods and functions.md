@@ -9,8 +9,8 @@ Aufbau im Modul `M_Config`
 ### Attribute
 
 ### Methoden
-####initiate (self, NewStock)  
-#####Parameter:
+#### initiate (self, NewStock)  
+##### Parameter:
 - NewStock: Enthaelt die Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste)
 
 *Legt einen neue, leere Menge, String, Liste oder Dictionary an*  
