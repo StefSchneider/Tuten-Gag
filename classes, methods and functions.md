@@ -25,7 +25,7 @@ Aufbau im Modul `M_Config`
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. In Abhaengigkeit von der Bestandsart wird der neue Buchstabe zum Bestands hinzugefuegt.
 
 #### search_in (self, CheckStock, CheckComponent)  
-#####Parameter:  
+##### Parameter:  
 - **CheckStock**: Enthaelt den Namen des Bestandes, der ueberprueft werden soll.
 - **CheckComponent**: Enthaelt den Buchstaben, der in diesem Bestand gesucht werden soll.  
 
