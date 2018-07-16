@@ -47,17 +47,36 @@ Aufbau im Modul `M_Dictionaries`
 ### Attribute
 
 ### Methoden
-**load (self, InDictionary, FromDictionary)**  
+**load (self, InDictionary, FromDictionaryFile)**  
 Parameter:
 - InDictionary: Enthaelt das Woerterbuch (AVL-Baum), in das die Woerterbuch-Datei geladen werden soll.
-- FromDictionary: Enthaelt den Dateinamen inkl. Pfad, aus dem die Woerter fuer das Woerterbuch geladen werden sollen.
+- FromDictionaryFile: Enthaelt den Dateinamen inkl. Pfad, aus dem die Woerter fuer das Woerterbuch geladen werden sollen.
 
-*Lädt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.*
+*Lädt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.*  
 >Die einzelnen Woerter werden aus der Woerterbuch-Datei ausgelesen und in das Woerterbuch eingefuegt, solange bis das Ende der Datei erreicht ist. Doppelte Woerter werden nicht eingefuegt.
 
-**save**: Speichert einen Woerterbuch-Baum in einer Woertrebuch-Datei ab.
-- **check_size**: Ermittelt die Groesse (= Anzahl der Eintraege) der Woerterbuch-Datei.
-- **check_status**: Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.
+**save (self, InDictionaryFile, FromDictionary)**  
+Parameter:
+- InDictionaryFile: Enthaelt den Dateinamen inkl. Pfad, in den die Woerter fuer das Woerterbuch gespeichert werden sollen.
+- FromDictionary: Enthaelt das Woerterbuch (AVL-Baum), das in die Woerterbuch-Datei gespeichert werden soll.
+
+*Speichert einen Woerterbuch-Baum in einer Woerterbuch-Datei ab.*  
+>Zunaechst wird ueberprueft, ob eine Woerterbuch-Datei mit gleichem Namen schon existiert, in diesem Fall wird daraus das Backup gemacht - mit dem Namen 'Dateiname_Entstehungsdatum'. Anschließend wird die Woerterbuch-Datei mit der aktuellen Fassung ueberschrieben. Dazu wird das Woerterbuch (AVL-Baum) ausgelesen und jedes Wort in eine einzelne Zeile geschrieben.
+
+**check_size (self, DictionaryFile)**  
+Parameter:
+- DictionaryFile: Enthaelt den Namen der Datei inkl. Pfad, dessen Groesse bestimmt werden soll.
+
+*Ermittelt die Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei.*  
+>Fuer die Ermittlung der Groesse wird die Anzahl der Zeilen in der Woerterbuch-Datei auslesen. Fuer jede Zeile wird der Wert '1' zur Gesamtzahl dazuaddiert. Leerzeilen werden nicht mitgezaehlt. Ist das Dateiende erreicht, wird die Gesamtzahl (DictionarySize) zurueckgegeben.
+
+**check_status (self, DictionarySize, NumberLine)**  
+Parameter:
+- DictionarySize: Enthaelt die Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei, die vorher ermittelt wurde.
+- NumberLine: Enthaelt die Nummer der aktuell einzulesenden Zeile.
+
+*Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.*
+>Zur Ermittlung des aktuellen Status wird die Nummer des aktuell einzulesenden Eintrags ins Verhaeltnis zur Gesamtzahl gesetzt. Zurueckgegeben wird dann das Verhaeltnis als Prozentzahl.
 
 
 ### Strings  
