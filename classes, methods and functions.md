@@ -79,7 +79,7 @@ Aufbau im Modul `M_Dictionaries`
 >Zur Ermittlung des aktuellen Status wird die Nummer des aktuell einzulesenden Eintrags ins Verhaeltnis zur Gesamtzahl gesetzt. Zurueckgegeben wird dann das Verhaeltnis als Prozentzahl.
 
 
-### Strings  
+## Strings  
 *Geeignet zur Erfassung von Texten, Saetzen, Satzbestandteilen und Wortstandteilen*  
 Aufbau im Modul M_Input
 
