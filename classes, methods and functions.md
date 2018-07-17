@@ -15,23 +15,23 @@ Aufbau im Modul `M_Config`
 ### Methoden
 #### initiate (self, NewStock)  
 ##### Parameter:
-- **NewStock**: Enthaelt die Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste)
+- **NewStock**: Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste)
 
-*Legt einen neue, leere Menge, String, Liste oder Dictionary an*  
-Enthaelt NewStock den Wert 'String', wird ein leerer String "" angelegt; enthaelt NewStock den Wert 'Set', wird eine leere Menge ()   angelegt; enthaelt NewStock den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt NewStock den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende    der If-Abfragen.
+*Legt einen neue, leere Menge, String, Liste oder Dictionary an.*  
+>Enthaelt NewStock den Wert 'String', wird ein leerer String "" angelegt; enthaelt NewStock den Wert 'Set', wird eine leere Menge ()   angelegt; enthaelt NewStock den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt NewStock den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende    der If-Abfragen.
 
 #### add_to (self, Stock, Component)  
 ##### Parameter:  
-- **Stock**: Enthaelt den namentlichen Bestand, in den der Buchstabe eingefuegt werden soll.
-- **Component**: Enthaelt den jeweiligen Buchstaben oder die Wortklasse, die eingefuegt werden soll.  
+- **Stock**: Namentlicher Bestand, in den der Buchstabe eingefuegt werden soll.
+- **Component**: Jeweiliger Buchstaben oder die Wortklasse, die eingefuegt werden soll.  
 
 *Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.*
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. In Abhaengigkeit von der Bestandsart wird der neue Buchstabe zum Bestands hinzugefuegt.
 
 #### search_in (self, CheckStock, CheckComponent)  
 ##### Parameter:  
-- **CheckStock**: Enthaelt den Namen des Bestandes, der ueberprueft werden soll.
-- **CheckComponent**: Enthaelt den Buchstaben, der in diesem Bestand gesucht werden soll.  
+- **CheckStock**: Name des Bestandes, der ueberprueft werden soll.
+- **CheckComponent**: Buchstabe, der in diesem Bestand gesucht werden soll.  
 
 *Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück.*   
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. Wird der Buchstabe innerhalb des Bestands gefunden, wird die der Rueckgabewert 'InStock' auf 'True' gesetzt. Grundeinstellung/Fallback fuer 'InStock' ist 'False'. 
@@ -53,31 +53,31 @@ Aufbau im Modul `M_Dictionaries`
 ### Methoden
 #### load (self, InDictionary, FromDictionaryFile)  
 ##### Parameter:
-- **InDictionary**: Enthaelt das Woerterbuch (AVL-Baum), in das die Woerterbuch-Datei geladen werden soll.
-- **FromDictionaryFile**: Enthaelt den Dateinamen inkl. Pfad, aus dem die Woerter fuer das Woerterbuch geladen werden sollen.
+- **InDictionary**: Woerterbuch (AVL-Baum), in das die Woerterbuch-Datei geladen werden soll.
+- **FromDictionaryFile**: Dateiname inkl. Pfad, aus dem die Woerter fuer das Woerterbuch geladen werden sollen.
 
 *Lädt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.*  
 >Die einzelnen Woerter werden aus der Woerterbuch-Datei ausgelesen und in das Woerterbuch eingefuegt, solange bis das Ende der Datei erreicht ist. Doppelte Woerter werden nicht eingefuegt.
 
 #### save (self, InDictionaryFile, FromDictionary)  
 ##### Parameter:
-- **InDictionaryFile**: Enthaelt den Dateinamen inkl. Pfad, in den die Woerter fuer das Woerterbuch gespeichert werden sollen.
-- **FromDictionary**: Enthaelt das Woerterbuch (AVL-Baum), das in die Woerterbuch-Datei gespeichert werden soll.
+- **InDictionaryFile**: Dateiname inkl. Pfad, in den die Woerter fuer das Woerterbuch gespeichert werden sollen.
+- **FromDictionary**: Woerterbuch (AVL-Baum), das in die Woerterbuch-Datei gespeichert werden soll.
 
 *Speichert einen Woerterbuch-Baum in einer Woerterbuch-Datei ab.*  
 >Zunaechst wird ueberprueft, ob eine Woerterbuch-Datei mit gleichem Namen schon existiert, in diesem Fall wird daraus das Backup gemacht - mit dem Namen 'Dateiname_Entstehungsdatum'. Anschließend wird die Woerterbuch-Datei mit der aktuellen Fassung ueberschrieben. Dazu wird das Woerterbuch (AVL-Baum) ausgelesen und jedes Wort in eine einzelne Zeile geschrieben.
 
 #### check_size (self, DictionaryFile)  
 ##### Parameter:
-- **DictionaryFile**: Enthaelt den Namen der Datei inkl. Pfad, dessen Groesse bestimmt werden soll.
+- **DictionaryFile**: Name der Datei inkl. Pfad, dessen Groesse bestimmt werden soll.
 
 *Ermittelt die Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei.*  
 >Fuer die Ermittlung der Groesse wird die Anzahl der Zeilen in der Woerterbuch-Datei auslesen. Fuer jede Zeile wird der Wert '1' zur Gesamtzahl dazuaddiert. Leerzeilen werden nicht mitgezaehlt. Ist das Dateiende erreicht, wird die Gesamtzahl (DictionarySize) zurueckgegeben.
 
 #### check_status (self, DictionarySize, NumberLine)  
 ##### Parameter:
-- **DictionarySize**: Enthaelt die Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei, die vorher ermittelt wurde.
-- **NumberLine**: Enthaelt die Nummer der aktuell einzulesenden Zeile.
+- **DictionarySize**: Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei, die vorher ermittelt wurde.
+- **NumberLine**: Nummer der aktuell einzulesenden Zeile.
 
 *Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.*
 >Zur Ermittlung des aktuellen Status wird die Nummer des aktuell einzulesenden Eintrags ins Verhaeltnis zur Gesamtzahl gesetzt. Zurueckgegeben wird dann das Verhaeltnis als Prozentzahl.
@@ -104,14 +104,11 @@ Aufbau im Modul `M_Input`
 
 #### insert_string (self, InTree, InsertText)
 ##### Parameter
-- **InTree**: Enthaelt den Baum, in den der Satz gehangen wird.
-- **InsertText**: Enthaelt den Text, der als Wurzel in den Baum gehangen wird.
+- **InTree**: Baum, in den der Satz gehangen wird.
+- **InsertText**: Text, der als Wurzel in den Baum gehangen wird.
 
 *Fuegt den eingegebenen Text als Wurzel in den Baum ein.*
 >Zunaechst wird ein neuer Baum generiert. Anschließend wird der Text als Wurzel eingefuegt.
-
-### check_word
-Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist, meldet zurück, wenn eines fehlt und fragt in diesem Fall, ob das Wort neu aufgenommmen werden soll (in Woerterbuch 'Fremd')
 
 
 ## TextSplit (TextInput)
@@ -123,7 +120,7 @@ Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist, meldet zurüc
 
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
-- **StringToSplit**: Enthaelt den String, der aufgeteilt werden soll.  
+- **StringToSplit**: String, der aufgeteilt werden soll.  
 
 *Teilt den Gesamtext in mehrere Saetze auf.*  
 >Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.  Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
@@ -131,9 +128,9 @@ Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Varia
 
 #### insert_string (self, InTree, InsertSentence, NumberSentence)
 ##### Parameter
-- **InTree**: Enthaelt den Baum, in den der Satz gehangen wird.
-- **InsertSentence**: Enthaelt den Satz, der in den Baum gehangen wird.
-- **NumberSentence**: Enthaelt die Nummer des Satzes, der in den Baum gehangen wird.
+- **InTree**: Baum, in den der Satz gehangen wird.
+- **InsertSentence**: Satz, der in den Baum gehangen wird.
+- **NumberSentence**: Nummer des Satzes, der in den Baum gehangen wird.
 
 *Fuegt einen einzelnen Satz mit einer laufenden Nummer in den Baum ein.*
 >Znaechst wird ein neuer Knoten fuer den Satz generiert. Anschließend wird der Satz mit einer laufenden Nummer in den Knoten eingefuegt.
@@ -143,17 +140,25 @@ Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Varia
 Aufbau im Modul M_Input
 
 #### Attribute
-- **Number (Typ Int)**: Erfasst die Nummer der Reihenfolge des Satzes im Text.
+- **Number (Typ Int)**: Nummer der Reihenfolge des Satzes im Text.
 
 #### Methoden
 **create_node**: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil 
 
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
-- **StringToSplit**: Enthaelt den String, der aufgeteilt werden soll. 
+- **StringToSplit**: String, der aufgeteilt werden soll. 
  
 *Teilt den jeweiligen Satz in Satzbestandteile (Woerter, Satzzeichen etc.) auf*  
 >Vor jedes Satzzeichen wird ein Leerzeichen gesetzt. Dann wird der Saz überprüft: Sind mehr als zwei Leerzeichen nacheinander vorhanden, wird das erste davon geloescht. Anschließend wird der Satz bei jedem Leerzeichen getrennt und die einzelnen Satzbestandteile als String in einen Baum gehangen, versehen mit der Nummer der Position, an der es gestanden hat. Zudem wird als Attribut (SwitchPermit) mitgegeben, ob es sich um einen Satzbestandteil handelt, bei dem die Wortbestandteile getauscht werden duerfen ('True') oder nicht ('False'). Nicht getauscht werden duerfen zum Beispiel Artikel oder Satzzeichen.
+
+#### check_word (self, InDictionary, Word)
+#### Parameter:  
+- **InDictionary**: Woerterbuch, in dem das Wort gesucht werden soll.
+- **SearchWord**: Wort, das in dem Woertrebuch gesucht werden soll.
+
+*Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist*  
+>Mit der 'Search-Funktion' der 'Toolbox AVLTree' wird das Wort im Woerterbuch-Baum gesucht. Ist es nicht enthalten, wird der Nutzer gefragt, ob das Wort richtig geschrieben ist und ist das Fremdwoerterbuch aufgenommen werden soll.
 
 
 ### Words (Vererbung Sentences)
