@@ -36,10 +36,21 @@ Aufbau im Modul `M_Config`
 *Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück.*   
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. Wird der Buchstabe innerhalb des Bestands gefunden, wird die der Rueckgabewert 'InStock' auf 'True' gesetzt. Grundeinstellung/Fallback fuer 'InStock' ist 'False'. 
 
+## Nodes
 
-### Trees (Datenstruktur Baum)
+### Attribute
 
-Text = Tree
+### Methoden
+#### init__
+
+## Trees
+
+### Attribute
+
+### Methoden
+#### init__
+
+
 
 #### Methoden
 - **create_node**: Erzeugt einen neuen Kinderknoten für einen Satz.  
@@ -99,24 +110,29 @@ Aufbau im Modul `M_Input`
 ### Attribute
 
 ### Methoden
-#### create_node (self, ???) NOCH ZU KLÄREN, SIEHE AVL-BAUM
+#### create_node (self, Content)  
+##### Parameter:
+- **Content**: Inhalt, der in den Knoten eingetragen wird.  
+
+*Erzeugt einen Zeiger vom Elternknoten zum neuen Kinderknoten und fuegt den Inhalt in den Kinderknoten ein.*
+>kjksjksjdskdjskdjsk
 
 
 #### insert_string (self, InTree, InsertText)
 ##### Parameter
-- **InTree**: Baum, in den der Satz gehangen wird.
+- **InTree**: Baum, in den der Text gehangen wird.
 - **InsertText**: Text, der als Wurzel in den Baum gehangen wird.
 
 *Fuegt den eingegebenen Text als Wurzel in den Baum ein.*
 >Zunaechst wird ein neuer Baum generiert. Anschließend wird der Text als Wurzel eingefuegt.
 
 
-## TextSplit (TextInput)
+## TextEdit (TextInput)
+Aufbau im Modul `M-Edit`
 
 ### Attribute
 
 ### Methoden
-
 
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
@@ -136,11 +152,11 @@ Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Varia
 >Znaechst wird ein neuer Knoten fuer den Satz generiert. Anschließend wird der Satz mit einer laufenden Nummer in den Knoten eingefuegt.
 
 
-## Sentences (TextInput)
-Aufbau im Modul M_Input
+## Sentences (TextEdit)
+Aufbau im Modul `M_Edit`
 
 #### Attribute
-- **Number (Typ Int)**: Nummer der Reihenfolge des Satzes im Text.
+- **Number**: Nummer der Reihenfolge des Satzes im Text. (Typ: Int)
 
 #### Methoden
 **create_node**: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil 
@@ -161,7 +177,8 @@ Aufbau im Modul M_Input
 >Mit der 'Search-Funktion' der 'Toolbox AVLTree' wird das Wort im Woerterbuch-Baum gesucht. Ist es nicht enthalten, wird der Nutzer gefragt, ob das Wort richtig geschrieben ist und ist das Fremdwoerterbuch aufgenommen werden soll.
 
 
-### Words (Vererbung Sentences)
+### Words (Sentences)
+Aufbau im Modul `M_Edit`
 
 #### Attribute
 - **Number (Typ Int)**: Erfasst die Nummer der Reihenfolge des Wortes im jeweiligen Satz.
@@ -260,9 +277,15 @@ An die Funktion rank_list werden die entsprechenden Daten zu den Kombinationen u
 
 ----------------------
 
-### Variablen
+## Variablen
 
-#### kurzzeitig einsetzbar
+### Global
+
+Text = Trees
+InputText = TextInput
+OutputText = TextOutput
+
+### kurzzeitig einsetzbar
 - Counter: benoetigt für Zaehloperationen in Schleifen
 
 -----------------------
