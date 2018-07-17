@@ -81,7 +81,7 @@ Aufbau im Modul `M_Dictionaries`
 
 ## Strings  
 *Geeignet zur Erfassung von Texten, Saetzen, Satzbestandteilen und Wortstandteilen*  
-Aufbau im Modul M_Input
+Aufbau im Modul `M_Input`
 
 #### Attribute
 - String
@@ -99,7 +99,7 @@ Aufbau im Modul `M_Input`
 
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
-- **StringToSplit**: Enthaelt den String, der aufgteilt werden soll.  
+- **StringToSplit**: Enthaelt den String, der aufgeteilt werden soll.  
 
 *Teilt den Gesamtext in mehrere Saetze auf.*  
 >Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.  Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
