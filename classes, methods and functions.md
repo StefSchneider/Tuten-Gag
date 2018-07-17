@@ -97,6 +97,26 @@ Aufbau im Modul `M_Input`
 ### Methoden
 #### create_node (self, ???) NOCH ZU KLÄREN, SIEHE AVL-BAUM
 
+
+#### insert_string (self, InTree, InsertText)
+##### Parameter
+- **InTree**: Enthaelt den Baum, in den der Satz gehangen wird.
+- **InsertText**: Enthaelt den Text, der als Wurzel in den Baum gehangen wird.
+
+*Fuegt den eingegebenen Text als Wurzel in den Baum ein.*
+>Zunaechst wird ein neuer Baum generiert. Anschließend wird der Text als Wurzel eingefuegt.
+
+### check_word
+Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist, meldet zurück, wenn eines fehlt und fragt in diesem Fall, ob das Wort neu aufgenommmen werden soll (in Woerterbuch 'Fremd')
+
+
+## TextSplit (TextInput)
+
+### Attribute
+
+### Methoden
+
+
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
 - **StringToSplit**: Enthaelt den String, der aufgeteilt werden soll.  
@@ -115,7 +135,7 @@ Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Varia
 >Znaechst wird ein neuer Knoten fuer den Satz generiert. Anschließend wird der Satz mit einer laufenden Nummer in den Knoten eingefuegt.
 
 
-### Sentences (Strings)
+## Sentences (TextInput)
 Aufbau im Modul M_Input
 
 #### Attribute
@@ -124,8 +144,11 @@ Aufbau im Modul M_Input
 #### Methoden
 **create_node**: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil 
 
-**split_string** 
-*Teilt den jeweiligen Satz in Satzbestandteile (Woerter, Satzzeichen etc.) auf* | Methode wird uerberschrieben
+#### split_string (self, StringToSplit)  
+##### Parameter:  
+- **StringToSplit**: Enthaelt den String, der aufgeteilt werden soll. 
+ 
+*Teilt den jeweiligen Satz in Satzbestandteile (Woerter, Satzzeichen etc.) auf*  
 >Vor jedes Satzzeichen wird ein Leerzeichen gesetzt. Dann wird der Saz überprüft: Sind mehr als zwei Leerzeichen nacheinander vorhanden, wird das erste davon geloescht. Anschließend wird der Satz bei jedem Leerzeichen getrennt und die einzelnen Satzbestandteile als String in einen Baum gehangen, versehen mit der Nummer der Position, an der es gestanden hat. Zudem wird als Attribut (SwitchPermit) mitgegeben, ob es sich um einen Satzbestandteil handelt, bei dem die Wortbestandteile getauscht werden duerfen ('True') oder nicht ('False'). Nicht getauscht werden duerfen zum Beispiel Artikel oder Satzzeichen.
 
 
