@@ -95,21 +95,27 @@ Aufbau im Modul `M_Input`
 ### Attribute
 
 ### Methoden
+#### create_node (self, ???) NOCH ZU KLÄREN, SIEHE AVL-BAUM
+
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
 - **StringToSplit**: Enthaelt den String, der aufgteilt werden soll.  
 
 *Teilt den Gesamtext in mehrere Saetze auf.*  
 >Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.  Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
-Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_string (self, NumberSentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.   
+Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_string (self, InTree, InsertSentence, NumberSentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.   
 
-#### insert_string (self, InTree, NumberSentence)
+#### insert_string (self, InTree, InsertSentence, NumberSentence)
 ##### Parameter
-- **InTree**:
-- **NumberSentence**:
+- **InTree**: Enthaelt den Baum, in den der Satz gehangen wird.
+- **InsertSentence**: Enthaelt den Satz, der in den Baum gehangen wird.
+- **NumberSentence**: Enthaelt die Nummer des Satzes, der in den Baum gehangen wird.
+
+*Fuegt einen einzelnen Satz mit einer laufenden Nummer in den Baum ein.*
+>Znaechst wird ein neuer Knoten fuer den Satz generiert. Anschließend wird der Satz mit einer laufenden Nummer in den Knoten eingefuegt.
 
 
-### Sentences (Vererbung Strings)
+### Sentences (Strings)
 Aufbau im Modul M_Input
 
 #### Attribute
