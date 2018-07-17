@@ -82,11 +82,12 @@
 - Satz auf Richtigkeit ueberpruefen
 
 
-### Modul Zerlegen (M_Split.py)
+### Modul Bearbeiten (M_Edit.py)
 
 #### Funktionen
 - überschuessige Leerzeichen entfernen
 - Satz in Satzbestandteile aufsplitten
+- Woerter im Woerterbuch ueberpruefen
 - Satzbestandteile in Baum haengen
 - Woerter in Wortbestandteile aufsplitten
 - Wortbestandteile in Baum haengen
