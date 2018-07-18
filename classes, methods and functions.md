@@ -181,13 +181,14 @@ Aufbau im Modul `M_Edit`
 Aufbau im Modul `M_Edit`
 
 #### Attribute
-- **Number (Typ Int)**: Erfasst die Nummer der Reihenfolge des Wortes im jeweiligen Satz.
-- **SwapAllowed (Typ Bol)**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False'
-- **ConnectedWith (NumberWord, Typ Int)**: Gibt an, mit welchem anderen Wort das jeweilige Wort ueber eine Kooplung verbunden ist. / Grundeinstellung: 'None'
-- **Capital (Typ Bol)**: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False'
-- **SwitchPartOwn (Typ Int)**: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None'
-- **SwitchPartForeign (NumberWord : NumberPart, Typ Dic)**: Gibt an, welcher Teil welches fremden Wortes getauscht werden soll. / Grundeinstellung: 'None' : 'None'
-- **Initial**: Gibt an, zu welchem Typ der Wortbestandteile der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None'
+- **Number**:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ Int)
+- **NumberOfParts**: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ Int)
+- **SwapAllowed**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ Bool)
+- **ConnectedWith**: Nummer des anderen Wortes, das mit dem aktuellene Wort ueber eine Kooplung verbunden ist (NumberWord). / Grundeinstellung: 'None' (Typ Int)
+- **Capital**: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False' (Typ Bool)
+- **SwitchPartOwn**: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None' (Typ Int)
+- **SwitchPartForeign**: Teil welches fremden Wortes, der getauscht werden soll. (NumberWord:NumberPart) / Grundeinstellung: 'None' : 'None' (Typ Dic)
+- **Initial**: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ Str)
 
 #### Methoden
 - **split_string**:   
