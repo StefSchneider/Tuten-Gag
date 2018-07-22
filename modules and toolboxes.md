@@ -9,14 +9,14 @@ This module is reponsible for loading and including all data of the config file,
 
 #### Classes
 - **ConfigData**: Includes all data that is part of the cofig file.
-- **Stocks (ConfigData)**: Includes groups of letters or groups, f.e. vowels or articles.  
-
-[more](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#configdata "See more about this classes and methods")  
+- **Stocks (ConfigData)**: Includes groups of letters or groups, f.e. vowels or articles.
 
 #### Methods
 - **Stocks.initiate**: Generates a new stock, f.e. a set, a list, a dictionary or a string.
 - **Stocks.add_to**: Adds a component from the config file to the stock.
 - **Stocks.serach_in**: Checks, wether is component is part of a stock.
+
+[more...](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#configdata "See more about this classes and methods")  
 
 
 ### Module M_Dictionaries.py
@@ -33,6 +33,7 @@ The module M_Dictionaries is reponsible for loading or saving all dictionaries f
 - **Dictionaries.check_size**: Checks the size of a dictionary file.
 - **Dictionaries.check_status**: Calaculates the status of loading the dictionary file into the dictionary avl tree.
 
+[more...](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#dictionaries "See more about this classes and methods")
 
 ### Module M_Menu.py
 
