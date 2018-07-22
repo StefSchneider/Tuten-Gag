@@ -1,7 +1,7 @@
 # Structure
 
 ConfigData     |  
-               | + Files    
+               | + Files   
                | + Pathes  
                | + Stocks  
              
