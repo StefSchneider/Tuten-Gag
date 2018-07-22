@@ -35,13 +35,13 @@ The module M_Dictionaries is reponsible for loading or saving all dictionaries f
 
 [more...](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#dictionaries "See more about this classes and methods")
 
-### Module M_Menu.py
+    ### Module M_Menu.py
 
-#### Description
+    #### Description
 
-#### Classes
+    #### Classes
 
-#### Methods
+    #### Methods
 
 
 ### Module M_Input.py
@@ -118,13 +118,13 @@ This module is resposible for analyze all words an parts, f.e. word is starting 
 
 
 
-### Module M_AI.py
+      ### Module M_AI.py
 
-#### Description
+      #### Description
 
-#### Classes
+      #### Classes
 
-#### Methods
+      #### Methods
 
 
 ### Module M_Rating.py
@@ -146,14 +146,18 @@ This module is resposible for analyze all words an parts, f.e. word is starting 
 
 #### Description
 
-#### Functions
+#### Classes
+
+#### Methods
 
 
 ### Module M_Output.py
 
 #### Description
 
-#### Functions
+#### Classes
+
+#### Methods
 
 
 
@@ -163,6 +167,8 @@ This module is resposible for analyze all words an parts, f.e. word is starting 
 
 #### Description
 
-#### Functions
+#### Classes
+
+#### Methods
 
 
