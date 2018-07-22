@@ -8,7 +8,7 @@
 
 #### Functions
 - **stocks.initiate**: Generates a new stock, f.e. a set, a list, a dictionary or a string.
-- **stocks.add_too**: Adds a component from the config file to the stock.
+- **stocks.add_to**: Adds a component from the config file to the stock.
 - **stocks.serach_in**: Checks, wether is component is part of a stock.
 
 
