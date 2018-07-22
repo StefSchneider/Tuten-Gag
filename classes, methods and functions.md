@@ -53,7 +53,7 @@ Aufbau im Modul `M_Config`
 
 
 #### Methoden
-- **create_node**: Erzeugt einen neuen Kinderknoten für einen Satz.  
+- **generate_node**: Erzeugt einen neuen Kinderknoten für einen Satz.  
 
 ## Dictionaries  
 *Geeignet zur Erfassung der Woerterbuecher in einem AVL-Baum*  
@@ -110,7 +110,7 @@ Aufbau im Modul `M_Input`
 ### Attribute
 
 ### Methoden
-#### create_node (self, Content)  
+#### generate_node (self, Content)  
 ##### Parameter:
 - **Content**: Inhalt, der in den Knoten eingetragen wird.  
 
@@ -159,7 +159,7 @@ Aufbau im Modul `M_Edit`
 - **Number**: Nummer der Reihenfolge des Satzes im Text. (Typ: Int)
 
 #### Methoden
-**create_node**: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil 
+**generate_node**: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil 
 
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
