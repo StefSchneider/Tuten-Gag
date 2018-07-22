@@ -5,22 +5,32 @@
 ### Module M_Config.py
 
 #### Description
+This module is reponsible for loading and including all data of the config file, f.e. pathes, groups or data for implementing the rules.
+!see more: https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#stocks-configdata
 
-#### Functions
-- **stocks.initiate**: Generates a new stock, f.e. a set, a list, a dictionary or a string.
-- **stocks.add_to**: Adds a component from the config file to the stock.
-- **stocks.serach_in**: Checks, wether is component is part of a stock.
+#### Classes
+- **ConfigData**: Includes all data that is part of the cofig file.
+- **Stocks (ConfigData)**: Includes groups of letters or groups, f.e. vowels or articles.
+
+#### Methods
+- **Stocks.initiate**: Generates a new stock, f.e. a set, a list, a dictionary or a string.
+- **Stocks.add_to**: Adds a component from the config file to the stock.
+- **Stocks.serach_in**: Checks, wether is component is part of a stock.
 
 
 ### Module M_Dictionaries.py
 
 #### Description
+The module M_Dictionaries is reponsible for loading or saving all dictionaries from or into an avl tree.
 
-#### Functions
-- **dictionaries.load**: Adds all component from a dictionary file in a dictionary avl tree.
-- **dictionaries.save**: Saves all components from a dictionary avl tree in a dilctionary file.
-- **dictionaries.check_size**: Checks the size of a dictionary file.
-- **dictionaries.check_status**: Calaculates the status of loading the dictionary file into the dictionary avl tree.
+#### Classes
+- **Dictionaries**: All kind of dictionaries that is used in the program, f.e. German, Austrian, Foreign.
+
+#### Methods
+- **Dictionaries.load**: Adds all component from a dictionary file in a dictionary avl tree.
+- **Dictionaries.save**: Saves all components from a dictionary avl tree in a dilctionary file.
+- **Dictionaries.check_size**: Checks the size of a dictionary file.
+- **Dictionaries.check_status**: Calaculates the status of loading the dictionary file into the dictionary avl tree.
 
 
 ### Module M_Menu.py
