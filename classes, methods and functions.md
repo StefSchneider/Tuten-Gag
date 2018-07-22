@@ -1,15 +1,14 @@
 # Structure
 
-ConfigData    + Files
-
-              + Pathes
-             
-              + Stocks
+ConfigData  
+    + Files  
+    + Pathes  
+    + Stocks  
              
 Dictionaries
 
-
-Strings       + TextInput     + TextEdit     + Sentences     + Words     + Parts     PartsAnalyze
+Strings
+    + TextInput     + TextEdit     + Sentences     + Words     + Parts     PartsAnalyze
                                                                          + WordsAnalyze
 
 
