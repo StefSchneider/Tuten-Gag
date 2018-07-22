@@ -6,11 +6,11 @@
 
 #### Description
 This module is reponsible for loading and including all data of the config file, f.e. pathes, groups or data for implementing the rules.
-see more: https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#stocks-configdata
 
 #### Classes
 - **ConfigData**: Includes all data that is part of the cofig file.
 - **Stocks (ConfigData)**: Includes groups of letters or groups, f.e. vowels or articles.
+See more: https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#configdata
 
 #### Methods
 - **Stocks.initiate**: Generates a new stock, f.e. a set, a list, a dictionary or a string.
