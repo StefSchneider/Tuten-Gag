@@ -74,13 +74,13 @@ This module is responsible for splitting the text into all parts od check the at
 - **TextEdit.--init--**: Generates a new child node for the data structure tree.
 - **TextEdit.generate_node**: Generates a new pointer to the new child node for a sentence.
 - **TextEdit.split_string**: Splits the text into sentences.
-- **Sentences.--init-**: Generates a new child node for the data structure tree.
+- **Sentences.--init--**: Generates a new child node for the data structure tree.
 - **Sentences.generate_node**: Generates a new pointer to the new child node for a word.
 - **Sentences.split_string**: Splits the curremt sentence into words.
-- **Words.--init-**: Generates a new child node for the data structure tree.
+- **Words.--init--**: Generates a new child node for the data structure tree.
 - **Words.generate_node**: Generates a new pointer to the new child node for a part of the word.
 - **Words.split_string**: Splits the current word into all parts.
-- **Parts.--init-**: Generates a new child node for the data structure tree.
+- **Parts.--init--**: Generates a new child node for the data structure tree.
 - **Parts.generate_node**: Generates a new pointer to the new child node for a part of a word.
 
 [more...](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes,%20methods%20and%20functions.md#textedit-textinput "See more about this classes and methods")
