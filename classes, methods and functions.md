@@ -1,9 +1,9 @@
 # Structure
 
-ConfigData  
-     + Files  
-     + Pathes  
-     + Stocks  
+ConfigData     |
+               | + Files  
+               | + Pathes  
+               | + Stocks  
              
 Dictionaries
 
