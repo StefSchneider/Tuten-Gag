@@ -31,7 +31,7 @@ The module M_Dictionaries is reponsible for loading or saving all dictionaries f
 - **Dictionaries.load**: Adds all component from a dictionary file in a dictionary avl tree.
 - **Dictionaries.save**: Saves all components from a dictionary avl tree in a dilctionary file.
 - **Dictionaries.check_size**: Checks the size of a dictionary file.
-- **Dictionaries.check_status**: Calaculates the status of loading the dictionary file into the dictionary avl tree.
+- **Dictionaries.check_status**: Calculates the status of loading the dictionary file into the dictionary avl tree.
 
 [more...](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#dictionaries "See more about this classes and methods")
 
@@ -39,21 +39,39 @@ The module M_Dictionaries is reponsible for loading or saving all dictionaries f
 
 #### Description
 
-#### Functions
+#### Classes
+
+#### Methods
 
 
 ### Module M_Input.py
 
 #### Description
+This module is responsible for recording the text filled in by the user in all different ways, f.e. via keyboard or voice assistant.
 
-#### Functions
+#### Classes
+- **Strings**: Includes all kind of strings filled in by the users and splitted, f.e. texts or sentences.
+- **TextInput (Strings)**: Includes the text, that is filled in by the user in all diferent ways.
 
+#### Methods
+- **TextInput.__init__**:
+- **TextInput.insert_string**: Inserts the complete text as a root into a tree.
+
+[more...](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#strings "See more about this classes and methods")
 
 ### Module M_Edit.py
 
 #### Description
 
+#### Classes
+- **TextEdit (TextInput)**:
+- **Sentences (TextEdit)**:
+- **Words (Sentences)**:
+- **Parts (Words)**:
+
 #### Functions
+- **TextEdit.create_node**:
+- **TextEdit.split_string**:
 
 
 ### Module M_Analyze.py
