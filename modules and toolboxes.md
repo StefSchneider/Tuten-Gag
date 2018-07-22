@@ -54,7 +54,7 @@ This module is responsible for recording the text filled in by the user in all d
 - **TextInput (Strings)**: Includes the text, that is filled in by the user in all diferent ways.
 
 #### Methods
-- **TextInput.--init--**:
+- **TextInput.--init--**: Generates a new data structure tree to collect all parts of the text, f.e. sentences or words. 
 - **TextInput.insert_string**: Inserts the complete text into the root of the tree.
 
 [more...](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#strings "See more about this classes and methods")
@@ -62,16 +62,32 @@ This module is responsible for recording the text filled in by the user in all d
 ### Module M_Edit.py
 
 #### Description
+This module is responsible for splitting the text into all parts od check the attributes, f.e. whether all words are containing in the language.
 
 #### Classes
-- **TextEdit (TextInput)**:
-- **Sentences (TextEdit)**:
-- **Words (Sentences)**:
-- **Parts (Words)**:
+- **TextEdit (TextInput)**: Includes the text to be edited by the program.
+- **Sentences (TextEdit)**: Includes all sentence contained in a text.
+- **Words (Sentences)**: Includes all words containdes in a sentence.
+- **Parts (Words)**: Includes all parts of a word contained in a word.
 
-#### Functions
-- **TextEdit.create_node**:
-- **TextEdit.split_string**:
+#### Methods
+- **TextEdit.--init--**: Generates a new child node for the data structure tree.
+- **TextEdit.generate_node**: Generates a new pointer to the new child node for a sentence.
+- **TextEdit.split_string**: Splits the text into sentences.
+- **Sentences.--init-**: Generates a new child node for the data structure tree.
+- **Sentences.generate_node**: Generates a new pointer to the new child node for a word.
+- **Sentences.split_string**: Splits the curremt sentence into words.
+- **Sentences.check_word**: Checks wether all words are containing in the dictionaries
+- **Words.--init-**: Generates a new child node for the data structure tree.
+- **Words.generate_node**: Generates a new pointer to the new child node for a part of the word.
+- **Words.split_string**: Splits the current word into all parts.
+- **Words.check**: Steers all checks of the current word.
+- **Words.check_swap_allowed**: Checks whether a swap is possibe or not.
+- **Words.check_capital**: Checks whether the current word starts with a capital.
+- **Parts.--init-**: Generates a new child node for the data structure tree.
+- **Parts.generate_node**: Generates a new pointer to the new child node for a part of a word.
+
+[more...](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes,%20methods%20and%20functions.md#textedit-textinput "See more about this classes and methods")
 
 
 ### Module M_Analyze.py
