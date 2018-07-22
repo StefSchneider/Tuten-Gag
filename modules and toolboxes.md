@@ -54,8 +54,8 @@ This module is responsible for recording the text filled in by the user in all d
 - **TextInput (Strings)**: Includes the text, that is filled in by the user in all diferent ways.
 
 #### Methods
-- **TextInput.init__**:
-- **TextInput.insert_string**: Inserts the complete text as a root into a tree.
+- **TextInput.--init--**:
+- **TextInput.insert_string**: Inserts the complete text into the root of the tree.
 
 [more...](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#strings "See more about this classes and methods")
 
