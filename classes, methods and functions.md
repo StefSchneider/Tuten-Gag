@@ -8,8 +8,13 @@ ConfigData
 Dictionaries
 
 Strings
-    + TextInput     + TextEdit     + Sentences     + Words     + Parts     PartsAnalyze
-                                                                         + WordsAnalyze
+     + TextInput
+     + TextEdit
+     + Sentences
+     + Words
+            - WordsAnalyze
+     + Parts
+            - PartsAnalyze
 
 
 
