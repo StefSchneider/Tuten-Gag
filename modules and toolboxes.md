@@ -77,13 +77,9 @@ This module is responsible for splitting the text into all parts od check the at
 - **Sentences.--init-**: Generates a new child node for the data structure tree.
 - **Sentences.generate_node**: Generates a new pointer to the new child node for a word.
 - **Sentences.split_string**: Splits the curremt sentence into words.
-- **Sentences.check_word**: Checks wether all words are containing in the dictionaries
 - **Words.--init-**: Generates a new child node for the data structure tree.
 - **Words.generate_node**: Generates a new pointer to the new child node for a part of the word.
 - **Words.split_string**: Splits the current word into all parts.
-- **Words.check**: Steers all checks of the current word.
-- **Words.check_swap_allowed**: Checks whether a swap is possibe or not.
-- **Words.check_capital**: Checks whether the current word starts with a capital.
 - **Parts.--init-**: Generates a new child node for the data structure tree.
 - **Parts.generate_node**: Generates a new pointer to the new child node for a part of a word.
 
@@ -93,29 +89,57 @@ This module is responsible for splitting the text into all parts od check the at
 ### Module M_Analyze.py
 
 #### Description
+This module is resposible for analyze all words an parts, f.e. word is starting with a capital.
 
-#### Functions
+#### Classes
+- **WordsAnalyze (Words)**: Includes the words to be analysed.
+- **PartsAnalyze (Parts)**: Includes the parts of a word to be analysed. 
+
+#### Methods
+- **WordsAnalyze.check_in_dictionary**: Checks wether a word is part of the dictionaries.
+- **WordsAnalyze.check**: Steers all checks of the current word.
+- **WordsAnalyze.check_swap_allowed**: Checks whether a swap is possibe or not.
+- **WordsAnalyze.check_capital**: Checks whether the current word starts with a capital.
+- **WordsAnalyze.check_equal**: Checks wether a word in the range starts with the same kind of a part, f.e. a vowel.
 
 
 ### Module M_Combine.py
 
 #### Description
 
-#### Functions
+#### Classes
+- **Combination**:
+
+#### Methods
+- **Combination.combine**:
+- **Combination.combine_inner**:
+
+
+
 
 
 ### Module M_AI.py
 
 #### Description
 
-#### Functions
+#### Classes
+
+#### Methods
 
 
 ### Module M_Rating.py
 
 #### Description
 
-#### Functions
+#### Classes
+
+#### Methods
+- **rate**:
+- **rate_in_dictionary**:
+- **rate_in_user**:
+- **rate_number_letters**:
+- **rate_words_linked**:
+
 
 
 ### Module M_Build.py
