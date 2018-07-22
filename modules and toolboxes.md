@@ -108,11 +108,16 @@ This module is resposible for analyze all words an parts, f.e. word is starting 
 #### Description
 
 #### Classes
-- **Combination**:
+- **Combinations**:
+- **CombinationLists**:
 
 #### Methods
 - **Combination.combine**:
 - **Combination.combine_inner**:
+- **CombinationLists.insert**:
+- **CombinationLists.delete**:
+- **CombinationLists.sort**:
+- **CombinationLists.rank_list**:
 
 
 
