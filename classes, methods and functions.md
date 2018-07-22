@@ -1,3 +1,19 @@
+# Structure
+
+ConfigData    + Files
+
+              + Pathes
+             
+              + Stocks
+             
+Dictionaries
+
+
+Strings       + TextInput     + TextEdit     + Sentences     + Words     + Parts     PartsAnalyze
+                                                                         + WordsAnalyze
+
+
+
 # Klassen
 
 ## ConfigData
