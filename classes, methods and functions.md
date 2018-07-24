@@ -2,9 +2,9 @@
 
 ConfigData  
 |  
-|---Files  
-|---Pathes  
-|---Stocks  
++---Files  
++---Pathes  
++---Stocks  
              
 Dictionaries
 
