@@ -139,11 +139,11 @@ This module is resposible for analyze all words an parts, f.e. word is starting 
 #### Classes
 
 #### Methods
-- **rate**:
-- **rate_in_dictionary**:
-- **rate_in_user**:
-- **rate_number_letters**:
-- **rate_words_linked**:
+- **rate**: Steers all rating processes for a combination.
+- **rate_in_dictionary**: Checks whether a word with swapped letters is part of a dictionary.
+- **rate_in_user**: Checks whether a word with swapped letters is part of a user's favourite list.
+- **rate_number_letters**: Checks how many letters were swapped in sum.
+- **rate_words_linked**: Checks whether the letters of two linked words were swapped.
 
 
 
