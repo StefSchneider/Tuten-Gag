@@ -12,7 +12,7 @@ Strings
 |---TextInput  
 |---TextEdit  
 |---Sentences  
-|---Words
+|---Words  
 |   |---WordsAnalyze  
 |---Parts  
 |   |---PartsAnalyze  
