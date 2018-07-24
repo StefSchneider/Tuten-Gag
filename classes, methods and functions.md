@@ -16,6 +16,9 @@ Strings
      + Parts  
             - PartsAnalyze  
 
+| ConfigData        |
+                    | + Files
+                    | + Pathes
 
 
 # Klassen
