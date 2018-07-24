@@ -1,8 +1,8 @@
 # Structure
 
 ConfigData  
-\    |-- Files  
-\    |-- Pathes  
+\    |-- Files\  
+\    |-- Pathes\  
 \    |-- Stocks  
              
 Dictionaries
