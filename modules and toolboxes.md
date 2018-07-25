@@ -89,7 +89,7 @@ This module is responsible for splitting the text into all parts od check the at
 ### Module M_Analyze.py
 
 #### Description
-This module is resposible for analyze all words an parts, f.e. word is starting with a capital.
+This module is resposible for analyze all words and parts, f.e. whether a word starts with a capital.
 
 #### Classes
 - **WordsAnalyze (Words)**: Includes the words to be analysed.
@@ -106,18 +106,19 @@ This module is resposible for analyze all words an parts, f.e. word is starting 
 ### Module M_Combine.py
 
 #### Description
+This module is responsible for combine different parts a the words and transfer them to the module M_Rating.
 
 #### Classes
-- **Combinations**:
-- **CombinationLists**:
+- **Combinations**: Includes the data for the parts to be swapped and the sum of rating points to be assigned.
+- **CombinationLists**: Includes all possible combinations of a word.
 
 #### Methods
-- **Combination.combine**:
-- **Combination.combine_inner**:
-- **CombinationLists.insert**:
-- **CombinationLists.delete**:
-- **CombinationLists.sort**:
-- **CombinationLists.rank_list**:
+- **Combination.combine**: Steers all functions for combining different parts of different words.
+- **Combination.combine_inner**: Swapes two parts within one word.
+- **CombinationLists.insert**: Inserts a combination into the combination list.
+- **CombinationLists.delete**: Deletes a combination from the combination list.
+- **CombinationLists.sort**: Steers the algorithm for sorting the list, f.e. bubble sort or merge sort.
+- **CombinationLists.rank_list**: Sorts the list of all posible comibiations of a word according to the sum of rating points.
 
 
 
@@ -166,14 +167,31 @@ This module is resposible for analyze all words an parts, f.e. word is starting 
 
 
 
-## Tollboxes
+## Toolboxes
 
 ### AVLTree
 
 #### Description
 
 #### Classes
+- **AVLNode**:
+- **AVLTree**:
 
 #### Methods
+- **AVLNode.--init--**: Generates a new node for the AVLTree.
+- **AVLTree.--init--**: Constructs a new AVLTree.
+- **AVLTree.insert**: Inserts a new node into the AVLTree, f.e. for a new word in a dictionary.
+- **AVLTree.insert_without_double**: Inserts a new node into the AVLTree, but only for a missing word.
+- **AVLTree.rebalance**: Rebalances the AVLTree after inserting a new node.
+- **AVLTree.update_heights**: Determines the current height of the AVLTree.
+- **AVLTree.update_balances**: Determines whether die AVLTree ist balanced or not.
+- **AVLTree.rotate_right**: Rotates a part of the AVLTree in the right direction to be rebalanced.
+- **AVLTree.rotate_left**: Rotates a part of the AVLTree in the left direction to be rebalanced.
+- **AVLTree.delete**:
+- **AVLTree.search**:
+- **AVLTree.inorder_traverse**:
+- **AVLTree.preorder_traverse**:
+- **AVLTree.postorder_traverse**:
+- **AVLTree.levelorder_traverse**:
 
 
