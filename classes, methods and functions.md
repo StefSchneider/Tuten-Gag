@@ -59,24 +59,6 @@ Aufbau im Modul `M_Config`
 *Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück.*   
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. Wird der Buchstabe innerhalb des Bestands gefunden, wird die der Rueckgabewert 'InStock' auf 'True' gesetzt. Grundeinstellung/Fallback fuer 'InStock' ist 'False'. 
 
-## Nodes
-
-### Attribute
-
-### Methoden
-#### init__
-
-## Trees
-
-### Attribute
-
-### Methoden
-#### init__
-
-
-
-#### Methoden
-- **generate_node**: Erzeugt einen neuen Kinderknoten für einen Satz.  
 
 ## Dictionaries  
 *Geeignet zur Erfassung der Woerterbuecher in einem AVL-Baum*  
