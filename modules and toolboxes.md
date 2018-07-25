@@ -162,6 +162,7 @@ This module is responsible for combine different parts a the words and transfer 
 #### Description
 
 #### Classes
+- **TextOutput(Strings)**:
 
 #### Methods
 
