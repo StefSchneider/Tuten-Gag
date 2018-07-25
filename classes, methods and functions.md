@@ -1,37 +1,24 @@
-# Structure
-
-
-∟
-│179
-║
-└ 192
-├ 195
+# Structure of classes
 
 
     ConfigData  
-     │  
-     ├ Files  
-     ├ Pathes  
-     └ Stocks  
+        ├ Files  
+        ├ Pathes  
+        └ Stocks  
+     
+    Dictionaries
+    
+    Strings
+        ├ TextInput
+        │   └ TextEdit
+        │       └ Sentences
+        │           └ Words
+        │               ├ Parts
+        │               │   └ PartsAnalyze
+        │               └ WordsAnalyze
+        ├ TextOutput
+        
   
-|Files  
-|Pathes  
-└Stocks  
-             
-Dictionaries
-
-Strings
-|
-+---TextInput  
-+---TextEdit  
-+---Sentences  
-+---Words  
-|   +---WordsAnalyze  
-+---Parts  
-|   +---PartsAnalyze  
-
- 
-
 
 # Klassen
 
