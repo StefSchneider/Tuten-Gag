@@ -67,7 +67,7 @@ This module is responsible for splitting the text into all parts od check the at
 #### Classes
 - **TextEdit (TextInput)**: Includes the text to be edited by the program.
 - **Sentences (TextEdit)**: Includes all sentence contained in a text.
-- **Words (Sentences)**: Includes all words containdes in a sentence.
+- **Words (Sentences)**: Includes all words containded in a sentence.
 - **Parts (Words)**: Includes all parts of a word contained in a word.
 
 #### Methods
@@ -195,4 +195,4 @@ This toolbox includes all functions to generate, fill in and read out an AVLTree
 - **AVLTree.postorder_traverse**: Picks out the content of the AVLTree via an recursive postorder-route.
 - **AVLTree.levelorder_traverse**: Picks out the content of the AVLTree via an levelorder-route.
 
-
+[more...](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes,%20methods%20and%20functions.md#avltree-aus-toolbox-avltree "See more about this classes and methods")
