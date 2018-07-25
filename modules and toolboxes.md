@@ -172,10 +172,11 @@ This module is responsible for combine different parts a the words and transfer 
 ### AVLTree
 
 #### Description
+This toolbox includes all functions to generate, fill in and read out an AVLTree.
 
 #### Classes
-- **AVLNode**:
-- **AVLTree**:
+- **AVLNode**: Includes the content of a node and pointers to the left and the right child.
+- **AVLTree**: Includes all data of a aVLTree, f.e. all entries of a dictionary.
 
 #### Methods
 - **AVLNode.--init--**: Generates a new node for the AVLTree.
@@ -187,11 +188,11 @@ This module is responsible for combine different parts a the words and transfer 
 - **AVLTree.update_balances**: Determines whether die AVLTree ist balanced or not.
 - **AVLTree.rotate_right**: Rotates a part of the AVLTree in the right direction to be rebalanced.
 - **AVLTree.rotate_left**: Rotates a part of the AVLTree in the left direction to be rebalanced.
-- **AVLTree.delete**:
-- **AVLTree.search**:
-- **AVLTree.inorder_traverse**:
-- **AVLTree.preorder_traverse**:
-- **AVLTree.postorder_traverse**:
-- **AVLTree.levelorder_traverse**:
+- **AVLTree.delete**: Deletes a node from the AVLTree.
+- **AVLTree.search**: Checks whether a word ist part of the AVLTree.
+- **AVLTree.inorder_traverse**: Picks out the content of the AVLTree via an recursive inorder-route.
+- **AVLTree.preorder_traverse**: Picks out the content of the AVLTree via an recursive preorder-route.
+- **AVLTree.postorder_traverse**: Picks out the content of the AVLTree via an recursive postorder-route.
+- **AVLTree.levelorder_traverse**: Picks out the content of the AVLTree via an levelorder-route.
 
 
