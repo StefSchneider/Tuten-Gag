@@ -96,7 +96,7 @@ This module is resposible for analyze all words and parts, f.e. whether a word s
 - **PartsAnalyze (Parts)**: Includes the parts of a word to be analysed. 
 
 #### Methods
-- **WordsAnalyze.check_in_dictionary**: Checks wether a word is part of the dictionaries.
+- **WordsAnalyze.check_in_dictionary**: Checks whether a word is part of the dictionaries.
 - **WordsAnalyze.check**: Steers all checks of the current word.
 - **WordsAnalyze.check_swap_allowed**: Checks whether a swap is possibe or not.
 - **WordsAnalyze.check_capital**: Checks whether the current word starts with a capital.
