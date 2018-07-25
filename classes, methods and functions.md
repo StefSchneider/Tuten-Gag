@@ -54,7 +54,10 @@ Aufbau im Modul `M_Config`
 
 *Legt einen neue, leere Menge, String, Liste oder Dictionary an.*  
 
-    Enthaelt NewStock den Wert 'String', wird ein leerer String "" angelegt; enthaelt NewStock den Wert 'Set', wird eine leere Menge () angelegt; enthaelt NewStock den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt NewStock den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen.
+    Enthaelt NewStock den Wert 'String', wird ein leerer String "" angelegt; 
+    enthaelt NewStock den Wert 'Set', wird eine leere Menge () angelegt; enthaelt NewStock den Wert 'Dictionary', wird ein leeres
+    Woerterbuch {} angelegt; enthaelt NewStock den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die
+    Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen.
 
 #### add_to (self, Stock, Component)  
 ##### Parameter:  
