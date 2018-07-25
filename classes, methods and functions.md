@@ -1,7 +1,19 @@
 # Structure
 
-ConfigData  
-|  
+
+∟
+│179
+║
+└ 192
+├ 195
+
+
+  ConfigData  
+     │  
+     ├ Files  
+     ├ Pathes  
+     └ Stocks  
+  
 |Files  
 |Pathes  
 └Stocks  
