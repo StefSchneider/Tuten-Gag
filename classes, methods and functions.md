@@ -227,7 +227,7 @@ Aufbau im Modul M_Output
 ### Combination
 
 #### Attribute
-- SumPoints: Gibt die Gesamtpunktzahl der Kombination für das Ranking an.
+- SumPoints: Gesamtpunktzahl der Kombination für das Ranking.
 - Part1: Liste aus Nummer Wort 1, Position in Wort 1
 - Part2: Liste aus Nummer Wort 2, Position in Wort 2
 
