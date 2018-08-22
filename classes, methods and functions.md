@@ -93,7 +93,7 @@ Aufbau im Modul `M_Dictionaries`.
 ##### Parameter:
 - **Dictionary**: Woerterbuch (AVL-Baum), das neu angelegt werden soll.
 
-* Legt ein neues Woerterbuch mit dem Namen von Dictionary an.*
+*Legt ein neues Woerterbuch mit dem Namen von Dictionary an.*
 >Die Methode greift auf die Toolbox 'AVLTree' zu und erzeugt einen Grundeintrag für ein neues Woerterbuch, in das später die einzelnen Woerter geladen werden.
 
 #### load (self, InDictionary, FromDictionaryFile)  
@@ -111,6 +111,20 @@ Aufbau im Modul `M_Dictionaries`.
 
 *Speichert einen Woerterbuch-Baum in einer Woerterbuch-Datei ab.*  
 >Zunaechst wird ueberprueft, ob eine Woerterbuch-Datei mit gleichem Namen schon existiert, in diesem Fall wird daraus das Backup gemacht - mit dem Namen 'Dateiname_Entstehungsdatum'. Anschließend wird die Woerterbuch-Datei mit der aktuellen Fassung ueberschrieben. Dazu wird das Woerterbuch (AVL-Baum) ausgelesen und jedes Wort in eine einzelne Zeile geschrieben.
+
+#### check_word (self, InDictionary, SearchWord)
+#### Parameter:  
+- **InDictionary**: Woerterbuch, in dem das Wort gesucht werden soll.
+- **SearchWord**: Wort, das in dem Woerterbuch gesucht werden soll.
+
+*Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist*  
+>Mit der 'Search-Methode' der 'Toolbox AVLTree' wird das Wort im Woerterbuch-Baum gesucht. Ist es nicht enthalten, wird der Nutzer gefragt, ob das Wort richtig geschrieben ist und ist das Fremdwoerterbuch aufgenommen werden soll.
+
+#### add_word (self, InDictionary, AddWord)
+##### Parameter:
+- **InDictionary**: Woerterbuch, in das das Wort ergaenzt werden soll.
+- **AddWord**: Wort, das in das Woerterbuch eingefuegt werden soll.
+>Mithilfe der 'Insert-Methode' der Toolbox 'AVLTree' wird das Wort in das jewelige Woerterbuch an der richtigen Stelle eingefuegt. Anschließend wird die 'Save-Methode' aufgerufen, um das ergaenzte Woerterbuch abzuspeichern.
 
 #### check_size (self, DictionaryFile)  
 ##### Parameter:
@@ -142,16 +156,9 @@ Aufbau im Modul `M_Input`
 Aufbau im Modul `M_Input`
 
 ### Attribute
+- xxx
 
 ### Methoden
-#### generate_node (self, Content)  
-##### Parameter:
-- **Content**: Inhalt, der in den Knoten eingetragen wird.  
-
-*Erzeugt einen Zeiger vom Elternknoten zum neuen Kinderknoten und fuegt den Inhalt in den Kinderknoten ein.*
->kjksjksjdskdjskdjsk
-
-
 #### insert_string (self, InTree, InsertText)
 ##### Parameter
 - **InTree**: Baum, in den der Text gehangen wird.
@@ -162,7 +169,7 @@ Aufbau im Modul `M_Input`
 
 
 ## TextEdit (TextInput)
-Aufbau im Modul `M-Edit`
+Aufbau im Modul `M_Edit`
 
 ### Attribute
 
@@ -176,6 +183,12 @@ Aufbau im Modul `M-Edit`
 >Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.  Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
 Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_string (self, InTree, InsertSentence, NumberSentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.   
 
+
+#### generate_node (self)
+
+*Erzeugt einen neuen Kinderknoten für einen Satz und einen Zeiger vom Elternknoten (Wurzel) darauf).*
+>Hier kommt die Detailbeschreibung hin.
+
 #### insert_string (self, InTree, InsertSentence, NumberSentence, WhoSaid)
 ##### Parameter
 - **InTree**: Baum, in den der Satz gehangen wird.
@@ -184,17 +197,18 @@ Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Varia
 - **WhoSaid**: Person, der der Satz zugordnet wird. Wichtig z.B. bei Dialogen.
 
 *Fuegt einen einzelnen Satz mit einer laufenden Nummer in den Baum ein.*
->Znaechst wird ein neuer Knoten fuer den Satz generiert. Anschließend wird der Satz mit einer laufenden Nummer in den Knoten eingefuegt.
+>Znaechst wird ein neuer Knoten fuer den Satz generiert. Anschließend wird der Satz mit einer laufenden Nummer und der Person, der er zugeordnet wird, in den Knoten eingefuegt.
 
 
 ## Sentences (TextEdit)
 Aufbau im Modul `M_Edit`
 
-#### Attribute
+### Attribute
 - **Number**: Nummer der Reihenfolge des Satzes im Text. (Typ: Int)
+- **WhoSaid**: Person, der der Satz zugeordnet wird. (Typ: Str)
 
-#### Methoden
-**generate_node**: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil 
+### Methoden
+#### generate_node: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil 
 
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
@@ -203,19 +217,11 @@ Aufbau im Modul `M_Edit`
 *Teilt den jeweiligen Satz in Satzbestandteile (Woerter, Satzzeichen etc.) auf*  
 >Vor jedes Satzzeichen wird ein Leerzeichen gesetzt. Dann wird der Saz überprüft: Sind mehr als zwei Leerzeichen nacheinander vorhanden, wird das erste davon geloescht. Anschließend wird der Satz bei jedem Leerzeichen getrennt und die einzelnen Satzbestandteile als String in einen Baum gehangen, versehen mit der Nummer der Position, an der es gestanden hat. Zudem wird als Attribut (SwitchPermit) mitgegeben, ob es sich um einen Satzbestandteil handelt, bei dem die Wortbestandteile getauscht werden duerfen ('True') oder nicht ('False'). Nicht getauscht werden duerfen zum Beispiel Artikel oder Satzzeichen.
 
-#### check_word (self, InDictionary, Word)
-#### Parameter:  
-- **InDictionary**: Woerterbuch, in dem das Wort gesucht werden soll.
-- **SearchWord**: Wort, das in dem Woertrebuch gesucht werden soll.
 
-*Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist*  
->Mit der 'Search-Funktion' der 'Toolbox AVLTree' wird das Wort im Woerterbuch-Baum gesucht. Ist es nicht enthalten, wird der Nutzer gefragt, ob das Wort richtig geschrieben ist und ist das Fremdwoerterbuch aufgenommen werden soll.
+## Words (Sentences)
+Aufbau im Modul `M_Edit`.
 
-
-### Words (Sentences)
-Aufbau im Modul `M_Edit`
-
-#### Attribute
+### Attribute
 - **Number**:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ Int)
 - **NumberOfParts**: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ Int)
 - **SwapAllowed**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ Bool)
@@ -225,10 +231,15 @@ Aufbau im Modul `M_Edit`
 - **SwitchPartForeign**: Teil welches fremden Wortes, der getauscht werden soll. (NumberWord:NumberPart) / Grundeinstellung: 'None' : 'None' (Typ Dic)
 - **Initial**: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ Str)
 
-#### Methoden
-- **split_string**:   
+### Methoden
+
+#### split_string (self, StringToSplit**  
+##### Parameter_
+- **StringToSplit**: String, der aufgeteilt werden soll.
+
 *Teilt das jeweilige Wort in mehrere Wortbestandteile auf* | Methode wird ueberschrieben  
 >Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende. Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter. Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordElementEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberElement (Typ: int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt -> Methode: insert_wordelement (self, NumberElement). Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.
+
 - **create_node**: Erzeugt einen neuen Kinderknoten für einen Wort und setzt die Attribute auf die Grundeisntellungen 
 - **check**: Steuert die Ueberpruefungen der einzelnen Woerter, zum Beispiel auf Grossbuchstaben / ruft alle anderen Pruef-Methoden in der richtigen Reihenfolge auf.
 - **check_swap_allowed**: Ueberprueft, ob das Wort ueberhaupt zum Tausch der Bestandteile freigegeben ist.
@@ -237,6 +248,17 @@ Aufbau im Modul `M_Edit`
 ### Part
 Enthaelt die einzelnen Bestandteile des Wortes, z.B. St|e|f|a|n
 - **create_node**: Erzeugt einen neuen Kinderknoten für einen Wortbestandteil
+
+### WordAnalyze (Words)
+Aufbau im Modul `M_Analyze`.
+
+#### Attribute
+- xxx
+
+#### Methoden
+- **check**:  
+*
+
 
 
 ### TextOutput (Strings)
