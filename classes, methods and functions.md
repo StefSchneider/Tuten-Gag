@@ -24,20 +24,42 @@
 
 ## ConfigData
 
-## Files
+## Files (ConfigData)
 
-## Pathes
-
-## Stocks (ConfigData)  
-*Geeignet zur Erfassung von Buchstabengruppen, z.B. Vokale oder Konsonanten, oder Wortklassen, z.B. Artikel, in einer Menge*  
-Aufbau im Modul `M_Config`
+## Pathes (ConfigData)
+*Geeignet zu Erfassung von Dateipfaden, auf mit denen spaeter Dateien angesteuert werden, z.B. die Woerterbuch-Dateien.*
 
 ### Attribute
+- xxx
+
+### Methoden
+#### initiate (self, NewPathDictionary)
+##### Parameter:
+- **NewPathDictionary**: Dictionary, in der alle Dateipfade hinterlegt werden.
+
+*Legt ein neue Variable vom Typ Dic an, in der die Dateipfade aus der Config-Datei erfasst werden.*
+>Die Initialisierung erfolgt mit der Zuweisung von {}. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.
+
+#### add_to (self, PathDictionary, Path, ForFile)  
+##### Parameter:  
+- **PathDictionary**: Dictionary, in das der neue Dateipfad aufgenommen werden soll.
+- **Path**: Dateipfad, der neu ins Dictionary aufgenommen werden soll.
+- **ForFile**: Bezeichnung der Datei, zu der der Pfad leitet.
+
+*Fuegt einen neuen Eintrag zum bisherigen Dictionary der Dateipfade zu.*
+>Ans Ende der Dictionary wird neue zweiteiliger Eintrag angefuegt. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.
+
+## Stocks (ConfigData)  
+*Geeignet zur Erfassung von Buchstabengruppen, z.B. Vokale oder Konsonanten, oder Wortklassen, z.B. Artikel, in einer Menge.*  
+Aufbau im Modul `M_Config`.
+
+### Attribute
+- xxx
 
 ### Methoden
 #### initiate (self, NewStock)  
 ##### Parameter:
-- **NewStock**: Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste)
+- **NewStock**: Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste).
 
 *Legt einen neue, leere Menge, String, Liste oder Dictionary an.*  
 >Enthaelt NewStock den Wert 'String', wird ein leerer String "" angelegt; enthaelt NewStock den Wert 'Set', wird eine leere Menge () angelegt; enthaelt NewStock den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt NewStock den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen.
@@ -48,7 +70,7 @@ Aufbau im Modul `M_Config`
 - **Component**: Jeweiliger Buchstaben oder die Wortklasse, die eingefuegt werden soll.  
 
 *Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.*
->Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. In Abhaengigkeit von der Bestandsart wird der neue Buchstabe zum Bestands hinzugefuegt.
+>Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. In Abhaengigkeit von der Bestandsart wird der neue Buchstabe zum Bestand hinzugefuegt.
 
 #### search_in (self, CheckStock, CheckComponent)  
 ##### Parameter:  
@@ -60,19 +82,27 @@ Aufbau im Modul `M_Config`
 
 
 ## Dictionaries  
-*Geeignet zur Erfassung der Woerterbuecher in einem AVL-Baum*  
-Aufbau im Modul `M_Dictionaries`
+*Geeignet zur Erfassung der Woerterbuecher in einem AVL-Baum.*  
+Aufbau im Modul `M_Dictionaries`.
 
 ### Attribute
+- xxx
 
 ### Methoden
+#### initate (self, Dictionary)
+##### Parameter:
+- **Dictionary**: Woerterbuch (AVL-Baum), das neu angelegt werden soll.
+
+* Legt ein neues Woerterbuch mit dem Namen von Dictionary an.*
+>Die Methode greift auf die Toolbox 'AVLTree' zu und erzeugt einen Grundeintrag für ein neues Woerterbuch, in das später die einzelnen Woerter geladen werden.
+
 #### load (self, InDictionary, FromDictionaryFile)  
 ##### Parameter:
 - **InDictionary**: Woerterbuch (AVL-Baum), in das die Woerterbuch-Datei geladen werden soll.
 - **FromDictionaryFile**: Dateiname inkl. Pfad, aus dem die Woerter fuer das Woerterbuch geladen werden sollen.
 
 *Laedt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.*  
->Die einzelnen Woerter werden aus der Woerterbuch-Datei ausgelesen und in das Woerterbuch eingefuegt, solange bis das Ende der Datei erreicht ist. Doppelte Woerter werden nicht eingefuegt.
+>Die einzelnen Woerter werden aus der Woerterbuch-Datei ausgelesen und in das Woerterbuch eingefuegt, solange bis das Ende der Datei erreicht ist. Doppelte Woerter werden nicht eingefuegt. Dazu wird innerhalb der Tollbox 'AVLTree' die Methode 'insert_without_double' genutzt.
 
 #### save (self, InDictionaryFile, FromDictionary)  
 ##### Parameter:
