@@ -34,6 +34,8 @@ The module M_Dictionaries is reponsible for loading or saving all dictionaries f
 - **Dictionaries.initiate**: Generates a new dictionary.
 - **Dictionaries.load**: Adds all component from a dictionary file in a dictionary avl tree.
 - **Dictionaries.save**: Saves all components from a dictionary avl tree in a dilctionary file.
+- **Dictionaries.check_word**: Checks whether the wod is part of the dictionary.
+- **Dictionaries.add_word**: Adds the word to the dictionary and saves the dictionary in a file.
 - **Dictionaries.check_size**: Checks the size of a dictionary file.
 - **Dictionaries.check_status**: Calculates the status of loading the dictionary file into the dictionary avl tree.
 
@@ -78,6 +80,7 @@ This module is responsible for splitting the text into all parts od check the at
 - **TextEdit.--init--**: Generates a new child node for the data structure tree.
 - **TextEdit.generate_node**: Generates a new pointer to the new child node for a sentence.
 - **TextEdit.split_string**: Splits the text into sentences.
+- **TextEdit.insert_string**: Inserts a sentence in the data structure tree.
 - **Sentences.--init--**: Generates a new child node for the data structure tree.
 - **Sentences.generate_node**: Generates a new pointer to the new child node for a word.
 - **Sentences.split_string**: Splits the curremt sentence into words.
@@ -100,7 +103,6 @@ This module is resposible for analyze all words and parts, f.e. whether a word s
 - **PartsAnalyze (Parts)**: Includes the parts of a word to be analysed. 
 
 #### Methods
-- **WordsAnalyze.check_in_dictionary**: Checks whether a word is part of the dictionaries.
 - **WordsAnalyze.check**: Steers all checks of the current word.
 - **WordsAnalyze.check_swap_allowed**: Checks whether a swap is possibe or not.
 - **WordsAnalyze.check_capital**: Checks whether the current word starts with a capital.
