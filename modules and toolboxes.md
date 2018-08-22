@@ -14,7 +14,7 @@ This module is reponsible for loading and including all data of the config file,
 #### Methods
 - **Stocks.initiate**: Generates a new stock, f.e. a set, a list, a dictionary or a string.
 - **Stocks.add_to**: Adds a component from the config file to the stock.
-- **Stocks.search_in**: Checks, wether is component is part of a stock.
+- **Stocks.search_in**: Checks, whether is component is part of a stock.
 
 [more...](https://github.com/stefschneider1970/Tuten-Gag/blob/master/classes%2C%20methods%20and%20functions.md#configdata "See more about this classes and methods")  
 
