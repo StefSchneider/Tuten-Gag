@@ -146,11 +146,12 @@ Aufbau im Modul `M-Edit`
 >Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.  Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
 Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_string (self, InTree, InsertSentence, NumberSentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.   
 
-#### insert_string (self, InTree, InsertSentence, NumberSentence)
+#### insert_string (self, InTree, InsertSentence, NumberSentence, WhoSaid)
 ##### Parameter
 - **InTree**: Baum, in den der Satz gehangen wird.
 - **InsertSentence**: Satz, der in den Baum gehangen wird.
 - **NumberSentence**: Nummer des Satzes, der in den Baum gehangen wird.
+- **WhoSaid**: Person, der der Satz zugordnet wird. Wichtig z.B. bei Dialogen.
 
 *Fuegt einen einzelnen Satz mit einer laufenden Nummer in den Baum ein.*
 >Znaechst wird ein neuer Knoten fuer den Satz generiert. Anschließend wird der Satz mit einer laufenden Nummer in den Knoten eingefuegt.
