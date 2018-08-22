@@ -71,7 +71,7 @@ Aufbau im Modul `M_Dictionaries`
 - **InDictionary**: Woerterbuch (AVL-Baum), in das die Woerterbuch-Datei geladen werden soll.
 - **FromDictionaryFile**: Dateiname inkl. Pfad, aus dem die Woerter fuer das Woerterbuch geladen werden sollen.
 
-*Lädt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.*  
+*Laedt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.*  
 >Die einzelnen Woerter werden aus der Woerterbuch-Datei ausgelesen und in das Woerterbuch eingefuegt, solange bis das Ende der Datei erreicht ist. Doppelte Woerter werden nicht eingefuegt.
 
 #### save (self, InDictionaryFile, FromDictionary)  
