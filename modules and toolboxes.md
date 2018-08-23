@@ -9,7 +9,7 @@ This module is reponsible for loading and including all data of the config file,
 
 #### Classes
 - **ConfigData**: Includes all data that is part of the config file.
-- **Pathes**: Includes all pathes to files, f.e. dictionaries.
+- **Pathes (ConfigData)**: Includes all pathes to files, f.e. dictionaries.
 - **Stocks (ConfigData)**: Includes groups of letters or groups, f.e. vowels or articles.
 
 #### Methods
