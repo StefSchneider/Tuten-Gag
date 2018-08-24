@@ -106,7 +106,8 @@ This module is resposible for analyze all words and parts, f.e. whether a word s
 - **WordsAnalyze.check**: Steers all checks of the current word.
 - **WordsAnalyze.check_swap_allowed**: Checks whether a swap is possibe or not.
 - **WordsAnalyze.check_capital**: Checks whether the current word starts with a capital.
-- **WordsAnalyze.check_equal**: Checks wether a word in the range starts with the same kind of a part, f.e. a vowel.
+- **WordsAnalyze.check_equal**: Checks whether a word in the range starts with the same kind of a part, f.e. a vowel.
+- **PartsAnalyze.check_initial**: Checks the letter class of the first part of a word. 
 
 
 ### Module M_Combine.py
