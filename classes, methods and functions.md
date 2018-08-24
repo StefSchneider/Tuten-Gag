@@ -219,6 +219,7 @@ Aufbau im Modul `M_Edit`
 
 
 ## Words (Sentences)
+Zu der in der Klasse 'Words' erfassten Zeichenketten zaehlen nicht nur Woerter, sondern auch beispielweise Satzzeichen.
 Aufbau im Modul `M_Edit`.
 
 ### Attribute
@@ -227,6 +228,7 @@ Aufbau im Modul `M_Edit`.
 - **SwapAllowed**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ Bool)
 - **ConnectedWith**: Nummer des anderen Wortes, das mit dem aktuellene Wort ueber eine Kooplung verbunden ist (NumberWord). / Grundeinstellung: 'None' (Typ Int)
 - **Capital**: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False' (Typ Bool)
+- **Equal**: Gibt an, ob innerhalb der Spanne ein geeigneter Tauschpartner vorliegt, der mit der gleichen Buchstabenart beginnt / Grundeinstellung: 'None' (Typ Bool)
 - **SwitchPartOwn**: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None' (Typ Int)
 - **SwitchPartForeign**: Teil welches fremden Wortes, der getauscht werden soll. (NumberWord:NumberPart) / Grundeinstellung: 'None' : 'None' (Typ Dic)
 - **Initial**: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ Str)
@@ -241,32 +243,66 @@ Aufbau im Modul `M_Edit`.
 >Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende. Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter. Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordElementEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberElement (Typ: int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt -> Methode: insert_wordelement (self, NumberElement). Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.
 
 - **create_node**: Erzeugt einen neuen Kinderknoten für einen Wort und setzt die Attribute auf die Grundeisntellungen 
-- **check**: Steuert die Ueberpruefungen der einzelnen Woerter, zum Beispiel auf Grossbuchstaben / ruft alle anderen Pruef-Methoden in der richtigen Reihenfolge auf.
-- **check_swap_allowed**: Ueberprueft, ob das Wort ueberhaupt zum Tausch der Bestandteile freigegeben ist.
-- **check_capital**: Ueberprüft, ob das Wort mit einem Grossbuchstaben beginnt. Rueckgabewert 'True' oder 'False'
 
-### Part
+
+## Parts (Words)
 Enthaelt die einzelnen Bestandteile des Wortes, z.B. St|e|f|a|n
 - **create_node**: Erzeugt einen neuen Kinderknoten für einen Wortbestandteil
 
-### WordAnalyze (Words)
+## WordsAnalyze (Words)
+*Bildet die Klasse ab, mit der die Analyseprozesse auf Satzbestandteilebene durchgeführt werden.*
 Aufbau im Modul `M_Analyze`.
 
-#### Attribute
+### Attribute
 - xxx
 
-#### Methoden
-- **check**:  
-*
+### Methoden
+#### check (self, WordToBeAnalyzed)  
+##### Parameter
+- **WordToBeAnalyzed**: Wort, fuer das die Checks durchgefuehrt werden sollen.
+
+*Steuert die gesamten Überprüfungsprozess, z.B. Großschreibung am Wortanfang, beim jeweiligen Wort:*
+>Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden die Ergebnisse der Checks in die Attribute des jeweiligen Wortes geschrieben, z.B. Capital = True, falls das Wort mit einem Großbuchstaben beginnt. Zudem wird zuerst ueberprueft, ob ein Wort ueberhaupt getauscht werden darf. Falls nicht, wird eine Ueberpruefung, mit welcher Buchstabenklasse (Methode 'check_initial') erst gar nicht angestossen. Ausserdem muss vor der Suche nach moeglichen Tauschpartnern in der Nachbarschaft zuerst die Buchstabenklasse ermittelt werden.
+
+#### check_swap_allowed (self, WordToBeAnalyzed)
+##### Parameter
+- **WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung, ob es zum Tausch herangezogen werden darf, durchgefuehrt werden soll.
+
+*Ueberprueft, ob das jeweilige Wort ueberhaupt zum Tausch herangezogen werden darf.*
+>Fuer das Wort erfolgt ein Abgleich, ob es in einer der Wort-Mengen, z.B. Artikel, ist, die nicht zum Tausch herangezogen werden duerfen. Falls getauscht werden darf, wird 'SwapAllowed' mit 'True' zurueckgeliefert, sonst mit 'False'.
+
+#### check_capital (self, WordToBeAnalyzed)
+##### Parameter
+- **WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung auf einen Grossbuchstaben durchgefuehrt werden soll.
+
+*Ueberprueft, ob das jeweilige Wort mit einem Grossbhuchstaben anfaengt*
+>Fuer das Wort erfolgt ein Abgleich, ob es mit einem Grossbuchstaben (Funktion 'capital') beginnt. Falls das der Fall ist, wird 'Capital' mit 'True' zurueckgeliefert, sonst mit 'False'.
+
+#### check_equal (self, WordToBeAnalyzed, LetterClass, Range)
+##### Parameter
+- **WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung, ob ein anderes passendes Wort innerhalb der Spanne vorliegt, durchgefuehrt werden soll.
+- **LetterClass**: Buchstabengruppe, nach der Woerter in der Nachbarschaft ueberprueft werden sollen.
+- **Range**: Spanne innerhalb der gesucht werden soll.
+
+*Ueberprueft, ob fuer das jeweilige Wort ein Tauschpartner innerhalb der Spanne vorliegt.*
+>Fuer das Wort erfolgt ein Abgleich, ob sich innerhalb der vorgegebenen Spanne er Wort, das mit der gleichen Buchstabenart beginnt vorliegt. Falls ja, wird 'Equal' mit 'True' zurueckgeliefert, sonst mit 'False'. Die Ueberpruefung findet ab dem direkten Wortnachbarn rechts statt. Das Nummer des ersten Wortes innerhalb der Spanne, das mit der gleichen Buchstabengruppe beginnt, im Attribut 'SwitchPartForeign' unter 'NumberWord' festgehalten, 'NumberPart' wird dann direkt auf '1' gesetzt, da es sich um den ersten Teil des Wortes handelt. Falls die Spanne '0' ist, wird innerhalb desselben Wortes gesucht. Oder: Falls innerhalb der vorgegebenen Spanne kein passender Tauschpartner gefunden wird, wird die Spanne auf '0' gesetzt (NOCH ZU KLAEREN)
+
+## PartsAnalyze (Parts)
+*Bildet die Klasse ab, mit der die Analyseprozesse auf Wortbestandteilebene durchgeführt werden.*
+Aufbau im Modul `M_Analyze`.
+
+### Attribute
+- xxx
+
+### Methoden
+#### check_initial (self, WordToBeAnalyzed)
+##### Parameter
+- **WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung, mit welcher Buchstabenklasse es beginnt, durchgefuehrt werden soll.
+
+*Ueberprueft, mit mit welcher Buchstabenklasse das Wort beginnt, z.B. Vokale).*
+>Zur Ueberpruefung wird der erste Wortbestandteil herangezogen und mit den entsprechenden Mengen, die ueber die Config-Datei eingelesen wurden, abgeglichen. Die Methode liefert dann als Ergebnis die Buchstabenklasse zurueck. Diese wird ueber die Methode 'check' in die Attribute des Worts ueberspielt.
 
 
-
-### TextOutput (Strings)
-Aufbau im Modul M_Output
-
-#### Attribute
-
-#### Methoden
 
 
 ### CombinationList
@@ -294,19 +330,19 @@ Aufbau im Modul M_Output
 - **rate_number_letters**: Ueberprueft, wie viele Buchstaben insgesamt in der Kombination der beiden Worte getauscht wurden und addiert pro Buchstaben die Punkte fuer RateNumberLetters mit dem jeweiligen Faktor zur Gesamtpunktzahl.
 - **rate_words_linked**: Ueberprueft, ob die Kombination aus zwei miteinander gekoppelten Worten besteht und addiert fuer diesen Fall die Punkte von RateWordsLinked mit dem Faktor zur Gesamtpunktzahl hinzu.
 
+
+### TextOutput (Strings)
+Aufbau im Modul M_Output
+
+#### Attribute
+
+#### Methoden
+
 -----------------------------
 
 ## Funktionen
 
 
-
-### search_equal (Buchstabenart, Spanne)
-Sucht in der vorgegebenen Spanne nach passenden Tauschpartnern mit der gleichen Buchstabenart.
-#### Regeln
-Falls die Spanne '0' ist, wird innerhalb desselben Wortes gesucht. Oder: Falls innerhalb der vorgegebenen Spanne kein passender Tauschpartner gefunden wird, wird die Spanne auf '0' gesetzt (NOCH ZU KLAEREN)
-
-### check_word
-Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist, meldet zurück, wenn eines fehlt und fragt in diesem Fall, ob das Wort neu aufgenommmen werden soll (in Woerterbuch 'Fremd')
 
 ### rank_list (Word1:Part1, Word2:Part2, Points)
 Sortiert die Liste aus Kombinationen in die richtige Reihenfolge, gemessen an der Gesamtpunktzahl pro Kombination. Anschließend gibt die Funktion die Daten der am höchsten bewerteten Kombination zurück: Word1:Part1, Word2:Part2 
