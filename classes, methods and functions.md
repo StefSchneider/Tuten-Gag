@@ -262,7 +262,7 @@ Aufbau im Modul `M_Analyze`.
 - **WordToBeAnalyzed**: Wort, fuer das die Checks durchgefuehrt werden sollen.
 
 *Steuert die gesamten Überprüfungsprozess, z.B. Großschreibung am Wortanfang, beim jeweiligen Wort:*
->Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden die Ergebnisse der Checks in die Attribute des jeweiligen Wortes geschrieben, z.B. Capital = True, falls das Wort mit einem Großbuchstaben beginnt. Zudem wird zuerst ueberprueft, ob ein Wort ueberhaupt getauscht werden darf. Falls nicht, wird eine Ueberpruefung, mit welcher Buchstabenklasse (Methode 'check_initial') erst gar nicht angestossen. Ausserdem muss vor der Suche nach moeglichen Tauschpartnern in der Nachbarschaft zuerst die Buchstabenklasse ermittelt werden.
+>Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden die Ergebnisse der Checks in die Attribute des jeweiligen Wortes geschrieben, z.B. Capital = True, falls das Wort mit einem Großbuchstaben beginnt. Ausserdem muss vor der Suche nach moeglichen Tauschpartnern in der Nachbarschaft zuerst die Buchstabenklasse ermittelt werden. Es werden auf jeden Fall alle moeglichen Checks fuer ein Wort durchgefuehrt, damit zukuenftige Erweiterungen einfacher umgesetzt werden koennen.
 
 #### check_swap_allowed (self, WordToBeAnalyzed)
 ##### Parameter
