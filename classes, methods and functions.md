@@ -153,12 +153,13 @@ Aufbau im Modul `M_Input`
 
 #### Methoden
 
+-----------------------
 
 ### Structure of TextTree
 
     ┌───────┐           ┌───────┐
     │Content│     ┌────►│Content│     ┌──── =None
-    │ =Text │     │     │ =Text │     │
+    │ =Text1│     │     │ =Text2│     │
     └───────┘     │     └───────┘     │
     │Node   └─────┘     │Node   └─────┘
     │Down   NodeRight   │Down   NodeRight
@@ -167,7 +168,7 @@ Aufbau im Modul `M_Input`
     ▼
     ┌───────┐           ┌───────┐           ┌───────┐
     │Content│     ┌────►│Content│     ┌────►│Content│     ┌──── =None   
-    │ =Satz │     │     │ =Satz │     │     │ =Satz │     │
+    │ =Satz1│     │     │ =Satz2│     │     │ =Satz3│     │
     └───────┘     │     └───────┘     │     └───────┘     │
     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘
     │Down   NodeRight   │Down   NodeRight   │Down   NodeRight
@@ -176,7 +177,7 @@ Aufbau im Modul `M_Input`
     ▼                   
     ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐
     │Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌──── =None
-    │ =Wort │     │     │ =Wort │     │     │ =Wort │     │     │ =Wort │     │
+    │ =Wort1│     │     │ =Wort2│     │     │ =Wort3│     │     │ =Wort4│     │
     └───────┘     │     └───────┘     │     └───────┘     │     └───────┘     │
     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘
     │Down   NodeRight   │Down   NodeRight   │Down   NodeRight   │Down   NodeRight
@@ -185,11 +186,13 @@ Aufbau im Modul `M_Input`
     ▼                   
     ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐
     │Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌──── =None
-    │ =Teil │     │     │ =Teil │     │     │ =Teil │     │     │ =Teil │     │     │ =Teil │     │
+    │ =Teil1│     │     │ =Teil2│     │     │ =Teil3│     │     │ =Teil4│     │     │ =Teil5│     │
     └───────┘     │     └───────┘     │     └───────┘     │     └───────┘     │     └───────┘     │
     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘
     │Down   NodeRight   │Down   NodeRight   │Down   NodeRight   │Down   NodeRight   │Down   NodeRight
     │=None              │=None              │=None              │=None              │=None 
+
+-----------------------
 
 
 ## TextInput (Strings)
@@ -436,16 +439,7 @@ OutputText = TextOutput
 ### kurzzeitig einsetzbar
 - Counter: benoetigt für Zaehloperationen in Schleifen
 
------------------------
-### Baumstruktur
-                                              Text
-                       |                                         |
-                   Sentence(1)                              Sentence(2)
-         |          |         |         |           
-       Word(1)    Word(2)   Word(3)   Word(4)
-      |       |
-    Part(1) Part(2)
- 
+
 
  
  #### *Attributes*
