@@ -20,14 +20,7 @@
         
 
 
-# Structure of Tree
 
-    ┌───────┐           ┌───────┐
-    │Content│     ┌────►│Content│
-    │ =Text │     │     │ =Text │
-    └───────┘     │     └───────┘
-    │Node   └─────┘
-    │Down   NodeRight
 
 # Klassen
 
@@ -159,6 +152,43 @@ Aufbau im Modul `M_Input`
 - String
 
 #### Methoden
+
+
+### Structure of Tree
+
+    ┌───────┐           ┌───────┐
+    │Content│     ┌────►│Content│
+    │ =Text │     │     │ =Text │
+    └───────┘     │     └───────┘
+    │Node   └─────┘
+    │Down   NodeRight
+    │
+    ▼
+    ┌───────┐           ┌───────┐           ┌───────┐
+    │Content│     ┌────►│Content│     ┌────►│Content│     ┌──── =None   
+    │ =Satz │     │     │ =Satz │     │     │ =Satz │     │
+    └───────┘     │     └───────┘     │     └───────┘     │
+    │Node   └─────┘     │Node   └─────┘             └─────┘
+    │Down   NodeRight   │Down   NodeRight           NodeRight
+    │                   │=None
+    ▼                   
+    ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐
+    │Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌──── =None
+    │ =Wort │     │     │ =Wort │     │     │ =Wort │     │     │ =Wort │     │
+    └───────┘     │     └───────┘     │     └───────┘     │     └───────┘     │
+    │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘
+    │Down   NodeRight   │Down   NodeRight   │Down   NodeRight   │Down   NodeRight
+    ▼                   │=None              │=None              │=None
+    ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐
+    │Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌──── =None
+    │ =Teil │     │     │ =Teil │     │     │ =Teil │     │     │ =Teil │     │     │ =Teil │     │
+    └───────┘     │     └───────┘     │     └───────┘     │     └───────┘     │     └───────┘     │
+    │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘
+    │Down   NodeRight   │Down   NodeRight   │Down   NodeRight   │Down   NodeRight   │Down   NodeRight
+    │=None              │=None              │=None              │=None              │=None 
+
+
+
 
 
 ## TextInput (Strings)
