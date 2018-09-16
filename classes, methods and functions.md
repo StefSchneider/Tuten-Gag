@@ -154,23 +154,25 @@ Aufbau im Modul `M_Input`
 #### Methoden
 
 
-### Structure of Tree
+### Structure of TextTree
 
     ┌───────┐           ┌───────┐
-    │Content│     ┌────►│Content│
-    │ =Text │     │     │ =Text │
-    └───────┘     │     └───────┘
-    │Node   └─────┘
-    │Down   NodeRight
+    │Content│     ┌────►│Content│     ┌──── =None
+    │ =Text │     │     │ =Text │     │
+    └───────┘     │     └───────┘     │
+    │Node   └─────┘     │Node   └─────┘
+    │Down   NodeRight   │Down   NodeRight
+    │                   │=None
     │
     ▼
     ┌───────┐           ┌───────┐           ┌───────┐
     │Content│     ┌────►│Content│     ┌────►│Content│     ┌──── =None   
     │ =Satz │     │     │ =Satz │     │     │ =Satz │     │
     └───────┘     │     └───────┘     │     └───────┘     │
-    │Node   └─────┘     │Node   └─────┘             └─────┘
-    │Down   NodeRight   │Down   NodeRight           NodeRight
-    │                   │=None
+    │Node   └─────┘     │Node   └─────┘     │Node   └─────┘
+    │Down   NodeRight   │Down   NodeRight   │Down   NodeRight
+    │                   │=None              │=None
+    │
     ▼                   
     ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐
     │Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌──── =None
@@ -178,7 +180,9 @@ Aufbau im Modul `M_Input`
     └───────┘     │     └───────┘     │     └───────┘     │     └───────┘     │
     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘
     │Down   NodeRight   │Down   NodeRight   │Down   NodeRight   │Down   NodeRight
-    ▼                   │=None              │=None              │=None
+    │                   │=None              │=None              │=None
+    │
+    ▼                   
     ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐
     │Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌──── =None
     │ =Teil │     │     │ =Teil │     │     │ =Teil │     │     │ =Teil │     │     │ =Teil │     │
@@ -186,9 +190,6 @@ Aufbau im Modul `M_Input`
     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘
     │Down   NodeRight   │Down   NodeRight   │Down   NodeRight   │Down   NodeRight   │Down   NodeRight
     │=None              │=None              │=None              │=None              │=None 
-
-
-
 
 
 ## TextInput (Strings)
