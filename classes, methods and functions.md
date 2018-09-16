@@ -23,7 +23,7 @@
 # Structure of Tree
 
     ┌───────┐           ┌───────┐
-    │Content│     ┌────→│Content│
+    │Content│     ┌────►│Content│
     │ =Text │     │     │ =Text │
     └───────┘     │     └───────┘
     │Node   └─────┘
