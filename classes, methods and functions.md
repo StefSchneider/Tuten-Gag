@@ -18,7 +18,16 @@
         │               └ WordsAnalyze
         ├ TextOutput
         
-  
+
+
+# Structure of Tree
+
+    ┌───────┐           ┌───────┐
+    │Content│     ┌────→│Content│
+    │ =Text │     │     │ =Text │
+    └───────┘     │     └───────┘
+    │Node   └─────┘
+    │Down   NodeRight
 
 # Klassen
 
@@ -156,24 +165,40 @@ Aufbau im Modul `M_Input`
 Aufbau im Modul `M_Input`
 
 ### Attribute
-- xxx
+- **NodeContent**: Inhalt des Knotens
+- **NodeDown**: Zeiger zu tiefer gelegenen Ebene
+- **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
 
 ### Methoden
+#### init__ (self)
+
+*Erzeugt einen Knoten fuer den Baum*
+>Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. Die drei Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+
 #### insert_string (self, InTree, InsertText)
 ##### Parameter
 - **InTree**: Baum, in den der Text gehangen wird.
 - **InsertText**: Text, der als Wurzel in den Baum gehangen wird.
 
 *Fuegt den eingegebenen Text als Wurzel in den Baum ein.*
->Zunaechst wird ein neuer Baum generiert. Anschließend wird der Text als Wurzel eingefuegt.
+>Zunaechst wird ein neuer Baum generiert. Anschließend wird der Text als Wurzel eingefuegt: InTree.NodeContent = InsertText
 
 
 ## TextEdit (TextInput)
 Aufbau im Modul `M_Edit`
 
 ### Attribute
+- **NodeContent**: Inhalt des Knotens
+- **NodeDown**: Zeiger zu tiefer gelegenen Ebene
+- **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
+- **NumberSentence**: Nummer des Satzes, der in den Baum gehangen wird.
+- **WhoSaid**: Person, der der Satz zugordnet wird. Wichtig z.B. bei Dialogen.
 
 ### Methoden
+#### init__ (self)
+
+*Erzeugt einen Knoten fuer den Baum*
+>Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberSentence wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
 
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
@@ -184,11 +209,6 @@ Aufbau im Modul `M_Edit`
 Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_string (self, InTree, InsertSentence, NumberSentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.   
 
 
-#### generate_node (self)
-
-*Erzeugt einen neuen Kinderknoten für einen Satz und einen Zeiger vom Elternknoten (Wurzel) darauf).*
->Hier kommt die Detailbeschreibung hin.
-
 #### insert_string (self, InTree, InsertSentence, NumberSentence, WhoSaid)
 ##### Parameter
 - **InTree**: Baum, in den der Satz gehangen wird.
@@ -197,7 +217,7 @@ Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Varia
 - **WhoSaid**: Person, der der Satz zugordnet wird. Wichtig z.B. bei Dialogen.
 
 *Fuegt einen einzelnen Satz mit einer laufenden Nummer in den Baum ein.*
->Znaechst wird ein neuer Knoten fuer den Satz generiert. Anschließend wird der Satz mit einer laufenden Nummer und der Person, der er zugeordnet wird, in den Knoten eingefuegt.
+>Der einzufuegende Satz wird mit den Attributen in den Baum auf der zweiten Ebene eingefuegt. Handelt es sich um den ersten Satz, wird NodeCntent mit InsertSentence, NumberSentence mit '1' und WhoSaid mit dem Namen der Person ueberschrieben, der der Satz zugeordnet wird. Ab den folgenden Saetzen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Satzes auf den neuen Knoten gestellt werden: SatzVor.NodeRight = NodeNeu.
 
 
 ## Sentences (TextEdit)
@@ -208,7 +228,10 @@ Aufbau im Modul `M_Edit`
 - **WhoSaid**: Person, der der Satz zugeordnet wird. (Typ: Str)
 
 ### Methoden
-#### generate_node: Erzeugt einen neuen Kinderknoten für einen Satzbestandteil 
+#### init__ (self)
+
+*Erzeugt einen Knoten fuer den Baum*
+>Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberSentence wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
 
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
