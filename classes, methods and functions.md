@@ -225,14 +225,14 @@ Aufbau im Modul `M_Edit`
 - **NodeContent**: Inhalt des Knotens
 - **NodeDown**: Zeiger zu tiefer gelegenen Ebene
 - **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
-- **NumberSentence**: Nummer des Satzes, der in den Baum gehangen wird.
-- **WhoSaid**: Person, der der Satz zugordnet wird. Wichtig z.B. bei Dialogen.
+- **NumberText**: Nummer des Textes, der in den Baum gehangen wird.
+- **WhoSaid**: Person, der der Text zugordnet wird. Wichtig z.B. bei Dialogen.
 
 ### Methoden
 #### init__ (self)
 
 *Erzeugt einen Knoten fuer den Baum*
->Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberSentence wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+>Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberText wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
 
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
@@ -242,7 +242,6 @@ Aufbau im Modul `M_Edit`
 >Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.  Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
 Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_string (self, InTree, InsertSentence, NumberSentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.   
 
-
 #### insert_string (self, InTree, InsertSentence, NumberSentence, WhoSaid)
 ##### Parameter
 - **InTree**: Baum, in den der Satz gehangen wird.
@@ -251,21 +250,21 @@ Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Varia
 - **WhoSaid**: Person, der der Satz zugordnet wird. Wichtig z.B. bei Dialogen.
 
 *Fuegt einen einzelnen Satz mit einer laufenden Nummer in den Baum ein.*
->Der einzufuegende Satz wird mit den Attributen in den Baum auf der zweiten Ebene eingefuegt. Handelt es sich um den ersten Satz, wird NodeCntent mit InsertSentence, NumberSentence mit '1' und WhoSaid mit dem Namen der Person ueberschrieben, der der Satz zugeordnet wird. Ab den folgenden Saetzen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Satzes auf den neuen Knoten gestellt werden: SatzVor.NodeRight = NodeNeu.
+>Der einzufuegende Satz wird mit den Attributen in den Baum auf der zweiten Ebene eingefuegt. Handelt es sich um den ersten Satz, wird NodeContent mit InsertSentence, NumberSentence mit '1' und WhoSaid mit dem Namen der Person ueberschrieben, der der Satz zugeordnet wird. Ab den folgenden Saetzen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Satzes auf den neuen Knoten gestellt werden: SatzVor.NodeRight = NodeNeu.
 
 
 ## Sentences (TextEdit)
 Aufbau im Modul `M_Edit`
 
 ### Attribute
-- **Number**: Nummer der Reihenfolge des Satzes im Text. (Typ: Int)
+- **NumberSentence**: Nummer der Reihenfolge des Satzes im Text. (Typ: Int)
 - **WhoSaid**: Person, der der Satz zugeordnet wird. (Typ: Str)
 
 ### Methoden
 #### init__ (self)
 
 *Erzeugt einen Knoten fuer den Baum*
->Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberSentence wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+>Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberSentence wird auf '0' gesetzt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
 
 #### split_string (self, StringToSplit)  
 ##### Parameter:  
