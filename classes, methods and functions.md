@@ -199,9 +199,7 @@ Aufbau im Modul `M_Input`
 Aufbau im Modul `M_Input`
 
 ### Attribute
-- **NodeContent**: Inhalt des Knotens
-- **NodeDown**: Zeiger zu tiefer gelegenen Ebene
-- **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
+
 
 ### Methoden
 
@@ -280,6 +278,9 @@ Zu der in der Klasse 'Words' erfassten Zeichenketten zaehlen nicht nur Woerter, 
 Aufbau im Modul `M_Edit`.
 
 ### Attribute
+- **NodeContent**: Inhalt des Knotens
+- **NodeDown**: Zeiger zu tiefer gelegenen Ebene
+- **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
 - **NumberWord**:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ Int)
 - **NumberOfParts**: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ Int)
 - **SwapAllowed**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ Bool)
@@ -317,6 +318,9 @@ Enthaelt die einzelnen Bestandteile des Wortes, z.B. St|e|f|a|n
 Aufbau im Modul `M_Edit`.
 
 ### Attribute
+- **NodeContent**: Inhalt des Knotens
+- **NodeDown**: Zeiger zu tiefer gelegenen Ebene
+- **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
 - **InTree**: Baum, in den der Satz gehangen wird.
 - **NumberPart**: Nummer des Worts im Satz, der in den Baum gehangen wird.
 
