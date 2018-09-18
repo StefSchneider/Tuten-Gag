@@ -204,18 +204,7 @@ Aufbau im Modul `M_Input`
 - **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
 
 ### Methoden
-#### init__ (self)
 
-*Erzeugt einen Knoten fuer den Baum*
->Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. Die drei Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
-
-#### insert_string (self, InTree, InsertText)
-##### Parameter
-- **InTree**: Baum, in den der Text gehangen wird.
-- **InsertText**: Text, der als Wurzel in den Baum gehangen wird.
-
-*Fuegt den eingegebenen Text als Wurzel in den Baum ein.*
->Zunaechst wird ein neuer Baum generiert. Anschließend wird der Text als Wurzel eingefuegt: InTree.NodeContent = InsertText
 
 
 ## TextEdit (TextInput)
@@ -232,41 +221,52 @@ Aufbau im Modul `M_Edit`
 #### init__ (self)
 
 *Erzeugt einen Knoten fuer den Baum*
->Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberText wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+>Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberText wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
 
-#### split_string (self, StringToSplit)  
-##### Parameter:  
-- **StringToSplit**: String, der aufgeteilt werden soll.  
+#### insert_string (self, InTree, NumberText, WhoSaid)
+##### Parameter
+- **InTree**: Baum, in den der Text gehangen wird.
+- **InsertText**: Text, der als Wurzel in den Baum gehangen wird. (Typ: Str)
+- **NumberText**: Nummer des Textes, der in den Baum gehangen wird. (Typ: Int)
+- **WhoSaid**: Person, der der Text zugordnet wird. Wichtig z.B. bei Dialogen. (Typ: Str)
+
+*Fuegt den eingegebenen Text als Wurzel in den Baum ein.*
+>Zunaechst wird ein neuer Baum generiert. Anschließend wird der Text als Wurzel eingefuegt: InTree.NodeContent = InsertText
+
+#### split_string (self)  
 
 *Teilt den Gesamtext in mehrere Saetze auf.*  
 >Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.  Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
-Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_string (self, InTree, InsertSentence, NumberSentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.   
-
-#### insert_string (self, InTree, InsertSentence, NumberSentence, WhoSaid)
-##### Parameter
-- **InTree**: Baum, in den der Satz gehangen wird.
-- **InsertSentence**: Satz, der in den Baum gehangen wird.
-- **NumberSentence**: Nummer des Satzes, der in den Baum gehangen wird.
-- **WhoSaid**: Person, der der Satz zugordnet wird. Wichtig z.B. bei Dialogen.
-
-*Fuegt einen einzelnen Satz mit einer laufenden Nummer in den Baum ein.*
->Der einzufuegende Satz wird mit den Attributen in den Baum auf der zweiten Ebene eingefuegt. Handelt es sich um den ersten Satz, wird NodeContent mit InsertSentence, NumberSentence mit '1' und WhoSaid mit dem Namen der Person ueberschrieben, der der Satz zugeordnet wird. Ab den folgenden Saetzen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Satzes auf den neuen Knoten gestellt werden: SatzVor.NodeRight = NodeNeu.
-
+Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_string (self, InTree, InsertSentence, NumberSentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.  
 
 ## Sentences (TextEdit)
 Aufbau im Modul `M_Edit`
 
 ### Attribute
+- **NodeContent**: Inhalt des Knotens
+- **NodeDown**: Zeiger zu tiefer gelegenen Ebene
+- **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
 - **NumberSentence**: Nummer der Reihenfolge des Satzes im Text. (Typ: Int)
 - **WhoSaid**: Person, der der Satz zugeordnet wird. (Typ: Str)
 
-### Methoden
+
 #### init__ (self)
 
 *Erzeugt einen Knoten fuer den Baum*
->Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberSentence wird auf '0' gesetzt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+>Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberSentence wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+ 
 
-#### split_string (self, StringToSplit)  
+#### insert_string (self, InTree, NumberSentence, WhoSaid)
+##### Parameter
+- **InTree**: Baum, in den der Satz gehangen wird.
+- **NumberSentence**: Nummer des Satzes, der in den Baum gehangen wird.
+- **WhoSaid**: Person, der der Satz zugordnet wird. Wichtig z.B. bei Dialogen.
+
+*Fuegt einen einzelnen Satz mit einer laufenden Nummer in den Baum ein.*
+>Der einzufuegende Satz wird mit den Attributen in den Baum auf der zweiten Ebene eingefuegt. Handelt es sich um den ersten Satz, wird NodeContent mit den einzufuegenden Satz, NumberSentence mit '1' und WhoSaid mit dem Namen der Person ueberschrieben, der der Satz zugeordnet wird. Ab den folgenden Saetzen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Satzes auf den neuen Knoten gestellt werden: SentencePredecessor.NodeRight = NodeNeu.
+
+
+#### split_string (self)  
 ##### Parameter:  
 - **StringToSplit**: String, der aufgeteilt werden soll. 
  
@@ -274,36 +274,69 @@ Aufbau im Modul `M_Edit`
 >Vor jedes Satzzeichen wird ein Leerzeichen gesetzt. Dann wird der Saz überprüft: Sind mehr als zwei Leerzeichen nacheinander vorhanden, wird das erste davon geloescht. Anschließend wird der Satz bei jedem Leerzeichen getrennt und die einzelnen Satzbestandteile als String in einen Baum gehangen, versehen mit der Nummer der Position, an der es gestanden hat. Zudem wird als Attribut (SwitchPermit) mitgegeben, ob es sich um einen Satzbestandteil handelt, bei dem die Wortbestandteile getauscht werden duerfen ('True') oder nicht ('False'). Nicht getauscht werden duerfen zum Beispiel Artikel oder Satzzeichen.
 
 
+
 ## Words (Sentences)
 Zu der in der Klasse 'Words' erfassten Zeichenketten zaehlen nicht nur Woerter, sondern auch beispielweise Satzzeichen.
 Aufbau im Modul `M_Edit`.
 
 ### Attribute
-- **Number**:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ Int)
+- **NumberWord**:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ Int)
 - **NumberOfParts**: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ Int)
 - **SwapAllowed**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ Bool)
 - **ConnectedWith**: Nummer des anderen Wortes, das mit dem aktuellene Wort ueber eine Kooplung verbunden ist (NumberWord). / Grundeinstellung: 'None' (Typ Int)
 - **Capital**: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False' (Typ Bool)
-- **Equal**: Gibt an, ob innerhalb der Spanne ein geeigneter Tauschpartner vorliegt, der mit der gleichen Buchstabenart beginnt / Grundeinstellung: 'None' (Typ Bool)
+- **Equal**: Gibt an, ob innerhalb der Spanne ein geeigneter Tauschpartner vorliegt, der mit der gleichen Buchstabenart beginnt / Grundeinstellung: 'False' (Typ Bool)
 - **SwitchPartOwn**: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None' (Typ Int)
 - **SwitchPartForeign**: Teil welches fremden Wortes, der getauscht werden soll. (NumberWord:NumberPart) / Grundeinstellung: 'None' : 'None' (Typ Dic)
 - **Initial**: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ Str)
 
 ### Methoden
 
-#### split_string (self, StringToSplit**  
+#### init__ (self)
+
+*Erzeugt einen Knoten fuer den Baum*
+>Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. Die Attribute werden wie folgt gesetzt: NumberWord = 0; NumberOfParts = 0; SwapAllowed = False; ConnectedWith = 0; Capital = False; Equal = False; SwitchPartOwn = None, SwitchPartForeign = None; Initial = None. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+
+#### insert_string (self, InTree, NumberWord)
+##### Parameter
+- **InTree**: Baum, in den der Satz gehangen wird.
+- **NumberWord**: Nummer des Worts im Satz, der in den Baum gehangen wird.
+
+*Fuegt einen einzelnes Wort mit einer laufenden Nummer in den Baum ein.*
+>Das einzufuegende Wort wird mit den Attributen in den Baum auf der dritten Ebene eingefuegt. Handelt es sich um das erste Wort, wird NodeContent mit dem einzufuegenden Wort und NumberWord mit '1' ueberschrieben. Ab den folgenden Worten muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Wortes auf den neuen Knoten gestellt werden: WortPredecessor.NodeRight = NodeNeu.
+
+#### split_string (self)**  
 ##### Parameter_
-- **StringToSplit**: String, der aufgeteilt werden soll.
 
 *Teilt das jeweilige Wort in mehrere Wortbestandteile auf* | Methode wird ueberschrieben  
 >Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende. Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter. Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordElementEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberElement (Typ: int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt -> Methode: insert_wordelement (self, NumberElement). Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.
 
-- **create_node**: Erzeugt einen neuen Kinderknoten für einen Wort und setzt die Attribute auf die Grundeisntellungen 
-
 
 ## Parts (Words)
 Enthaelt die einzelnen Bestandteile des Wortes, z.B. St|e|f|a|n
-- **create_node**: Erzeugt einen neuen Kinderknoten für einen Wortbestandteil
+Aufbau im Modul `M_Edit`.
+
+### Attribute
+- **InTree**: Baum, in den der Satz gehangen wird.
+- **NumberPart**: Nummer des Worts im Satz, der in den Baum gehangen wird.
+
+### Methoden
+
+#### init__ (self)
+
+*Erzeugt einen Knoten fuer den Baum*
+>Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+
+#### insert_string (self, InTree, NumberPart)
+##### Parameter
+- **InTree**: Baum, in den der Satz gehangen wird.
+- **NumberPart**: Nummer des Worts im Satz, der in den Baum gehangen wird.
+
+*Fuegt einen einzelnes Wort mit einer laufenden Nummer in den Baum ein.*
+>Der einzufuegende Teil wird mit den Attributen in den Baum auf der vierten Ebene eingefuegt. Handelt es sich um den ersten Teil, wird NodeContent mit dem einzufuegenden Teil und NumberPart mit '1' ueberschrieben. Ab den folgenden Teilen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Wortes auf den neuen Knoten gestellt werden: WortPredecessor.NodeRight = NodeNeu.
+
+
+
 
 ## WordsAnalyze (Words)
 *Bildet die Klasse ab, mit der die Analyseprozesse auf Satzbestandteilebene durchgeführt werden.*
