@@ -35,9 +35,9 @@
 - xxx
 
 ### Methoden
-#### initiate (self, NewPathDictionary)
-##### Parameter:
-- **NewPathDictionary**: Dictionary, in der alle Dateipfade hinterlegt werden.
+#### NewPathDictionary.__init__ (self) 
+
+**NewPathDictionary**: Dictionary, in der alle Dateipfade hinterlegt werden.
 
 *Legt ein neue Variable vom Typ Dic an, in der die Dateipfade aus der Config-Datei erfasst werden.*
 >Die Initialisierung erfolgt mit der Zuweisung von {}. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.
@@ -59,14 +59,14 @@ Aufbau im Modul `M_Config`.
 - xxx
 
 ### Methoden
-#### initiate (self, NewStock)  
+#### init__ (self, NewStock)  
 ##### Parameter:
 - **NewStock**: Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste).
 
 *Legt einen neue, leere Menge, String, Liste oder Dictionary an.*  
 >Enthaelt NewStock den Wert 'String', wird ein leerer String "" angelegt; enthaelt NewStock den Wert 'Set', wird eine leere Menge () angelegt; enthaelt NewStock den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt NewStock den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen.
 
-#### add_to (self, Stock, Component)  
+#### Stock.add_to (self, Component)  
 ##### Parameter:  
 - **Stock**: Namentlicher Bestand, in den der Buchstabe eingefuegt werden soll.
 - **Component**: Jeweiliger Buchstaben oder die Wortklasse, die eingefuegt werden soll.  
@@ -74,7 +74,7 @@ Aufbau im Modul `M_Config`.
 *Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.*
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. In Abhaengigkeit von der Bestandsart wird der neue Buchstabe zum Bestand hinzugefuegt.
 
-#### search_in (self, CheckStock, CheckComponent)  
+#### CheckStock.search_in (self, CheckStock, CheckComponent)  
 ##### Parameter:  
 - **CheckStock**: Name des Bestandes, der ueberprueft werden soll.
 - **CheckComponent**: Buchstabe, der in diesem Bestand gesucht werden soll.  
