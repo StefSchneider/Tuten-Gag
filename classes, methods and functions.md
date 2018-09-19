@@ -317,11 +317,12 @@ WordNode: Knoten fuer das Wort, der erzeugt werden soll.
 #### InsertWord.insert_string (self, InTree, NumberWord)
 
 InsertWord: Wort, das in den Baum eingefuegt werden soll.
+
 ##### Parameter
 - **InTree**: Baum, in den der Satz gehangen wird.
 - **NumberWord**: Nummer des Worts im Satz, der in den Baum gehangen wird.
 
-*Fuegt einen einzelnes Wort mit einer laufenden Nummer in den Baum ein.*
+*Fuegt ein einzelnes Wort mit einer laufenden Nummer in den Baum ein.*
 >Das einzufuegende Wort wird mit den Attributen in den Baum auf der dritten Ebene eingefuegt. Handelt es sich um das erste Wort, wird NodeContent mit dem einzufuegenden Wort und NumberWord mit '1' ueberschrieben. Ab den folgenden Worten muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Wortes auf den neuen Knoten gestellt werden: WortPredecessor.NodeRight = NodeNeu.
 
 #### split_string (self)**  
