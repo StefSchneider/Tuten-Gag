@@ -31,9 +31,6 @@
 ## Pathes (ConfigData)
 *Geeignet zu Erfassung von Dateipfaden, auf mit denen spaeter Dateien angesteuert werden, z.B. die Woerterbuch-Dateien.*
 
-### Attribute
-- xxx
-
 ### Methoden
 #### NewPathDictionary.init__ (self) 
 
@@ -57,87 +54,99 @@ PathDictionary: Dictionary, in das der neue Dateipfad aufgenommen werden soll.
 *Geeignet zur Erfassung von Buchstabengruppen, z.B. Vokale oder Konsonanten, oder Wortklassen, z.B. Artikel, in einer Menge.*  
 Aufbau im Modul `M_Config`.
 
-### Attribute
-- xxx
-
 ### Methoden
-#### init__ (self, NewStock)  
+#### NewStock.init__ (self, StockType)  
+
+NewStock: Neuer Bestand, der angelegt werden soll.
+
 ##### Parameter:
-- **NewStock**: Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste).
+- **StockType**: Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste).
 
 *Legt einen neue, leere Menge, String, Liste oder Dictionary an.*  
 >Enthaelt NewStock den Wert 'String', wird ein leerer String "" angelegt; enthaelt NewStock den Wert 'Set', wird eine leere Menge () angelegt; enthaelt NewStock den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt NewStock den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen.
 
 #### Stock.add_to (self, Component)  
+
+Stock: Namentlicher Bestand, in den der Buchstabe eingefuegt werden soll.
+
 ##### Parameter:  
-- **Stock**: Namentlicher Bestand, in den der Buchstabe eingefuegt werden soll.
 - **Component**: Jeweiliger Buchstaben oder die Wortklasse, die eingefuegt werden soll.  
 
 *Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.*
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. In Abhaengigkeit von der Bestandsart wird der neue Buchstabe zum Bestand hinzugefuegt.
 
-#### CheckStock.search_in (self, CheckStock, CheckComponent)  
+#### CheckStock.search_in (self, CheckComponent)  
+
+CheckStock: Name des Bestandes, der ueberprueft werden soll.
+
 ##### Parameter:  
-- **CheckStock**: Name des Bestandes, der ueberprueft werden soll.
 - **CheckComponent**: Buchstabe, der in diesem Bestand gesucht werden soll.  
 
 *Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück.*   
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. Wird der Buchstabe innerhalb des Bestands gefunden, wird die der Rueckgabewert 'InStock' auf 'True' gesetzt. Grundeinstellung/Fallback fuer 'InStock' ist 'False'. 
 
-
 ## Dictionaries  
 *Geeignet zur Erfassung der Woerterbuecher in einem AVL-Baum.*  
 Aufbau im Modul `M_Dictionaries`.
 
-### Attribute
-- xxx
-
 ### Methoden
-#### initate (self, Dictionary)
-##### Parameter:
-- **Dictionary**: Woerterbuch (AVL-Baum), das neu angelegt werden soll.
+#### Dictionary.init__ (self)
+
+Dictionary: Woerterbuch (AVL-Baum), das neu angelegt werden soll.
 
 *Legt ein neues Woerterbuch mit dem Namen von Dictionary an.*
 >Die Methode greift auf die Toolbox 'AVLTree' zu und erzeugt einen Grundeintrag für ein neues Woerterbuch, in das später die einzelnen Woerter geladen werden.
 
-#### load (self, InDictionary, FromDictionaryFile)  
+#### InDictionary.load (self, FromDictionaryFile)  
+
+InDictionary: Woerterbuch (AVL-Baum), in das die Woerterbuch-Datei geladen werden soll.
+
 ##### Parameter:
-- **InDictionary**: Woerterbuch (AVL-Baum), in das die Woerterbuch-Datei geladen werden soll.
 - **FromDictionaryFile**: Dateiname inkl. Pfad, aus dem die Woerter fuer das Woerterbuch geladen werden sollen.
 
 *Laedt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.*  
 >Die einzelnen Woerter werden aus der Woerterbuch-Datei ausgelesen und in das Woerterbuch eingefuegt, solange bis das Ende der Datei erreicht ist. Doppelte Woerter werden nicht eingefuegt. Dazu wird innerhalb der Tollbox 'AVLTree' die Methode 'insert_without_double' genutzt.
 
-#### save (self, InDictionaryFile, FromDictionary)  
+#### FromDictionary.save (self, InDictionaryFile)  
+
+FromDictionary: Woerterbuch (AVL-Baum), das in die Woerterbuch-Datei gespeichert werden soll.
+
 ##### Parameter:
 - **InDictionaryFile**: Dateiname inkl. Pfad, in den die Woerter fuer das Woerterbuch gespeichert werden sollen.
-- **FromDictionary**: Woerterbuch (AVL-Baum), das in die Woerterbuch-Datei gespeichert werden soll.
 
 *Speichert einen Woerterbuch-Baum in einer Woerterbuch-Datei ab.*  
 >Zunaechst wird ueberprueft, ob eine Woerterbuch-Datei mit gleichem Namen schon existiert, in diesem Fall wird daraus das Backup gemacht - mit dem Namen 'Dateiname_Entstehungsdatum'. Anschließend wird die Woerterbuch-Datei mit der aktuellen Fassung ueberschrieben. Dazu wird das Woerterbuch (AVL-Baum) ausgelesen und jedes Wort in eine einzelne Zeile geschrieben.
 
-#### check_word (self, InDictionary, SearchWord)
+#### InDictionary.check_word (self, SearchWord)
+
+InDictionary: Woerterbuch, in dem das Wort gesucht werden soll.
+
 #### Parameter:  
-- **InDictionary**: Woerterbuch, in dem das Wort gesucht werden soll.
 - **SearchWord**: Wort, das in dem Woerterbuch gesucht werden soll.
 
 *Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist*  
 >Mit der 'Search-Methode' der 'Toolbox AVLTree' wird das Wort im Woerterbuch-Baum gesucht. Ist es nicht enthalten, wird der Nutzer gefragt, ob das Wort richtig geschrieben ist und ist das Fremdwoerterbuch aufgenommen werden soll.
 
-#### add_word (self, InDictionary, AddWord)
+#### InDictionary.add_word (self, AddWord)
+
+InDictionary: Woerterbuch, in das das Wort ergaenzt werden soll.
+
 ##### Parameter:
-- **InDictionary**: Woerterbuch, in das das Wort ergaenzt werden soll.
 - **AddWord**: Wort, das in das Woerterbuch eingefuegt werden soll.
+
 >Mithilfe der 'Insert-Methode' der Toolbox 'AVLTree' wird das Wort in das jewelige Woerterbuch an der richtigen Stelle eingefuegt. Anschließend wird die 'Save-Methode' aufgerufen, um das ergaenzte Woerterbuch abzuspeichern.
 
-#### check_size (self, DictionaryFile)  
-##### Parameter:
-- **DictionaryFile**: Name der Datei inkl. Pfad, dessen Groesse bestimmt werden soll.
+#### DictionaryFile.check_size (self)  
+
+DictionaryFile: Name der Datei inkl. Pfad, dessen Groesse bestimmt werden soll.
 
 *Ermittelt die Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei.*  
 >Fuer die Ermittlung der Groesse wird die Anzahl der Zeilen in der Woerterbuch-Datei auslesen. Fuer jede Zeile wird der Wert '1' zur Gesamtzahl dazuaddiert. Leerzeilen werden nicht mitgezaehlt. Ist das Dateiende erreicht, wird die Gesamtzahl (DictionarySize) zurueckgegeben.
 
-#### check_status (self, DictionarySize, NumberLine)  
+#### Dictionary.check_status (self, DictionarySize, NumberLine)  
+
+Dictionary: Woerterbuch, dessen Ladestatus ermittelt werden soll.
+
 ##### Parameter:
 - **DictionarySize**: Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei, die vorher ermittelt wurde.
 - **NumberLine**: Nummer der aktuell einzulesenden Zeile.
@@ -153,11 +162,13 @@ Aufbau im Modul `M_Input`
 #### Attribute
 - String
 
-#### Methoden
+## TextInput (Strings)
+Aufbau im Modul `M_Input`
+
 
 -----------------------
 
-### Structure of TextTree
+### Structure of TextTree (TextEdit)
 
     ┌───────┐           ┌───────┐
     │Content│     ┌────►│Content│     ┌──── =None
@@ -197,16 +208,6 @@ Aufbau im Modul `M_Input`
 -----------------------
 
 
-## TextInput (Strings)
-Aufbau im Modul `M_Input`
-
-### Attribute
-
-
-### Methoden
-
-
-
 ## TextEdit (TextInput)
 Aufbau im Modul `M_Edit`
 
@@ -218,22 +219,28 @@ Aufbau im Modul `M_Edit`
 - **WhoSaid**: Person, der der Text zugordnet wird. Wichtig z.B. bei Dialogen.
 
 ### Methoden
-#### init__ (self)
+#### TextNode.init__ (self)
+
+TextNode: Knoten fuer den Text, der erzeugt werden soll.
 
 *Erzeugt einen Knoten fuer den Baum*
 >Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberText wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
 
-#### insert_string (self, InTree, NumberText, WhoSaid)
+#### InsertText.insert_string (self, InTree, NumberText, WhoSaid)
+
+InsertText: Text, der als Wurzel in den Baum gehangen wird. (Typ: Str)
+
 ##### Parameter
 - **InTree**: Baum, in den der Text gehangen wird.
-- **InsertText**: Text, der als Wurzel in den Baum gehangen wird. (Typ: Str)
 - **NumberText**: Nummer des Textes, der in den Baum gehangen wird. (Typ: Int)
 - **WhoSaid**: Person, der der Text zugordnet wird. Wichtig z.B. bei Dialogen. (Typ: Str)
 
 *Fuegt den eingegebenen Text als Wurzel in den Baum ein.*
 >Zunaechst wird ein neuer Baum generiert. Anschließend wird der Text als Wurzel eingefuegt: InTree.NodeContent = InsertText
 
-#### split_string (self)  
+#### TextToSplit.split_string (self)  
+
+TextToSplit: Text, der aufgeteilt werden soll.
 
 *Teilt den Gesamtext in mehrere Saetze auf.*  
 >Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.  Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
@@ -250,13 +257,18 @@ Aufbau im Modul `M_Edit`
 - **WhoSaid**: Person, der der Satz zugeordnet wird. (Typ: Str)
 
 
-#### init__ (self)
+#### SentenceNode.init__ (self)
+
+SentenceNode: Knoten fuer den Satz, der erzeugt werden soll.
 
 *Erzeugt einen Knoten fuer den Baum*
 >Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberSentence wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
  
 
-#### insert_string (self, InTree, NumberSentence, WhoSaid)
+#### InsertSentence.insert_string (self, InTree, NumberSentence, WhoSaid)
+
+InsertSentence: Satz, der eingefuegt werden soll.
+
 ##### Parameter
 - **InTree**: Baum, in den der Satz gehangen wird.
 - **NumberSentence**: Nummer des Satzes, der in den Baum gehangen wird.
@@ -266,9 +278,9 @@ Aufbau im Modul `M_Edit`
 >Der einzufuegende Satz wird mit den Attributen in den Baum auf der zweiten Ebene eingefuegt. Handelt es sich um den ersten Satz, wird NodeContent mit den einzufuegenden Satz, NumberSentence mit '1' und WhoSaid mit dem Namen der Person ueberschrieben, der der Satz zugeordnet wird. Ab den folgenden Saetzen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Satzes auf den neuen Knoten gestellt werden: SentencePredecessor.NodeRight = NodeNeu.
 
 
-#### split_string (self)  
-##### Parameter:  
-- **StringToSplit**: String, der aufgeteilt werden soll. 
+#### SentenceToSplit.split_string (self)  
+
+SentenceToSplit: Satz, der aufgeteilt werden soll.
  
 *Teilt den jeweiligen Satz in Satzbestandteile (Woerter, Satzzeichen etc.) auf*  
 >Vor jedes Satzzeichen wird ein Leerzeichen gesetzt. Dann wird der Saz überprüft: Sind mehr als zwei Leerzeichen nacheinander vorhanden, wird das erste davon geloescht. Anschließend wird der Satz bei jedem Leerzeichen getrennt und die einzelnen Satzbestandteile als String in einen Baum gehangen, versehen mit der Nummer der Position, an der es gestanden hat. Zudem wird als Attribut (SwitchPermit) mitgegeben, ob es sich um einen Satzbestandteil handelt, bei dem die Wortbestandteile getauscht werden duerfen ('True') oder nicht ('False'). Nicht getauscht werden duerfen zum Beispiel Artikel oder Satzzeichen.
@@ -295,12 +307,16 @@ Aufbau im Modul `M_Edit`.
 
 ### Methoden
 
-#### init__ (self)
+#### WordNode.init__ (self)
+
+WordNode: Knoten fuer das Wort, der erzeugt werden soll.
 
 *Erzeugt einen Knoten fuer den Baum*
 >Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. Die Attribute werden wie folgt gesetzt: NumberWord = 0; NumberOfParts = 0; SwapAllowed = False; ConnectedWith = 0; Capital = False; Equal = False; SwitchPartOwn = None, SwitchPartForeign = None; Initial = None. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
 
-#### insert_string (self, InTree, NumberWord)
+#### InsertWord.insert_string (self, InTree, NumberWord)
+
+InsertWord: Wort, das in den Baum eingefuegt werden soll.
 ##### Parameter
 - **InTree**: Baum, in den der Satz gehangen wird.
 - **NumberWord**: Nummer des Worts im Satz, der in den Baum gehangen wird.
