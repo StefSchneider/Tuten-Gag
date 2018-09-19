@@ -85,6 +85,8 @@ CheckStock: Name des Bestandes, der ueberprueft werden soll.
 *Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück.*   
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. Wird der Buchstabe innerhalb des Bestands gefunden, wird die der Rueckgabewert 'InStock' auf 'True' gesetzt. Grundeinstellung/Fallback fuer 'InStock' ist 'False'. 
 
+-----------------------
+
 ## Dictionaries  
 *Geeignet zur Erfassung der Woerterbuecher in einem AVL-Baum.*  
 Aufbau im Modul `M_Dictionaries`.
@@ -154,6 +156,7 @@ Dictionary: Woerterbuch, dessen Ladestatus ermittelt werden soll.
 *Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.*
 >Zur Ermittlung des aktuellen Status wird die Nummer des aktuell einzulesenden Eintrags ins Verhaeltnis zur Gesamtzahl gesetzt. Zurueckgegeben wird dann das Verhaeltnis als Prozentzahl.
 
+-----------------------
 
 ## Strings  
 *Geeignet zur Erfassung von Texten, Saetzen, Satzbestandteilen und Wortstandteilen*  
@@ -414,8 +417,7 @@ Aufbau im Modul `M_Analyze`.
 *Ueberprueft, mit mit welcher Buchstabenklasse das Wort beginnt, z.B. Vokale).*
 >Zur Ueberpruefung wird der erste Wortbestandteil herangezogen und mit den entsprechenden Mengen, die ueber die Config-Datei eingelesen wurden, abgeglichen. Die Methode liefert dann als Ergebnis die Buchstabenklasse zurueck. Diese wird ueber die Methode 'check' in die Attribute des Worts ueberspielt.
 
-
-
+-----------------------
 
 ### CombinationList
 #### Methoden
@@ -442,6 +444,7 @@ Aufbau im Modul `M_Analyze`.
 - **rate_number_letters**: Ueberprueft, wie viele Buchstaben insgesamt in der Kombination der beiden Worte getauscht wurden und addiert pro Buchstaben die Punkte fuer RateNumberLetters mit dem jeweiligen Faktor zur Gesamtpunktzahl.
 - **rate_words_linked**: Ueberprueft, ob die Kombination aus zwei miteinander gekoppelten Worten besteht und addiert fuer diesen Fall die Punkte von RateWordsLinked mit dem Faktor zur Gesamtpunktzahl hinzu.
 
+-----------------------
 
 ### TextOutput (Strings)
 Aufbau im Modul M_Output
