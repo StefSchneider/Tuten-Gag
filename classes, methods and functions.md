@@ -210,7 +210,6 @@ Aufbau im Modul `M_Input`
 
 -----------------------
 
-
 ## TextEdit (TextInput)
 Aufbau im Modul `M_Edit`
 
@@ -328,8 +327,9 @@ InsertWord: Wort, das in den Baum eingefuegt werden soll.
 *Fuegt ein einzelnes Wort mit einer laufenden Nummer in den Baum ein.*
 >Das einzufuegende Wort wird mit den Attributen in den Baum auf der dritten Ebene eingefuegt. Handelt es sich um das erste Wort, wird NodeContent mit dem einzufuegenden Wort und NumberWord mit '1' ueberschrieben. Ab den folgenden Worten muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Wortes auf den neuen Knoten gestellt werden: WortPredecessor.NodeRight = NodeNeu.
 
-#### split_string (self)**  
-##### Parameter_
+#### WordToSplit.split_string (self)**  
+
+WordToSplit: Wort, das aufgeteilt werden soll.
 
 *Teilt das jeweilige Wort in mehrere Wortbestandteile auf* | Methode wird ueberschrieben  
 >Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende. Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter. Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordElementEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberElement (Typ: int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt -> Methode: insert_wordelement (self, NumberElement). Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.
@@ -348,12 +348,17 @@ Aufbau im Modul `M_Edit`.
 
 ### Methoden
 
-#### init__ (self)
+#### PartNode.init__ (self)
+
+PartNode: Knoten fuer den Wortbestandteil, der erzeugt werden soll.
 
 *Erzeugt einen Knoten fuer den Baum*
 >Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
 
-#### insert_string (self, InTree, NumberPart)
+#### InsertPart.insert_string (self, InTree, NumberPart)
+
+InsertPart: Wortbestandteil, der in den Baum gehangen werden soll.
+
 ##### Parameter
 - **InTree**: Baum, in den der Satz gehangen wird.
 - **NumberPart**: Nummer des Worts im Satz, der in den Baum gehangen wird.
@@ -361,8 +366,7 @@ Aufbau im Modul `M_Edit`.
 *Fuegt einen einzelnes Wort mit einer laufenden Nummer in den Baum ein.*
 >Der einzufuegende Teil wird mit den Attributen in den Baum auf der vierten Ebene eingefuegt. Handelt es sich um den ersten Teil, wird NodeContent mit dem einzufuegenden Teil und NumberPart mit '1' ueberschrieben. Ab den folgenden Teilen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Wortes auf den neuen Knoten gestellt werden: WortPredecessor.NodeRight = NodeNeu.
 
-
-
+-----------------------
 
 ## WordsAnalyze (Words)
 *Bildet die Klasse ab, mit der die Analyseprozesse auf Satzbestandteilebene durchgeführt werden.*
