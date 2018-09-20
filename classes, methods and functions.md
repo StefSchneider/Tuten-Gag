@@ -32,7 +32,7 @@
 *Geeignet zu Erfassung von Dateipfaden, auf mit denen spaeter Dateien angesteuert werden, z.B. die Woerterbuch-Dateien.*
 
 ### Methoden
-#### NewPathDictionary.init__ (self) 
+#### NewPathDictionary.--init-- (self) 
 
 NewPathDictionary: Dictionary, in der alle Dateipfade hinterlegt werden.
 
