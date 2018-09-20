@@ -55,7 +55,7 @@ PathDictionary: Dictionary, in das der neue Dateipfad aufgenommen werden soll.
 Aufbau im Modul `M_Config`.
 
 ### Methoden
-#### NewStock.init__ (self, StockType)  
+#### NewStock.--init-- (self, StockType)  
 
 NewStock: Neuer Bestand, der angelegt werden soll.
 
@@ -92,7 +92,7 @@ CheckStock: Name des Bestandes, der ueberprueft werden soll.
 Aufbau im Modul `M_Dictionaries`.
 
 ### Methoden
-#### Dictionary.init__ (self)
+#### Dictionary.--init-- (self)
 
 Dictionary: Woerterbuch (AVL-Baum), das neu angelegt werden soll.
 
@@ -221,7 +221,7 @@ Aufbau im Modul `M_Edit`
 - **WhoSaid**: Person, der der Text zugordnet wird. Wichtig z.B. bei Dialogen.
 
 ### Methoden
-#### TextNode.init__ (self)
+#### TextNode.--init-- (self)
 
 TextNode: Knoten fuer den Text, der erzeugt werden soll.
 
@@ -259,7 +259,7 @@ Aufbau im Modul `M_Edit`
 - **WhoSaid**: Person, der der Satz zugeordnet wird. (Typ: Str)
 
 
-#### SentenceNode.init__ (self)
+#### SentenceNode.--init-- (self)
 
 SentenceNode: Knoten fuer den Satz, der erzeugt werden soll.
 
@@ -309,7 +309,7 @@ Aufbau im Modul `M_Edit`.
 
 ### Methoden
 
-#### WordNode.init__ (self)
+#### WordNode.--init-- (self)
 
 WordNode: Knoten fuer das Wort, der erzeugt werden soll.
 
@@ -348,7 +348,7 @@ Aufbau im Modul `M_Edit`.
 
 ### Methoden
 
-#### PartNode.init__ (self)
+#### PartNode.--init-- (self)
 
 PartNode: Knoten fuer den Wortbestandteil, der erzeugt werden soll.
 
