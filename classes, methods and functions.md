@@ -305,7 +305,8 @@ Aufbau im Modul `M_Edit`.
 - **Equal**: Gibt an, ob innerhalb der Spanne ein geeigneter Tauschpartner vorliegt, der mit der gleichen Buchstabenart beginnt / Grundeinstellung: 'False' (Typ Bool)
 - **SwitchPartOwn**: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None' (Typ Int)
 - **SwitchPartForeign**: Teil welches fremden Wortes, der getauscht werden soll. (NumberWord:NumberPart) / Grundeinstellung: 'None' : 'None' (Typ Dic)
-- **Initial**: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ Str)
+- **LetterClassInitial**: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ Str)
+- **NumberSwitchPartner**: Liste mit Nummern der Woerter im Satz, mit denen innerhalb einer Spanne getauscht werden darf / Grundeinstellung: [] (Typ List) 
 
 ### Methoden
 
@@ -344,7 +345,7 @@ Aufbau im Modul `M_Edit`.
 - **NodeDown**: Zeiger zu tiefer gelegenen Ebene
 - **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
 - **InTree**: Baum, in den der Satz gehangen wird.
-- **NumberPart**: Nummer des Worts im Satz, der in den Baum gehangen wird.
+- **NumberPart**: Nummer des Teil im Wort, der in den Baum gehangen wird.
 
 ### Methoden
 
@@ -372,54 +373,56 @@ InsertPart: Wortbestandteil, der in den Baum gehangen werden soll.
 *Bildet die Klasse ab, mit der die Analyseprozesse auf Satzbestandteilebene durchgeführt werden.*
 Aufbau im Modul `M_Analyze`.
 
-### Attribute
-- xxx
 
 ### Methoden
-#### check (self, WordToBeAnalyzed)  
-##### Parameter
-- **WordToBeAnalyzed**: Wort, fuer das die Checks durchgefuehrt werden sollen.
+#### WordToBeAnalyzed.check (self)  
+
+WordToBeAnalyzed: Wort, fuer das die Checks durchgefuehrt werden sollen.
 
 *Steuert die gesamten Überprüfungsprozess, z.B. Großschreibung am Wortanfang, beim jeweiligen Wort:*
 >Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden die Ergebnisse der Checks in die Attribute des jeweiligen Wortes geschrieben, z.B. Capital = True, falls das Wort mit einem Großbuchstaben beginnt. Ausserdem muss vor der Suche nach moeglichen Tauschpartnern in der Nachbarschaft zuerst die Buchstabenklasse ermittelt werden. Es werden auf jeden Fall alle moeglichen Checks fuer ein Wort durchgefuehrt, damit zukuenftige Erweiterungen einfacher umgesetzt werden koennen.
 
-#### check_swap_allowed (self, WordToBeAnalyzed)
-##### Parameter
-- **WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung, ob es zum Tausch herangezogen werden darf, durchgefuehrt werden soll.
+#### WordToBeAnalyzed.check_swap_allowed (self)
+
+WordToBeAnalyzed: Wort, fuer das die Ueberpruefung, ob es zum Tausch herangezogen werden darf, durchgefuehrt werden soll.
 
 *Ueberprueft, ob das jeweilige Wort ueberhaupt zum Tausch herangezogen werden darf.*
 >Fuer das Wort erfolgt ein Abgleich, ob es in einer der Wort-Mengen, z.B. Artikel, ist, die nicht zum Tausch herangezogen werden duerfen. Falls getauscht werden darf, wird 'SwapAllowed' mit 'True' zurueckgeliefert, sonst mit 'False'.
 
-#### check_capital (self, WordToBeAnalyzed)
-##### Parameter
-- **WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung auf einen Grossbuchstaben durchgefuehrt werden soll.
+#### WordToBeAnalyzed.check_capital (self)
+
+WordToBeAnalyzed: Wort, fuer das die Ueberpruefung auf einen Grossbuchstaben durchgefuehrt werden soll.
 
 *Ueberprueft, ob das jeweilige Wort mit einem Grossbhuchstaben anfaengt*
 >Fuer das Wort erfolgt ein Abgleich, ob es mit einem Grossbuchstaben (Funktion 'capital') beginnt. Falls das der Fall ist, wird 'Capital' mit 'True' zurueckgeliefert, sonst mit 'False'.
 
-#### check_equal (self, WordToBeAnalyzed, LetterClass, Range)
+#### WordToBeAnalyzed.check_class_part (self, NumberCheckPart = 1)
+
+WordToBeAnalyzed: Wort, fuer das ueberprueft werden soll, mit welcher Buchstabengruppe der erste Buchstabe beginnt.
+
 ##### Parameter
-- **WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung, ob ein anderes passendes Wort innerhalb der Spanne vorliegt, durchgefuehrt werden soll.
+- **NumberCheckPart**: Teil des Wortes der ueberprueft werden soll, standardmaessig der erste Teil
+
+*Ueberprueft, mit mit welcher Buchstabenklasse das Wort beginnt, z.B. Vokale).*
+>Zur Ueberpruefung wird der angegebene Wortbestandteil herangezogen und mit den entsprechenden Mengen, die ueber die Config-Datei eingelesen wurden, abgeglichen. Die Methode liefert dann als Ergebnis die Buchstabenklasse zurueck. Diese wird ueber die Methode 'check' in das Attribut des Worts 'LetterClassInitial' ueberspielt.
+
+#### WordToBeAnalyzed.check_equal (self, LetterClass, Range)
+
+WordToBeAnalyzed: Wort, fuer das die Ueberpruefung, ob ein anderes passendes Wort innerhalb der Spanne vorliegt, durchgefuehrt werden soll.
+
+##### Parameter
 - **LetterClass**: Buchstabengruppe, nach der Woerter in der Nachbarschaft ueberprueft werden sollen.
 - **Range**: Spanne innerhalb der gesucht werden soll.
 
 *Ueberprueft, ob fuer das jeweilige Wort ein Tauschpartner innerhalb der Spanne vorliegt.*
->Fuer das Wort erfolgt ein Abgleich, ob sich innerhalb der vorgegebenen Spanne er Wort, das mit der gleichen Buchstabenart beginnt vorliegt. Falls ja, wird 'Equal' mit 'True' zurueckgeliefert, sonst mit 'False'. Die Ueberpruefung findet ab dem direkten Wortnachbarn rechts statt. Das Nummer des ersten Wortes innerhalb der Spanne, das mit der gleichen Buchstabengruppe beginnt, im Attribut 'SwitchPartForeign' unter 'NumberWord' festgehalten, 'NumberPart' wird dann direkt auf '1' gesetzt, da es sich um den ersten Teil des Wortes handelt. Falls die Spanne '0' ist, wird innerhalb desselben Wortes gesucht. Oder: Falls innerhalb der vorgegebenen Spanne kein passender Tauschpartner gefunden wird, wird die Spanne auf '0' gesetzt (NOCH ZU KLAEREN)
+>Fuer das Wort erfolgt ein Abgleich, ob sich innerhalb der vorgegebenen Spanne ein Wort, das mit der gleichen Buchstabenart beginnt vorliegt. Falls ja, wird die Nummer des Wortes im Attribut 'NumberSwitchPartner' festgehalten und das Attribut 'SwitchPartForeign' auf '1' gesetzt, da der erste Teil des anderen Wortes getauscht wird. Die Ueberpruefung findet ab dem direkten Wortnachbarn rechts statt und endet bei dem Wort, dessen Nummer gleich der Nummer des aktuellen Wortes + der Spanne ist. 
 
-## PartsAnalyze (Parts)
-*Bildet die Klasse ab, mit der die Analyseprozesse auf Wortbestandteilebene durchgeführt werden.*
-Aufbau im Modul `M_Analyze`.
+#### WordToBeAnalyzed.check_inner (self)
 
-### Attribute
-- xxx
+WordToBeAnalyzed: Wort, bei dem ueberprueft werden soll, ob ein Tausch von Bestandteilen innerhalb des Wortes moeglich ist.
 
-### Methoden
-#### check_initial (self, WordToBeAnalyzed)
-##### Parameter
-- **WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung, mit welcher Buchstabenklasse es beginnt, durchgefuehrt werden soll.
-
-*Ueberprueft, mit mit welcher Buchstabenklasse das Wort beginnt, z.B. Vokale).*
->Zur Ueberpruefung wird der erste Wortbestandteil herangezogen und mit den entsprechenden Mengen, die ueber die Config-Datei eingelesen wurden, abgeglichen. Die Methode liefert dann als Ergebnis die Buchstabenklasse zurueck. Diese wird ueber die Methode 'check' in die Attribute des Worts ueberspielt.
+*Ueberprueft, ob ein Buchstabentausch innerhalb des gleichen Wortes moeglich ist.*
+>Innerhalb des Wortes werden die einzelnen Teile nacheinander durchgegangen. Fuer jeden Teil wird ueberprueft, zu welcher Buchstabengruppe er gehoert. Dazu wird die Methode **check_class_part** aufgerufen. Ist seine Gruppe gleich mit der des Wortanfangs, wird das Attribut 'SwitchForeignPart' auf die Nummer des Teils im Wort gesetzt.
 
 -----------------------
 
