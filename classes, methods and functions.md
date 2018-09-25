@@ -18,7 +18,7 @@
         │               └ WordsAnalyze
         ├ TextOutput
         
-
+    Combination
 
 
 
@@ -211,6 +211,7 @@ Aufbau im Modul `M_Input`
 -----------------------
 
 ## TextEdit (TextInput)
+*Enthaelt den zu bearbeitenden Text.*  
 Aufbau im Modul `M_Edit`
 
 ### Attribute
@@ -290,7 +291,7 @@ SentenceToSplit: Satz, der aufgeteilt werden soll.
 
 
 ## Words (Sentences)
-Zu der in der Klasse 'Words' erfassten Zeichenketten zaehlen nicht nur Woerter, sondern auch beispielweise Satzzeichen.
+Zu der in der Klasse 'Words' erfassten Zeichenketten zaehlen nicht nur Woerter, sondern auch beispielweise Satzzeichen.  
 Aufbau im Modul `M_Edit`.
 
 ### Attribute
@@ -426,6 +427,41 @@ WordToBeAnalyzed: Wort, bei dem ueberprueft werden soll, ob ein Tausch von Besta
 
 -----------------------
 
+## Combination
+
+### Attribute
+- SumPoints: Gesamtpunktzahl der Kombination für das Ranking. Grundeinstellung ist '0' / Typ Int
+- Part1: Liste aus Nummer Wort 1, Position in Wort 1
+- Part2: Liste aus Nummer Wort 2, Position in Wort 2
+
+### Methoden
+
+#### Combination.fill (self)
+
+Combination:
+
+*Zieht aus den Attributen des aktuellen Wortes die Nummern der erlaubten Kombinationen*
+>Aus dem aktuell zu betrachtenden Wort werden die erlaubten Kombinationen aus dem Attribut 'NumberSwitchPartner' ausgelesen und in dem Atribut XXX (Dict) abgespeichert.
+
+#### CurrentWord.combine (self)
+
+CurrentCombination: Aktuell 
+
+*Steuert das Kombinieren von Wortbestandteilen.*
+
+
+- **combine_connected**: Tauscht die beiden Anfangswortbestandteile eines gekoppelten Wortes
+
+- **rate**: Steuert, welche Ratings der Wortkombinationen durchgefuehrt werden sollen.
+- **rate_in_dictionary**: Ueberprueft, ob eines oder die beiden Woerter in einem der Woerterbuecher auftauchen. Falls ja, werden die Punkte von RateInDictionary mit dem jweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
+- **rate_in_user**: Ueberprueft, ob eines oder die beiden Woerter im Woerterbuch der User als beliebtes Wort auftauchen. Falls ja, werden die Punkte von RateInUser mit dem jeweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
+- **rate_number_letters**: Ueberprueft, wie viele Buchstaben insgesamt in der Kombination der beiden Worte getauscht wurden und addiert pro Buchstaben die Punkte fuer RateNumberLetters mit dem jeweiligen Faktor zur Gesamtpunktzahl.
+- **rate_words_linked**: Ueberprueft, ob die Kombination aus zwei miteinander gekoppelten Worten besteht und addiert fuer diesen Fall die Punkte von RateWordsLinked mit dem Faktor zur Gesamtpunktzahl hinzu.
+
+
+
+
+
 ### CombinationList
 #### Methoden
 - **insert**: Fuegt eine neue Wortkombination mit der Gesamtpunktzahl in die Liste ein.
@@ -434,22 +470,10 @@ WordToBeAnalyzed: Wort, bei dem ueberprueft werden soll, ob ein Tausch von Besta
 - **rank_list (Word1:Part1, Word2:Part2, Points)**: Sortiert die Liste aus Kombinationen in die richtige Reihenfolge, gemessen an der Gesamtpunktzahl pro Kombination. Anschließend gibt die Funktion die Daten der am höchsten bewerteten Kombination zurück: Word1:Part1, Word2:Part2 / Regeln: An die Funktion rank_list werden die entsprechenden Daten zu den Kombinationen uebergeben und in eine Liste geschrieben. Sollten keine weiteren Kombinationen zur Verfügung stehen, wird die Funktion noch einmal aufgerufen, aber mit den Argumenten 'None:None', 'None:None', '0'. Die Funktion uberprueft zuerst ob diese Werte uebergeben wurden. Falls nein, werden die Werte in eine Liste geschrieben. Falls ja, startet die Sortierung der Liste und die Daten der Kombination mit der hoechsten Punktezahl wird zurueckgegeben.
 
 
-### Combination
 
-#### Attribute
-- SumPoints: Gesamtpunktzahl der Kombination für das Ranking.
-- Part1: Liste aus Nummer Wort 1, Position in Wort 1
-- Part2: Liste aus Nummer Wort 2, Position in Wort 2
 
 #### Methoden
-- **combine**: Steuert das Kombinieren von Wortbestandteilen
-- **combine_inner**: Tauscht die beiden Anfangswortbestandteile eines gekoppelten Wortes
 
-- **rate**: Steuert, welche Ratings der Wortkombinationen durchgefuehrt werden sollen.
-- **rate_in_dictionary**: Ueberprueft, ob eines oder die beiden Woerter in einem der Woerterbuecher auftauchen. Falls ja, werden die Punkte von RateInDictionary mit dem jweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
-- **rate_in_user**: Ueberprueft, ob eines oder die beiden Woerter im Woerterbuch der User als beliebtes Wort auftauchen. Falls ja, werden die Punkte von RateInUser mit dem jeweiligen Faktor zur Gesamtpunktzahl (SumPoints) dazuaddiert.
-- **rate_number_letters**: Ueberprueft, wie viele Buchstaben insgesamt in der Kombination der beiden Worte getauscht wurden und addiert pro Buchstaben die Punkte fuer RateNumberLetters mit dem jeweiligen Faktor zur Gesamtpunktzahl.
-- **rate_words_linked**: Ueberprueft, ob die Kombination aus zwei miteinander gekoppelten Worten besteht und addiert fuer diesen Fall die Punkte von RateWordsLinked mit dem Faktor zur Gesamtpunktzahl hinzu.
 
 -----------------------
 
