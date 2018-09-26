@@ -70,7 +70,7 @@ Legt einen neue, leere Menge, String, Liste oder Dictionary an.
 - ***StockType***: Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste). 
 
 ##### Beschreibung
->Enthaelt ***NewStock*** den Wert 'String', wird ein leerer String "" angelegt; enthaelt ***NewStock** den Wert 'Set', wird eine leere Menge () angelegt; enthaelt ***NewStock*** den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt ***NewStock*** den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen mit einem einfachen else-Zweig.  
+>Enthaelt ***StockType*** den Wert 'String', wird ein leerer String "" angelegt; enthaelt ***StockType*** den Wert 'Set', wird eine leere Menge () angelegt; enthaelt ***StockType*** den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt ***StockType*** den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen mit einem einfachen else-Zweig.  
 Zurueckgegeben wird ein neuer leerer Bestand.
 
 #### Stock.add_to (***self, Component***)  
