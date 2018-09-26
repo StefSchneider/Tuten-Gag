@@ -40,7 +40,7 @@ Legt ein neue Variable vom Typ Dic an, in der die Dateipfade aus der Config-Date
 **NewPathDictionary**: Dictionary, in der alle Dateipfade hinterlegt werden.
 
 ##### Beschreibung
->Die Initialisierung erfolgt mit der Zuweisung von '{}'. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.
+>Die Initialisierung erfolgt mit der Zuweisung von '{}'. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt. Zurueckgegeben wird eine leere Dictionary.
 
 #### PathDictionary.add_to (*self, ForFile, Path*)  
 Fuegt einen neuen Eintrag zum bisherigen Dictionary der Dateipfade zu.
@@ -52,7 +52,7 @@ Fuegt einen neuen Eintrag zum bisherigen Dictionary der Dateipfade zu.
 - ***Path***: Dateipfad, der neu ins Dictionary aufgenommen werden soll.
 
 ##### Beschreibung
->Ans Ende der Dictionary wird neue zweiteiliger Eintrag angefuegt. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.
+>Ans Ende der Dictionary wird neue zweiteiliger Eintrag angefuegt. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt. Zurueckgegeben wird eine Dictionary mit dem ergaenzten Dateipfad.
 
 ## Stocks (ConfigData)  
 Geeignet zur Erfassung von Buchstabengruppen, z.B. Vokale oder Konsonanten, oder Wortklassen, z.B. Artikel, in einer Menge.  
@@ -65,10 +65,11 @@ Legt einen neue, leere Menge, String, Liste oder Dictionary an.
 **NewStock**: Neuer Bestand, der angelegt werden soll.
 
 ##### Parameter
-- ***StockType***: Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste).
+- ***StockType***: Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste). 
 
 ##### Beschreibung
->Enthaelt ***NewStock*** den Wert 'String', wird ein leerer String "" angelegt; enthaelt ***NewStock** den Wert 'Set', wird eine leere Menge () angelegt; enthaelt ***NewStock*** den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt ***NewStock*** den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen mit einem einfachen else-Zweig.
+>Enthaelt ***NewStock*** den Wert 'String', wird ein leerer String "" angelegt; enthaelt ***NewStock** den Wert 'Set', wird eine leere Menge () angelegt; enthaelt ***NewStock*** den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt ***NewStock*** den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen mit einem einfachen else-Zweig.  
+Zurueckgegeben wird ein neuer leerer Bestand.
 
 #### Stock.add_to (***self, Component***)  
 Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.
@@ -81,15 +82,16 @@ Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Me
 ##### Beschreibung
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. In Abhaengigkeit von der Bestandsart wird der neue Buchstabe zum Bestand hinzugefuegt.
 
-#### CheckStock.search_in (self, CheckComponent)  
+#### CheckStock.search_in (***self, CheckComponent***)  
+Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück.   
 
-CheckStock: Name des Bestandes, der ueberprueft werden soll.
+***CheckStock***: Name des Bestandes, der ueberprueft werden soll.
 
-##### Parameter:  
-- **CheckComponent**: Buchstabe, der in diesem Bestand gesucht werden soll.  
+##### Parameter  
+- ***CheckComponent***: Buchstabe, der in diesem Bestand gesucht werden soll.  
 
-*Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück.*   
->Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. Wird der Buchstabe innerhalb des Bestands gefunden, wird die der Rueckgabewert 'InStock' auf 'True' gesetzt. Grundeinstellung/Fallback fuer 'InStock' ist 'False'. 
+##### Beschreibung
+>Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. Wird der Buchstabe innerhalb des Bestands gefunden, wird die der Rueckgabewert *InStock* auf 'True' gesetzt. Grundeinstellung/Fallback fuer *InStock* ist 'False'. 
 
 -----------------------
 
