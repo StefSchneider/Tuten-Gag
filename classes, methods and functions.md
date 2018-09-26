@@ -1,5 +1,8 @@
-# Structure of classes
 
+# Klassen
+
+
+    ## Structure of classes
 
     ConfigData  
         ├ Files  
@@ -22,32 +25,33 @@
 
 
 
-# Klassen
 
 ## ConfigData
 
 ## Files (ConfigData)
 
 ## Pathes (ConfigData)
-*Geeignet zu Erfassung von Dateipfaden, auf mit denen spaeter Dateien angesteuert werden, z.B. die Woerterbuch-Dateien.*
+Geeignet zu Erfassung von Dateipfaden, auf mit denen spaeter Dateien angesteuert werden, z.B. die Woerterbuch-Dateien.
 
 ### Methoden
-#### NewPathDictionary.--init-- (self) 
+#### NewPathDictionary.--init-- (*self*) 
+Legt ein neue Variable vom Typ Dic an, in der die Dateipfade aus der Config-Datei erfasst werden.  
 
 NewPathDictionary: Dictionary, in der alle Dateipfade hinterlegt werden.
 
-*Legt ein neue Variable vom Typ Dic an, in der die Dateipfade aus der Config-Datei erfasst werden.*
->Die Initialisierung erfolgt mit der Zuweisung von {}. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.
+##### Beschreibung
+>Die Initialisierung erfolgt mit der Zuweisung von '{}'. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.
 
-#### PathDictionary.add_to (self, ForFile, Path)  
+#### PathDictionary.add_to (*self, ForFile, Path*)  
+Fuegt einen neuen Eintrag zum bisherigen Dictionary der Dateipfade zu.
 
 PathDictionary: Dictionary, in das der neue Dateipfad aufgenommen werden soll.
 
-##### Parameter:  
-- **ForFile**: Bezeichnung der Datei, zu der der Pfad leitet.
-- **Path**: Dateipfad, der neu ins Dictionary aufgenommen werden soll.
+##### Parameter  
+- ***ForFile***: Bezeichnung der Datei, zu der der Pfad leitet.
+- ***Path***: Dateipfad, der neu ins Dictionary aufgenommen werden soll.
 
-*Fuegt einen neuen Eintrag zum bisherigen Dictionary der Dateipfade zu.*
+##### Beschreibung
 >Ans Ende der Dictionary wird neue zweiteiliger Eintrag angefuegt. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.
 
 ## Stocks (ConfigData)  
