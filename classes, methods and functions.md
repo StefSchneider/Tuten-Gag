@@ -37,7 +37,7 @@ Geeignet zu Erfassung von Dateipfaden, auf mit denen spaeter Dateien angesteuert
 #### NewPathDictionary.--init-- (*self*) 
 Legt ein neue Variable vom Typ Dic an, in der die Dateipfade aus der Config-Datei erfasst werden.  
 
-NewPathDictionary: Dictionary, in der alle Dateipfade hinterlegt werden.
+**NewPathDictionary**: Dictionary, in der alle Dateipfade hinterlegt werden.
 
 ##### Beschreibung
 >Die Initialisierung erfolgt mit der Zuweisung von '{}'. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.
@@ -45,7 +45,7 @@ NewPathDictionary: Dictionary, in der alle Dateipfade hinterlegt werden.
 #### PathDictionary.add_to (*self, ForFile, Path*)  
 Fuegt einen neuen Eintrag zum bisherigen Dictionary der Dateipfade zu.
 
-PathDictionary: Dictionary, in das der neue Dateipfad aufgenommen werden soll.
+**PathDictionary**: Dictionary, in das der neue Dateipfad aufgenommen werden soll.
 
 ##### Parameter  
 - ***ForFile***: Bezeichnung der Datei, zu der der Pfad leitet.
