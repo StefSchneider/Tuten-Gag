@@ -37,6 +37,7 @@ Geeignet zu Erfassung von Dateipfaden, auf mit denen spaeter Dateien angesteuert
 #### NewPathDictionary.--init-- (*self*) 
 Legt ein neue Variable vom Typ Dic an, in der die Dateipfade aus der Config-Datei erfasst werden.  
 
+##### Objekt
 **NewPathDictionary**: Dictionary, in der alle Dateipfade hinterlegt werden.
 
 ##### Beschreibung
@@ -46,6 +47,7 @@ Zurueckgegeben wird eine leere Dictionary.
 #### PathDictionary.add_to (*self, ForFile, Path*)  
 Fuegt einen neuen Eintrag zum bisherigen Dictionary der Dateipfade zu.
 
+##### Objekt
 **PathDictionary**: Dictionary, in das der neue Dateipfad aufgenommen werden soll.
 
 ##### Parameter  
@@ -64,6 +66,7 @@ Aufbau im Modul `M_Config`.
 #### NewStock.--init-- (***self, StockType***)  
 Legt einen neue, leere Menge, String, Liste oder Dictionary an.  
 
+##### Objekt
 **NewStock**: Neuer Bestand, der angelegt werden soll.
 
 ##### Parameter
@@ -76,6 +79,7 @@ Zurueckgegeben wird ein neuer leerer Bestand.
 #### Stock.add_to (***self, Component***)  
 Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.
 
+##### Objekt
 **Stock**: Namentlicher Bestand, in den der Buchstabe eingefuegt werden soll.
 
 ##### Parameter  
@@ -88,6 +92,7 @@ Zurueckgegeben wird ein ergaenzter Bestand.
 #### CheckStock.search_in (***self, CheckComponent***)  
 Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück.   
 
+##### Objekt
 **CheckStock**: Name des Bestandes, der ueberprueft werden soll.
 
 ##### Parameter  
@@ -106,6 +111,7 @@ Aufbau im Modul `M_Dictionaries`.
 #### Dictionary.--init-- (***self***)
 Legt ein neues Woerterbuch mit dem Namen von Dictionary an.
 
+##### Objekt
 **Dictionary**: Woerterbuch (AVL-Baum), das neu angelegt werden soll.
 
 ##### Beschreibung
@@ -115,6 +121,7 @@ Zurueckgegeben wird ein AVL-Baum mit einem leeren Wurzeleintrag.
 #### InDictionary.load (***self, FromDictionaryFile***)  
 Laedt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.  
 
+##### Objekt
 **InDictionary**: Woerterbuch (AVL-Baum), in das die Woerterbuch-Datei geladen werden soll.
 
 ##### Parameter
@@ -127,6 +134,7 @@ Zurueckgegeben wird ein als AVL-Baum strukturiertes gefuelltes Woerterbuch.
 #### FromDictionary.save (***self, InDictionaryFile***)  
 Speichert einen Woerterbuch-Baum in einer Woerterbuch-Datei ab.  
 
+##### Objekt
 **FromDictionary**: Woerterbuch (AVL-Baum), das in die Woerterbuch-Datei gespeichert werden soll.
 
 ##### Parameter
@@ -139,6 +147,7 @@ Zurueckgegeben wird eine neue Woerterbuch-Datei.
 #### InDictionary.check_word (*self, SearchWord*)
 Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist  
 
+##### Objekt
 **InDictionary**: Woerterbuch, in dem das Wort gesucht werden soll.
 
 ##### Parameter  
@@ -152,6 +161,7 @@ Ist es nicht enthalten, wird der Nutzer gefragt, ob das Wort richtig geschrieben
 #### InDictionary.add_word (*self, AddWord*)
 Fuegt ein Wort in das Woertrebuch ein.
 
+##### Objekt
 **InDictionary*: Woerterbuch, in das das Wort ergaenzt werden soll.
 
 ##### Parameter
@@ -164,6 +174,7 @@ Zurueckgegeben wird das ergaenzte Woerterbuch.
 #### DictionaryFile.check_size (*self*)  
 Ermittelt die Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei.  
 
+##### Objekt
 **DictionaryFile**: Name der Datei inkl. Pfad, dessen Groesse bestimmt werden soll.
 
 ##### Beschreibung
@@ -172,6 +183,7 @@ Ermittelt die Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei.
 #### Dictionary.check_status (*self, DictionarySize, NumberLine*)  
 Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.
 
+##### Objekt
 **Dictionary**: Woerterbuch, dessen Ladestatus ermittelt werden soll.
 
 ##### Parameter
@@ -250,6 +262,7 @@ Aufbau im Modul `M_Edit`
 #### TextNode.--init-- (*self*)
 Erzeugt einen Knoten fuer den Baum.
 
+##### Objekt
 **TextNode**: Knoten fuer den Text, der erzeugt werden soll.
 
 ##### Beschreibung
