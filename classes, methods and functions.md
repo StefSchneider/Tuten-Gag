@@ -55,28 +55,30 @@ Fuegt einen neuen Eintrag zum bisherigen Dictionary der Dateipfade zu.
 >Ans Ende der Dictionary wird neue zweiteiliger Eintrag angefuegt. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.
 
 ## Stocks (ConfigData)  
-*Geeignet zur Erfassung von Buchstabengruppen, z.B. Vokale oder Konsonanten, oder Wortklassen, z.B. Artikel, in einer Menge.*  
+Geeignet zur Erfassung von Buchstabengruppen, z.B. Vokale oder Konsonanten, oder Wortklassen, z.B. Artikel, in einer Menge.  
 Aufbau im Modul `M_Config`.
 
 ### Methoden
-#### NewStock.--init-- (self, StockType)  
+#### NewStock.--init-- (***self, StockType***)  
+Legt einen neue, leere Menge, String, Liste oder Dictionary an.  
 
-NewStock: Neuer Bestand, der angelegt werden soll.
+**NewStock**: Neuer Bestand, der angelegt werden soll.
 
-##### Parameter:
-- **StockType**: Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste).
+##### Parameter
+- ***StockType***: Art des neu anzulegenden Bestandes, z.B. Set (Menge), String (Zeichenkette), Dictionary (Woerterbuch) oder List (Liste).
 
-*Legt einen neue, leere Menge, String, Liste oder Dictionary an.*  
->Enthaelt NewStock den Wert 'String', wird ein leerer String "" angelegt; enthaelt NewStock den Wert 'Set', wird eine leere Menge () angelegt; enthaelt NewStock den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt NewStock den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen.
+##### Beschreibung
+>Enthaelt ***NewStock*** den Wert 'String', wird ein leerer String "" angelegt; enthaelt ***NewStock** den Wert 'Set', wird eine leere Menge () angelegt; enthaelt ***NewStock*** den Wert 'Dictionary', wird ein leeres Woerterbuch {} angelegt; enthaelt ***NewStock*** den Wert 'List', wird eine leere Liste [] angelegt. Fallback ist ein leerer String - die Ueberpruefung auf den Uebergabewert 'String' erfolgt also am Ende der If-Abfragen mit einem einfachen else-Zweig.
 
-#### Stock.add_to (self, Component)  
+#### Stock.add_to (***self, Component***)  
+Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.
 
-Stock: Namentlicher Bestand, in den der Buchstabe eingefuegt werden soll.
+***Stock***: Namentlicher Bestand, in den der Buchstabe eingefuegt werden soll.
 
-##### Parameter:  
-- **Component**: Jeweiliger Buchstaben oder die Wortklasse, die eingefuegt werden soll.  
+##### Parameter  
+- ***Component***: Jeweiliger Buchstabe oder die Wortklasse, die eingefuegt werden soll.  
 
-*Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.*
+##### Beschreibung
 >Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. In Abhaengigkeit von der Bestandsart wird der neue Buchstabe zum Bestand hinzugefuegt.
 
 #### CheckStock.search_in (self, CheckComponent)  
@@ -521,7 +523,7 @@ An die Funktion rank_list werden die entsprechenden Daten zu den Kombinationen u
 
 ----------------------
 
-## Variablen
+# Variablen
 
 ### Global
 
@@ -544,3 +546,4 @@ OutputText = TextOutput
  - Initial: Stock
  
  
+ # Dateien
