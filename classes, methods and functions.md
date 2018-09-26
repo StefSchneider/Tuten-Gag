@@ -109,7 +109,7 @@ Legt ein neues Woerterbuch mit dem Namen von Dictionary an.
 **Dictionary**: Woerterbuch (AVL-Baum), das neu angelegt werden soll.
 
 ##### Beschreibung
->Die Methode greift auf die Toolbox 'AVLTree' zu und erzeugt einen Grundeintrag für ein neues Woerterbuch, in das später die einzelnen Woerter geladen werden.   
+>Die Methode greift auf die Toolbox **AVLTree** zu und erzeugt einen Grundeintrag für ein neues Woerterbuch, in das später die einzelnen Woerter geladen werden.   
 Zurueckgegeben wird ein AVL-Baum mit einem leeren Wurzeleintrag.
 
 #### InDictionary.load (***self, FromDictionaryFile***)  
@@ -130,57 +130,65 @@ Speichert einen Woerterbuch-Baum in einer Woerterbuch-Datei ab.
 **FromDictionary**: Woerterbuch (AVL-Baum), das in die Woerterbuch-Datei gespeichert werden soll.
 
 ##### Parameter
-- **InDictionaryFile**: Dateiname inkl. Pfad, in den die Woerter fuer das Woerterbuch gespeichert werden sollen.
+- ***InDictionaryFile***: Dateiname inkl. Pfad, in den die Woerter fuer das Woerterbuch gespeichert werden sollen.
 
 ##### Beschreibung
 >Zunaechst wird ueberprueft, ob eine Woerterbuch-Datei mit gleichem Namen schon existiert, in diesem Fall wird daraus das Backup gemacht - mit dem Namen 'Dateiname_Entstehungsdatum'. Anschließend wird die Woerterbuch-Datei mit der aktuellen Fassung ueberschrieben. Dazu wird das Woerterbuch (AVL-Baum) ausgelesen und jedes Wort in eine einzelne Zeile geschrieben. Vorher wird ueberprueft, ob bereits eine bestehende Woerterbuch-Datei mitn gleichem namen besteht. In diesem Fall wird der Dateiname der alten Fassung um den Anhang '-old' im Dateinamen ergaenzt. Existiert bereits ein solcher Dateiname, wird die alte Datei ueberschrieben.  
 Zurueckgegeben wird eine neue Woerterbuch-Datei.
 
-#### InDictionary.check_word (self, SearchWord)
+#### InDictionary.check_word (*self, SearchWord*)
+Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist  
 
-InDictionary: Woerterbuch, in dem das Wort gesucht werden soll.
+**InDictionary**: Woerterbuch, in dem das Wort gesucht werden soll.
 
-#### Parameter:  
-- **SearchWord**: Wort, das in dem Woerterbuch gesucht werden soll.
+##### Parameter  
+- ***SearchWord***: Wort, das in dem Woerterbuch gesucht werden soll.
 
-*Ueberprüft, ob das eingegebene Wort im Woerterbuch vorhanden ist*  
->Mit der 'Search-Methode' der 'Toolbox AVLTree' wird das Wort im Woerterbuch-Baum gesucht. Ist es nicht enthalten, wird der Nutzer gefragt, ob das Wort richtig geschrieben ist und ist das Fremdwoerterbuch aufgenommen werden soll.
+##### Beschreibung
+>Mit der Methode **search** der **Toolbox AVLTree** wird das Wort im Woerterbuch-Baum gesucht.  
+Rueckgabewert ist 'True', wenn das Wort im Woerterbuch gefunden wurde oder 'Fals', falls nicht.  
+Ist es nicht enthalten, wird der Nutzer gefragt, ob das Wort richtig geschrieben ist und ist das Fremdwoerterbuch aufgenommen werden soll.
 
-#### InDictionary.add_word (self, AddWord)
+#### InDictionary.add_word (*self, AddWord*)
+Fuegt ein Wort in das Woertrebuch ein.
 
-InDictionary: Woerterbuch, in das das Wort ergaenzt werden soll.
+**InDictionary*: Woerterbuch, in das das Wort ergaenzt werden soll.
 
-##### Parameter:
-- **AddWord**: Wort, das in das Woerterbuch eingefuegt werden soll.
+##### Parameter
+- ***AddWord***: Wort, das in das Woerterbuch eingefuegt werden soll.
 
->Mithilfe der 'Insert-Methode' der Toolbox 'AVLTree' wird das Wort in das jewelige Woerterbuch an der richtigen Stelle eingefuegt. Anschließend wird die 'Save-Methode' aufgerufen, um das ergaenzte Woerterbuch abzuspeichern.
+##### Beschreibung
+>Mithilfe der Methode **insert** der Toolbox **AVLTree** wird das Wort in das jewelige Woerterbuch an der richtigen Stelle eingefuegt. Anschließend wird die Methode **save** aufgerufen, um das ergaenzte Woerterbuch abzuspeichern.  
+Zurueckgegeben wird das ergaenzte Woerterbuch.
 
-#### DictionaryFile.check_size (self)  
+#### DictionaryFile.check_size (*self*)  
+Ermittelt die Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei.  
 
-DictionaryFile: Name der Datei inkl. Pfad, dessen Groesse bestimmt werden soll.
+**DictionaryFile**: Name der Datei inkl. Pfad, dessen Groesse bestimmt werden soll.
 
-*Ermittelt die Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei.*  
->Fuer die Ermittlung der Groesse wird die Anzahl der Zeilen in der Woerterbuch-Datei auslesen. Fuer jede Zeile wird der Wert '1' zur Gesamtzahl dazuaddiert. Leerzeilen werden nicht mitgezaehlt. Ist das Dateiende erreicht, wird die Gesamtzahl (DictionarySize) zurueckgegeben.
+##### Beschreibung
+>Fuer die Ermittlung der Groesse wird die Anzahl der Zeilen in der Woerterbuch-Datei auslesen. Fuer jede Zeile wird der Wert '1' zur Gesamtzahl (*DictionarySizes*) dazuaddiert. Der Startwert von *DictionarySize* betraegt '0'. Leerzeilen werden nicht mitgezaehlt. Ist das Dateiende erreicht, wird die Gesamtzahl (*DictionarySize*) zurueckgegeben.
 
-#### Dictionary.check_status (self, DictionarySize, NumberLine)  
+#### Dictionary.check_status (*self, DictionarySize, NumberLine*)  
+Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.
 
-Dictionary: Woerterbuch, dessen Ladestatus ermittelt werden soll.
+**Dictionary**: Woerterbuch, dessen Ladestatus ermittelt werden soll.
 
-##### Parameter:
-- **DictionarySize**: Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei, die vorher ermittelt wurde.
-- **NumberLine**: Nummer der aktuell einzulesenden Zeile.
+##### Parameter
+- ***DictionarySize***: Groesse (= Anzahl der Eintraege) einer Woerterbuch-Datei, die vorher ermittelt wurde.
+- ***NumberLine***: Nummer der aktuell einzulesenden Zeile.
 
-*Ermittelt, wie viel Prozent der Woerterbuch-Datei bereits in den Woerterbuch-Baum übertragen wurden.*
->Zur Ermittlung des aktuellen Status wird die Nummer des aktuell einzulesenden Eintrags ins Verhaeltnis zur Gesamtzahl gesetzt. Zurueckgegeben wird dann das Verhaeltnis als Prozentzahl.
+##### Beschreibung
+>Zur Ermittlung des aktuellen Status wird die Nummer des aktuell einzulesenden Eintrags ins Verhaeltnis zur Gesamtzahl gesetzt.   Zurueckgegeben wird dann das Verhaeltnis als Prozentzahl.
 
 -----------------------
 
 ## Strings  
-*Geeignet zur Erfassung von Texten, Saetzen, Satzbestandteilen und Wortstandteilen*  
+Geeignet zur Erfassung von Texten, Saetzen, Satzbestandteilen und Wortstandteilen  
 Aufbau im Modul `M_Input`
 
-#### Attribute
-- String
+### Attribute
+- *String*: Enthaelt eine Zeichenkette.
 
 ## TextInput (Strings)
 Aufbau im Modul `M_Input`
@@ -228,23 +236,25 @@ Aufbau im Modul `M_Input`
 -----------------------
 
 ## TextEdit (TextInput)
-*Enthaelt den zu bearbeitenden Text.*  
+Enthaelt den zu bearbeitenden Text.  
 Aufbau im Modul `M_Edit`
 
 ### Attribute
-- **NodeContent**: Inhalt des Knotens
-- **NodeDown**: Zeiger zu tiefer gelegenen Ebene
-- **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
-- **NumberText**: Nummer des Textes, der in den Baum gehangen wird.
-- **WhoSaid**: Person, der der Text zugordnet wird. Wichtig z.B. bei Dialogen.
+- *NodeContent*: Inhalt des Knotens / Grundeinstellung ist '' / Typ str
+- *NodeDown*: Zeiger zu tiefer gelegenen Ebene / Grundeinstellung: 'None' 
+- *NodeRight*: Zeiger auf den naechten Inhalt in der gleichen Ebene / Grundeinstellung: 'None'
+- *NumberText*: Nummer des Textes, der in den Baum gehangen wird. / Grundeinstellung: '0' / Typ int
+- *WhoSaid*: Person, der der Text zugordnet wird. Wichtig z.B. bei Dialogen. / Grundeinstellung ist '' / Typ str
 
 ### Methoden
-#### TextNode.--init-- (self)
+#### TextNode.--init-- (*self*)
+Erzeugt einen Knoten fuer den Baum.
 
-TextNode: Knoten fuer den Text, der erzeugt werden soll.
+**TextNode**: Knoten fuer den Text, der erzeugt werden soll.
 
-*Erzeugt einen Knoten fuer den Baum*
->Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberText wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+##### Beschreibung
+>Fuer den Inhalt des Knotens wird mit *NodeContent* = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: *NodeDown* = None und *NodeRight* = None. *NumberText* wird auf '0' gesetzt, *WhoSaid* wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.  
+Zurueckgegeben wird ein Knoten mit den drei Attributen *NodeContent*, *NodeDown* und *NodeRight*.
 
 #### InsertText.insert_string (self, InTree, NumberText, WhoSaid)
 
