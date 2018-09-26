@@ -40,7 +40,8 @@ Legt ein neue Variable vom Typ Dic an, in der die Dateipfade aus der Config-Date
 **NewPathDictionary**: Dictionary, in der alle Dateipfade hinterlegt werden.
 
 ##### Beschreibung
->Die Initialisierung erfolgt mit der Zuweisung von '{}'. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt. Zurueckgegeben wird eine leere Dictionary.
+>Die Initialisierung erfolgt mit der Zuweisung von '{}'. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.  
+Zurueckgegeben wird eine leere Dictionary.
 
 #### PathDictionary.add_to (*self, ForFile, Path*)  
 Fuegt einen neuen Eintrag zum bisherigen Dictionary der Dateipfade zu.
@@ -52,7 +53,8 @@ Fuegt einen neuen Eintrag zum bisherigen Dictionary der Dateipfade zu.
 - ***Path***: Dateipfad, der neu ins Dictionary aufgenommen werden soll.
 
 ##### Beschreibung
->Ans Ende der Dictionary wird neue zweiteiliger Eintrag angefuegt. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt. Zurueckgegeben wird eine Dictionary mit dem ergaenzten Dateipfad.
+>Ans Ende der Dictionary wird neue zweiteiliger Eintrag angefuegt. Der erste Teil jedes neuen Eintrags umfasst immer den konkreten Pfad, der zweite Teil die Bezeichnung (nicht den Namen!) der Datei, zu der der Pfad fuehrt.  
+Zurueckgegeben wird eine Dictionary mit dem ergaenzten Dateipfad.
 
 ## Stocks (ConfigData)  
 Geeignet zur Erfassung von Buchstabengruppen, z.B. Vokale oder Konsonanten, oder Wortklassen, z.B. Artikel, in einer Menge.  
@@ -74,18 +76,19 @@ Zurueckgegeben wird ein neuer leerer Bestand.
 #### Stock.add_to (***self, Component***)  
 Durchsucht die Config-Datei und fuegt die passenden Buchstaben zur jeweiligen Menge zu.
 
-***Stock***: Namentlicher Bestand, in den der Buchstabe eingefuegt werden soll.
+**Stock**: Namentlicher Bestand, in den der Buchstabe eingefuegt werden soll.
 
 ##### Parameter  
 - ***Component***: Jeweiliger Buchstabe oder die Wortklasse, die eingefuegt werden soll.  
 
 ##### Beschreibung
->Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. In Abhaengigkeit von der Bestandsart wird der neue Buchstabe zum Bestand hinzugefuegt.
+>Mit 'type' wird zunaechst ueberprueft, zu welcher Bestandsart der entsprechende Bestand gehoert. In Abhaengigkeit von der Bestandsart wird der neue Buchstabe zum Bestand hinzugefuegt.  
+Zurueckgegeben wird ein ergaenzter Bestand.
 
 #### CheckStock.search_in (***self, CheckComponent***)  
 Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. Liefert 'True' oder 'False' zurück.   
 
-***CheckStock***: Name des Bestandes, der ueberprueft werden soll.
+**CheckStock**: Name des Bestandes, der ueberprueft werden soll.
 
 ##### Parameter  
 - ***CheckComponent***: Buchstabe, der in diesem Bestand gesucht werden soll.  
@@ -96,36 +99,42 @@ Ueberprueft, ob der jeweilige Buchstabe in der jeweiligen Menge vorhanden ist. L
 -----------------------
 
 ## Dictionaries  
-*Geeignet zur Erfassung der Woerterbuecher in einem AVL-Baum.*  
+Geeignet zur Erfassung der Woerterbuecher in einem AVL-Baum.  
 Aufbau im Modul `M_Dictionaries`.
 
 ### Methoden
-#### Dictionary.--init-- (self)
+#### Dictionary.--init-- (***self***)
+Legt ein neues Woerterbuch mit dem Namen von Dictionary an.
 
-Dictionary: Woerterbuch (AVL-Baum), das neu angelegt werden soll.
+**Dictionary**: Woerterbuch (AVL-Baum), das neu angelegt werden soll.
 
-*Legt ein neues Woerterbuch mit dem Namen von Dictionary an.*
->Die Methode greift auf die Toolbox 'AVLTree' zu und erzeugt einen Grundeintrag für ein neues Woerterbuch, in das später die einzelnen Woerter geladen werden.
+##### Beschreibung
+>Die Methode greift auf die Toolbox 'AVLTree' zu und erzeugt einen Grundeintrag für ein neues Woerterbuch, in das später die einzelnen Woerter geladen werden.   
+Zurueckgegeben wird ein AVL-Baum mit einem leeren Wurzeleintrag.
 
-#### InDictionary.load (self, FromDictionaryFile)  
+#### InDictionary.load (***self, FromDictionaryFile***)  
+Laedt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.  
 
-InDictionary: Woerterbuch (AVL-Baum), in das die Woerterbuch-Datei geladen werden soll.
+**InDictionary**: Woerterbuch (AVL-Baum), in das die Woerterbuch-Datei geladen werden soll.
 
-##### Parameter:
-- **FromDictionaryFile**: Dateiname inkl. Pfad, aus dem die Woerter fuer das Woerterbuch geladen werden sollen.
+##### Parameter
+- ***FromDictionaryFile***: Dateiname inkl. Pfad, aus dem die Woerter fuer das Woerterbuch geladen werden sollen.
 
-*Laedt ein Woerterbuch aus einer Datei in den Woerterbuch-Baum.*  
->Die einzelnen Woerter werden aus der Woerterbuch-Datei ausgelesen und in das Woerterbuch eingefuegt, solange bis das Ende der Datei erreicht ist. Doppelte Woerter werden nicht eingefuegt. Dazu wird innerhalb der Tollbox 'AVLTree' die Methode 'insert_without_double' genutzt.
+##### Beschreibung
+>Die einzelnen Woerter werden aus der Woerterbuch-Datei ausgelesen und in das Woerterbuch eingefuegt, solange bis das Ende der Datei erreicht ist. Doppelte Woerter werden nicht eingefuegt. Dazu wird innerhalb der Tollbox 'AVLTree' die Methode **insert_without_double** genutzt.  
+Zurueckgegeben wird ein als AVL-Baum strukturiertes gefuelltes Woerterbuch.
 
-#### FromDictionary.save (self, InDictionaryFile)  
+#### FromDictionary.save (***self, InDictionaryFile***)  
+Speichert einen Woerterbuch-Baum in einer Woerterbuch-Datei ab.  
 
-FromDictionary: Woerterbuch (AVL-Baum), das in die Woerterbuch-Datei gespeichert werden soll.
+**FromDictionary**: Woerterbuch (AVL-Baum), das in die Woerterbuch-Datei gespeichert werden soll.
 
-##### Parameter:
+##### Parameter
 - **InDictionaryFile**: Dateiname inkl. Pfad, in den die Woerter fuer das Woerterbuch gespeichert werden sollen.
 
-*Speichert einen Woerterbuch-Baum in einer Woerterbuch-Datei ab.*  
->Zunaechst wird ueberprueft, ob eine Woerterbuch-Datei mit gleichem Namen schon existiert, in diesem Fall wird daraus das Backup gemacht - mit dem Namen 'Dateiname_Entstehungsdatum'. Anschließend wird die Woerterbuch-Datei mit der aktuellen Fassung ueberschrieben. Dazu wird das Woerterbuch (AVL-Baum) ausgelesen und jedes Wort in eine einzelne Zeile geschrieben.
+##### Beschreibung
+>Zunaechst wird ueberprueft, ob eine Woerterbuch-Datei mit gleichem Namen schon existiert, in diesem Fall wird daraus das Backup gemacht - mit dem Namen 'Dateiname_Entstehungsdatum'. Anschließend wird die Woerterbuch-Datei mit der aktuellen Fassung ueberschrieben. Dazu wird das Woerterbuch (AVL-Baum) ausgelesen und jedes Wort in eine einzelne Zeile geschrieben. Vorher wird ueberprueft, ob bereits eine bestehende Woerterbuch-Datei mitn gleichem namen besteht. In diesem Fall wird der Dateiname der alten Fassung um den Anhang '-old' im Dateinamen ergaenzt. Existiert bereits ein solcher Dateiname, wird die alte Datei ueberschrieben.  
+Zurueckgegeben wird eine neue Woerterbuch-Datei.
 
 #### InDictionary.check_word (self, SearchWord)
 
