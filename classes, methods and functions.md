@@ -269,64 +269,80 @@ Erzeugt einen Knoten fuer den Baum.
 >Fuer den Inhalt des Knotens wird mit *NodeContent* = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: *NodeDown* = None und *NodeRight* = None. *NumberText* wird auf '0' gesetzt, *WhoSaid* wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.  
 Zurueckgegeben wird ein Knoten mit den drei Attributen *NodeContent*, *NodeDown* und *NodeRight*.
 
-#### InsertText.insert_string (self, InTree, NumberText, WhoSaid)
+#### InsertText.insert_string (*self, InTree, NumberText, WhoSaid*)
+Fuegt den eingegebenen Text als Wurzel in den Baum ein.
 
-InsertText: Text, der als Wurzel in den Baum gehangen wird. (Typ: Str)
+##### Objekt
+**InsertText**: Text, der als Wurzel in den Baum gehangen wird. (Typ: Str)
 
 ##### Parameter
-- **InTree**: Baum, in den der Text gehangen wird.
-- **NumberText**: Nummer des Textes, der in den Baum gehangen wird. (Typ: Int)
-- **WhoSaid**: Person, der der Text zugordnet wird. Wichtig z.B. bei Dialogen. (Typ: Str)
+- ***InTree***: Baum, in den der Text gehangen wird.
+- ***NumberText***: Nummer des Textes, der in den Baum gehangen wird. (Typ: Int)
+- ***WhoSaid***: Person, der der Text zugordnet wird. Wichtig z.B. bei Dialogen. (Typ: Str)
 
-*Fuegt den eingegebenen Text als Wurzel in den Baum ein.*
->Zunaechst wird ein neuer Baum generiert. Anschließend wird der Text als Wurzel eingefuegt: InTree.NodeContent = InsertText
+##### Beschreibung
+>Zunaechst wird ein neuer Baum generiert. Anschließend wird der Text als Wurzel eingefuegt: *InTree.NodeContent* = **InsertText**.  
+Zurueckgegeben wird ein Baum, dessen Wurzel mit Inhalt gefuellt ist.
 
-#### TextToSplit.split_string (self)  
+#### TextToSplit.split_string (*self*)  
+Teilt den Gesamtext in mehrere Saetze auf.  
 
-TextToSplit: Text, der aufgeteilt werden soll.
+##### Objekt
+**TextToSplit**: Text, der aufgeteilt werden soll.
 
-*Teilt den Gesamtext in mehrere Saetze auf.*  
->Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.  Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter.
-Die Marker für Satzanfang (SentenceStart) und Satzende (SentenceEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberSentence (Typ: int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: insert_string (self, InTree, InsertSentence, NumberSentence). Damit können später die einzelnen Sätze gezielt angesteuert werden.  
+##### Beschreibung
+>Es werden zwei Marker benötigt, einer für den Satzanfang und einer für das Satzende. Der Text wird Buchstabe für Buchstabe überprüft.  Wird eines der Satzzeichen '.', '!' oder '?' gefunden, wird der String bis zu dieser Stelle in einen neuen Satz kopiert. Dabei werden überflüssige Leerzeichen am Satzanfang und Satzende abgeschnitten. Der neue Satz wird als String in einen Baum gehangen. Der Marker für den Satzanfang wird auf die neue Textstelle (Satzzeichen + 1) verschoben. Anschließend geht die Überpruefung an der Stelle weiter.
+Die Marker für Satzanfang (*SentenceStart*) und Satzende (*SentenceEnd*) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable *NumberSentence* (Typ: Int) eingesetzt, die die laufende Nummer des Satzes abspeichert und mit in den Baum überträgt -> Methode: **insert_string**. Damit können später die einzelnen Sätze gezielt angesteuert werden.  
+Zurueckgegeben wird der in Saetze aufgesplittete Text.
 
 ## Sentences (TextEdit)
 Aufbau im Modul `M_Edit`
 
 ### Attribute
-- **NodeContent**: Inhalt des Knotens
-- **NodeDown**: Zeiger zu tiefer gelegenen Ebene
-- **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
-- **NumberSentence**: Nummer der Reihenfolge des Satzes im Text. (Typ: Int)
-- **WhoSaid**: Person, der der Satz zugeordnet wird. (Typ: Str)
+- *NodeContent*: Inhalt des Knotens
+- *NodeDown*: Zeiger zu tiefer gelegenen Ebene
+- *NodeRight*: Zeiger auf den naechten Inhalt in der gleichen Ebene
+- *NumberSentence*: Nummer der Reihenfolge des Satzes im Text. (Typ: Int)
+- *WhoSaid*: Person, der der Satz zugeordnet wird. (Typ: Str)
 
+### Methoden
 
-#### SentenceNode.--init-- (self)
+#### SentenceNode.--init-- (*self*)
+Erzeugt einen Knoten fuer den Baum.
 
-SentenceNode: Knoten fuer den Satz, der erzeugt werden soll.
+##### Objekt
+**SentenceNode**: Knoten fuer den Satz, der erzeugt werden soll.
 
-*Erzeugt einen Knoten fuer den Baum*
->Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. NumberSentence wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+##### Beschreibung
+>Fuer den Inhalt des Knotens wird mit *NodeContent* = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: *NodeDown* = None und *NodeRight* = None. *NumberSentence* wird auf '0' gesetzt, WhoSaid wird mit einem leeren String gefülltt. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.  
+Zurueckgegeben wird ein leerer Knoten fuer einen Satz.
  
 
-#### InsertSentence.insert_string (self, InTree, NumberSentence, WhoSaid)
+#### InsertSentence.insert_string (*self, InTree, NumberSentence, WhoSaid*)
+Fuegt einen einzelnen Satz mit einer laufenden Nummer in den Baum ein.
 
-InsertSentence: Satz, der eingefuegt werden soll.
+##### Objekt
+**InsertSentence**: Satz, der eingefuegt werden soll.
 
 ##### Parameter
-- **InTree**: Baum, in den der Satz gehangen wird.
-- **NumberSentence**: Nummer des Satzes, der in den Baum gehangen wird.
-- **WhoSaid**: Person, der der Satz zugordnet wird. Wichtig z.B. bei Dialogen.
+- ***InTree***: Baum, in den der Satz gehangen wird.
+- ***NumberSentence***: Nummer des Satzes, der in den Baum gehangen wird.
+- ***WhoSaid***: Person, der der Satz zugordnet wird. Wichtig z.B. bei Dialogen.
 
-*Fuegt einen einzelnen Satz mit einer laufenden Nummer in den Baum ein.*
->Der einzufuegende Satz wird mit den Attributen in den Baum auf der zweiten Ebene eingefuegt. Handelt es sich um den ersten Satz, wird NodeContent mit den einzufuegenden Satz, NumberSentence mit '1' und WhoSaid mit dem Namen der Person ueberschrieben, der der Satz zugeordnet wird. Ab den folgenden Saetzen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Satzes auf den neuen Knoten gestellt werden: SentencePredecessor.NodeRight = NodeNeu.
+##### Beschreibung
+>Der einzufuegende Satz wird mit den Attributen in den Baum auf der zweiten Ebene eingefuegt. Handelt es sich um den ersten Satz, wird *NodeContent* mit den einzufuegenden Satz, *NumberSentence* mit '1' und *WhoSaid* mit dem Namen der Person ueberschrieben, der der Satz zugeordnet wird. Ab den folgenden Saetzen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Satzes auf den neuen Knoten gestellt werden: SentencePredecessor.NodeRight = NodeNeu.  
+Zurueckgegeben wird der um den neuen Satz ergaenzte Baum.
 
 
-#### SentenceToSplit.split_string (self)  
+#### SentenceToSplit.split_string (*self*)  
+Teilt den jeweiligen Satz in Satzbestandteile (Woerter, Satzzeichen etc.) auf.
 
-SentenceToSplit: Satz, der aufgeteilt werden soll.
- 
-*Teilt den jeweiligen Satz in Satzbestandteile (Woerter, Satzzeichen etc.) auf*  
->Vor jedes Satzzeichen wird ein Leerzeichen gesetzt. Dann wird der Saz überprüft: Sind mehr als zwei Leerzeichen nacheinander vorhanden, wird das erste davon geloescht. Anschließend wird der Satz bei jedem Leerzeichen getrennt und die einzelnen Satzbestandteile als String in einen Baum gehangen, versehen mit der Nummer der Position, an der es gestanden hat. Zudem wird als Attribut (SwitchPermit) mitgegeben, ob es sich um einen Satzbestandteil handelt, bei dem die Wortbestandteile getauscht werden duerfen ('True') oder nicht ('False'). Nicht getauscht werden duerfen zum Beispiel Artikel oder Satzzeichen.
+#### Objekt
+**SentenceToSplit**: Satz, der aufgeteilt werden soll.
+
+#### Beschreibung
+>Vor jedes Satzzeichen wird ein Leerzeichen gesetzt. Dann wird der Saz überprüft: Sind mehr als zwei Leerzeichen nacheinander vorhanden, wird das erste davon geloescht. Anschließend wird der Satz bei jedem Leerzeichen getrennt und die einzelnen Satzbestandteile als String in einen Baum gehangen, versehen mit der Nummer der Position, an der es gestanden hat. Zudem wird als Attribut (*SwitchPermit*) mitgegeben, ob es sich um einen Satzbestandteil handelt, bei dem die Wortbestandteile getauscht werden duerfen ('True') oder nicht ('False'). Nicht getauscht werden duerfen zum Beispiel Artikel oder Satzzeichen.  
+Zurueckgegeben wird ein in Woertern aufgeteilter Satz.
 
 
 
@@ -340,7 +356,7 @@ Aufbau im Modul `M_Edit`.
 - **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
 - **NumberWord**:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ Int)
 - **NumberOfParts**: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ Int)
-- **SwapAllowed**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ Bool)
+- **SwitchPermit**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ Bool)
 - **ConnectedWith**: Nummer des anderen Wortes, das mit dem aktuellene Wort ueber eine Kooplung verbunden ist (NumberWord). / Grundeinstellung: 'None' (Typ Int)
 - **Capital**: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False' (Typ Bool)
 - **Equal**: Gibt an, ob innerhalb der Spanne ein geeigneter Tauschpartner vorliegt, der mit der gleichen Buchstabenart beginnt / Grundeinstellung: 'False' (Typ Bool)
@@ -423,12 +439,12 @@ WordToBeAnalyzed: Wort, fuer das die Checks durchgefuehrt werden sollen.
 *Steuert die gesamten Überprüfungsprozess, z.B. Großschreibung am Wortanfang, beim jeweiligen Wort:*
 >Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden die Ergebnisse der Checks in die Attribute des jeweiligen Wortes geschrieben, z.B. Capital = True, falls das Wort mit einem Großbuchstaben beginnt. Ausserdem muss vor der Suche nach moeglichen Tauschpartnern in der Nachbarschaft zuerst die Buchstabenklasse ermittelt werden. Es werden auf jeden Fall alle moeglichen Checks fuer ein Wort durchgefuehrt, damit zukuenftige Erweiterungen einfacher umgesetzt werden koennen.
 
-#### WordToBeAnalyzed.check_swap_allowed (self)
+#### WordToBeAnalyzed.check_switch_permit (self)
 
 WordToBeAnalyzed: Wort, fuer das die Ueberpruefung, ob es zum Tausch herangezogen werden darf, durchgefuehrt werden soll.
 
 *Ueberprueft, ob das jeweilige Wort ueberhaupt zum Tausch herangezogen werden darf.*
->Fuer das Wort erfolgt ein Abgleich, ob es in einer der Wort-Mengen, z.B. Artikel, ist, die nicht zum Tausch herangezogen werden duerfen. Falls getauscht werden darf, wird 'SwapAllowed' mit 'True' zurueckgeliefert, sonst mit 'False'.
+>Fuer das Wort erfolgt ein Abgleich, ob es in einer der Wort-Mengen, z.B. Artikel, ist, die nicht zum Tausch herangezogen werden duerfen. Falls getauscht werden darf, wird 'SwitchPermit' mit 'True' zurueckgeliefert, sonst mit 'False'.
 
 #### WordToBeAnalyzed.check_capital (self)
 
