@@ -351,46 +351,55 @@ Zu der in der Klasse 'Words' erfassten Zeichenketten zaehlen nicht nur Woerter, 
 Aufbau im Modul `M_Edit`.
 
 ### Attribute
-- **NodeContent**: Inhalt des Knotens
-- **NodeDown**: Zeiger zu tiefer gelegenen Ebene
-- **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
-- **NumberWord**:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ Int)
-- **NumberOfParts**: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ Int)
-- **SwitchPermit**: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ Bool)
-- **ConnectedWith**: Nummer des anderen Wortes, das mit dem aktuellene Wort ueber eine Kooplung verbunden ist (NumberWord). / Grundeinstellung: 'None' (Typ Int)
-- **Capital**: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False' (Typ Bool)
-- **Equal**: Gibt an, ob innerhalb der Spanne ein geeigneter Tauschpartner vorliegt, der mit der gleichen Buchstabenart beginnt / Grundeinstellung: 'False' (Typ Bool)
-- **SwitchPartOwn**: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None' (Typ Int)
-- **SwitchPartForeign**: Teil welches fremden Wortes, der getauscht werden soll. (NumberWord:NumberPart) / Grundeinstellung: 'None' : 'None' (Typ Dic)
-- **LetterClassInitial**: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ Str)
-- **NumberSwitchPartner**: Liste mit Nummern der Woerter im Satz, mit denen innerhalb einer Spanne getauscht werden darf / Grundeinstellung: [] (Typ List) 
+- *NodeContent*: Inhalt des Knotens
+- *NodeDown*: Zeiger zu tiefer gelegenen Ebene
+- *NodeRight*: Zeiger auf den naechten Inhalt in der gleichen Ebene
+- *NumberWord*:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ Int)
+- *NumberOfParts*: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ Int)
+- *SwitchPermit*: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ Bool)
+- *ConnectedWith*: Nummer des anderen Wortes, das mit dem aktuellene Wort ueber eine Kooplung verbunden ist (NumberWord). / Grundeinstellung: 'None' (Typ Int)
+- *Capital*: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False' (Typ Bool)
+- *Equal*: Gibt an, ob innerhalb der Spanne ein geeigneter Tauschpartner vorliegt, der mit der gleichen Buchstabenart beginnt / Grundeinstellung: 'False' (Typ Bool)
+- *SwitchPartOw**: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None' (Typ Int)
+- *SwitchPartForeign*: Teil welches fremden Wortes, der getauscht werden soll. (NumberWord:NumberPart) / Grundeinstellung: 'None' : 'None' (Typ Dic)
+- *LetterClassInitial*: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ Str)
+- *NumberSwitchPartner*: Liste mit Nummern der Woerter im Satz, mit denen innerhalb einer Spanne getauscht werden darf / Grundeinstellung: [] (Typ List) 
 
 ### Methoden
 
-#### WordNode.--init-- (self)
+#### WordNode.--init-- (***self***)
+Erzeugt einen Knoten fuer den Baum
 
-WordNode: Knoten fuer das Wort, der erzeugt werden soll.
+##### Objekt
+**WordNode**: Knoten fuer das Wort, der erzeugt werden soll.
 
-*Erzeugt einen Knoten fuer den Baum*
->Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. Die Attribute werden wie folgt gesetzt: NumberWord = 0; NumberOfParts = 0; SwapAllowed = False; ConnectedWith = 0; Capital = False; Equal = False; SwitchPartOwn = None, SwitchPartForeign = None; Initial = None. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+##### Beschreibung
+>Fuer den Inhalt des Knotens wird mit *NodeContent* = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: *NodeDown* = None und *NodeRight* = None. Die Attribute werden wie folgt gesetzt: *NumberWord* = 0; *NumberOfParts* = 0; SwitchPermit* = False; *ConnectedWith* = 0; Capital = False; *Equal* = False; *SwitchPartOwn* = None, *SwitchPartForeign* = None; *Initial* = None. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.  
+Zurueckgegen wird ein leerer Knoten mit den gesetzten Attributen.
 
-#### InsertWord.insert_string (self, InTree, NumberWord)
+#### InsertWord.insert_string (***self, InTree, NumberWord***)
+Fuegt ein einzelnes Wort mit einer laufenden Nummer in den Baum ein.
 
-InsertWord: Wort, das in den Baum eingefuegt werden soll.
+##### Objekt
+**InsertWord**: Wort, das in den Baum eingefuegt werden soll.
 
 ##### Parameter
-- **InTree**: Baum, in den der Satz gehangen wird.
-- **NumberWord**: Nummer des Worts im Satz, der in den Baum gehangen wird.
+- ***InTree***: Baum, in den der Satz gehangen wird.
+- ***NumberWord***: Nummer des Worts im Satz, der in den Baum gehangen wird.
 
-*Fuegt ein einzelnes Wort mit einer laufenden Nummer in den Baum ein.*
->Das einzufuegende Wort wird mit den Attributen in den Baum auf der dritten Ebene eingefuegt. Handelt es sich um das erste Wort, wird NodeContent mit dem einzufuegenden Wort und NumberWord mit '1' ueberschrieben. Ab den folgenden Worten muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Wortes auf den neuen Knoten gestellt werden: WortPredecessor.NodeRight = NodeNeu.
+##### Beschreibung
+>Das einzufuegende Wort wird mit den Attributen in den Baum auf der dritten Ebene eingefuegt. Handelt es sich um das erste Wort, wird *NodeContent* mit dem einzufuegenden Wort und *NumberWord* mit '1' ueberschrieben. Ab den folgenden Worten muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Wortes auf den neuen Knoten gestellt werden: *WordPredecessor.NodeRight* = NodeNeu.  
+Zurueckgegeben wird ein gefuellter Knoten fuer ein Wort.
 
-#### WordToSplit.split_string (self)**  
+#### WordToSplit.split_string (***self***)  
+Teilt das jeweilige Wort in mehrere Wortbestandteile auf. 
 
-WordToSplit: Wort, das aufgeteilt werden soll.
+##### Objekt
+**WordToSplit**: Wort, das aufgeteilt werden soll.
 
-*Teilt das jeweilige Wort in mehrere Wortbestandteile auf* | Methode wird ueberschrieben  
->Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende. Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter. Die Marker für Wortbestandteilanfang (WordElementStart) und Satzende (WordElementEnd) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable NumberElement (Typ: int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt -> Methode: insert_wordelement (self, NumberElement). Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.
+##### Beschreibung
+>Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende. Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt -, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter. Die Marker für Wortbestandteilanfang (*WordElementStart*) und Satzende (*WordElementEnd*) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable *NumberElement* (Typ: Int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt . Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.  
+Zurueckgegeben wird ein in seine Bestamdteile zerlegtes Wort.
 
 
 ## Parts (Words)
