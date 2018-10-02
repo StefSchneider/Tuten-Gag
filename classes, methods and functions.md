@@ -407,88 +407,108 @@ Enthaelt die einzelnen Bestandteile des Wortes, z.B. St|e|f|a|n
 Aufbau im Modul `M_Edit`.
 
 ### Attribute
-- **NodeContent**: Inhalt des Knotens
-- **NodeDown**: Zeiger zu tiefer gelegenen Ebene
-- **NodeRight**: Zeiger auf den naechten Inhalt in der gleichen Ebene
-- **InTree**: Baum, in den der Satz gehangen wird.
-- **NumberPart**: Nummer des Teil im Wort, der in den Baum gehangen wird.
+- *NodeContent*: Inhalt des Knotens
+- *NodeDown*: Zeiger zu tiefer gelegenen Ebene
+- *NodeRight*: Zeiger auf den naechten Inhalt in der gleichen Ebene
+- *InTree*: Baum, in den der Satz gehangen wird.
+- *NumberPart*: Nummer des Teil im Wort, der in den Baum gehangen wird.
 
 ### Methoden
 
-#### PartNode.--init-- (self)
+#### PartNode.--init-- (***self***)
+Erzeugt einen Knoten fuer den Baum.
 
-PartNode: Knoten fuer den Wortbestandteil, der erzeugt werden soll.
+##### Objekt
+**PartNode**: Knoten fuer den Wortbestandteil, der erzeugt werden soll.
 
-*Erzeugt einen Knoten fuer den Baum*
->Fuer den Inhalt des Knotens wird mit NodeContent = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: NodeDown = None und NodeRight = None. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.
+##### Beschreibung
+>Fuer den Inhalt des Knotens wird mit *NodeContent* = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: *NodeDown* = None und *NodeRight* = None. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.  
+Zurueckgegeben wird ein leerer Knoten fuer ein Wortteil.
 
-#### InsertPart.insert_string (self, InTree, NumberPart)
+#### InsertPart.insert_string (***self, InTree, NumberPart***)
+Fuegt einen einzelnes Wort mit einer laufenden Nummer in den Baum ein.
 
-InsertPart: Wortbestandteil, der in den Baum gehangen werden soll.
+##### Objekt
+**InsertPart**: Wortbestandteil, der in den Baum gehangen werden soll.
 
 ##### Parameter
-- **InTree**: Baum, in den der Satz gehangen wird.
-- **NumberPart**: Nummer des Worts im Satz, der in den Baum gehangen wird.
+- ***InTree***: Baum, in den der Satz gehangen wird.
+- ***NumberPart***: Nummer des Worts im Satz, der in den Baum gehangen wird.
 
-*Fuegt einen einzelnes Wort mit einer laufenden Nummer in den Baum ein.*
->Der einzufuegende Teil wird mit den Attributen in den Baum auf der vierten Ebene eingefuegt. Handelt es sich um den ersten Teil, wird NodeContent mit dem einzufuegenden Teil und NumberPart mit '1' ueberschrieben. Ab den folgenden Teilen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Wortes auf den neuen Knoten gestellt werden: WortPredecessor.NodeRight = NodeNeu.
+##### Beschreibung
+>Der einzufuegende Teil wird mit den Attributen in den Baum auf der vierten Ebene eingefuegt. Handelt es sich um den ersten Teil, wird *NodeContent* mit dem einzufuegenden Teil und *NumberPart* mit '1' ueberschrieben. Ab den folgenden Teilen muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger des vorherigen Wortes auf den neuen Knoten gestellt werden: *WordPredecessor.NodeRight* = NodeNeu.  
+Zurueckgegeben wird ein mit den Inhalten gefuellter Knoten.
 
 -----------------------
 
 ## WordsAnalyze (Words)
-*Bildet die Klasse ab, mit der die Analyseprozesse auf Satzbestandteilebene durchgeführt werden.*
+Bildet die Klasse ab, mit der die Analyseprozesse auf Satzbestandteilebene durchgeführt werden.
 Aufbau im Modul `M_Analyze`.
 
 
 ### Methoden
-#### WordToBeAnalyzed.check (self)  
+#### WordToBeAnalyzed.check (***self***)  
+Steuert die gesamten Ueberpruefungsprozess, z.B. Grossschreibung am Wortanfang, beim jeweiligen Wort:
 
-WordToBeAnalyzed: Wort, fuer das die Checks durchgefuehrt werden sollen.
+##### Objekt
+**WordToBeAnalyzed**: Wort, fuer das die Checks durchgefuehrt werden sollen.
 
-*Steuert die gesamten Überprüfungsprozess, z.B. Großschreibung am Wortanfang, beim jeweiligen Wort:*
->Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden die Ergebnisse der Checks in die Attribute des jeweiligen Wortes geschrieben, z.B. Capital = True, falls das Wort mit einem Großbuchstaben beginnt. Ausserdem muss vor der Suche nach moeglichen Tauschpartnern in der Nachbarschaft zuerst die Buchstabenklasse ermittelt werden. Es werden auf jeden Fall alle moeglichen Checks fuer ein Wort durchgefuehrt, damit zukuenftige Erweiterungen einfacher umgesetzt werden koennen.
+##### Beschreibung
+>Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden die Ergebnisse der Checks in die Attribute des jeweiligen Wortes geschrieben, z.B. *Capital* = True, falls das Wort mit einem Großbuchstaben beginnt. Ausserdem muss vor der Suche nach moeglichen Tauschpartnern in der Nachbarschaft zuerst die Buchstabenklasse ermittelt werden. Es werden auf jeden Fall alle moeglichen Checks fuer ein Wort durchgefuehrt, damit zukuenftige Erweiterungen einfacher umgesetzt werden koennen.  
+Zurueckgegeben wird ein mit allen Checks versehenes Wort.
 
-#### WordToBeAnalyzed.check_switch_permit (self)
+#### WordToBeAnalyzed.check_switch_permit (***self***)
+Ueberprueft, ob das jeweilige Wort ueberhaupt zum Tausch herangezogen werden darf.
 
-WordToBeAnalyzed: Wort, fuer das die Ueberpruefung, ob es zum Tausch herangezogen werden darf, durchgefuehrt werden soll.
+##### Objekt
+**WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung, ob es zum Tausch herangezogen werden darf, durchgefuehrt werden soll.
 
-*Ueberprueft, ob das jeweilige Wort ueberhaupt zum Tausch herangezogen werden darf.*
->Fuer das Wort erfolgt ein Abgleich, ob es in einer der Wort-Mengen, z.B. Artikel, ist, die nicht zum Tausch herangezogen werden duerfen. Falls getauscht werden darf, wird 'SwitchPermit' mit 'True' zurueckgeliefert, sonst mit 'False'.
+##### Beschreibung
+>Fuer das Wort erfolgt ein Abgleich, ob es in einer der Wort-Mengen, z.B. Artikel, ist, die nicht zum Tausch herangezogen werden duerfen. Falls getauscht werden darf, wird *SwitchPermit* mit 'True' zurueckgeliefert, sonst mit 'False'.
 
-#### WordToBeAnalyzed.check_capital (self)
+#### WordToBeAnalyzed.check_capital (***self***)
+Ueberprueft, ob das jeweilige Wort mit einem Grossbhuchstaben anfaengt.
 
-WordToBeAnalyzed: Wort, fuer das die Ueberpruefung auf einen Grossbuchstaben durchgefuehrt werden soll.
+##### Objekt
+**WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung auf einen Grossbuchstaben durchgefuehrt werden soll.
 
-*Ueberprueft, ob das jeweilige Wort mit einem Grossbhuchstaben anfaengt*
->Fuer das Wort erfolgt ein Abgleich, ob es mit einem Grossbuchstaben (Funktion 'capital') beginnt. Falls das der Fall ist, wird 'Capital' mit 'True' zurueckgeliefert, sonst mit 'False'.
+##### Beschreibung
+>Fuer das Wort erfolgt ein Abgleich, ob es mit einem Grossbuchstaben (Funktion **capital**) beginnt. Falls das der Fall ist, wird *Capital* mit 'True' zurueckgeliefert, sonst mit 'False'.
 
-#### WordToBeAnalyzed.check_class_part (self, NumberCheckPart = 1)
+#### WordToBeAnalyzed.check_class_part (***self, NumberCheckPart = 1***)
+Ueberprueft, mit mit welcher Buchstabenklasse das Wort beginnt, z.B. Vokale.
 
-WordToBeAnalyzed: Wort, fuer das ueberprueft werden soll, mit welcher Buchstabengruppe der erste Buchstabe beginnt.
+##### Ojekt
+**WordToBeAnalyzed**: Wort, fuer das ueberprueft werden soll, mit welcher Buchstabengruppe der erste Buchstabe beginnt.
 
 ##### Parameter
-- **NumberCheckPart**: Teil des Wortes der ueberprueft werden soll, standardmaessig der erste Teil
+- ***NumberCheckPart***: Teil des Wortes der ueberprueft werden soll, standardmaessig der erste Teil
 
-*Ueberprueft, mit mit welcher Buchstabenklasse das Wort beginnt, z.B. Vokale).*
->Zur Ueberpruefung wird der angegebene Wortbestandteil herangezogen und mit den entsprechenden Mengen, die ueber die Config-Datei eingelesen wurden, abgeglichen. Die Methode liefert dann als Ergebnis die Buchstabenklasse zurueck. Diese wird ueber die Methode 'check' in das Attribut des Worts 'LetterClassInitial' ueberspielt.
+##### Beschreibung
+>Zur Ueberpruefung wird der angegebene Wortbestandteil herangezogen und mit den entsprechenden Mengen, die ueber die Config-Datei eingelesen wurden, abgeglichen. Die Methode liefert dann als Ergebnis die Buchstabenklasse zurueck. Diese wird ueber die Methode **check** in das Attribut des Worts *LetterClassInitial* ueberspielt.
 
-#### WordToBeAnalyzed.check_equal (self, LetterClass, Range)
+#### WordToBeAnalyzed.check_equal (***self, LetterClass, Range**)
+Ueberprueft, ob fuer das jeweilige Wort ein Tauschpartner innerhalb der Spanne vorliegt.
 
-WordToBeAnalyzed: Wort, fuer das die Ueberpruefung, ob ein anderes passendes Wort innerhalb der Spanne vorliegt, durchgefuehrt werden soll.
+##### Objekt
+*WordToBeAnalyzed*: Wort, fuer das die Ueberpruefung, ob ein anderes passendes Wort innerhalb der Spanne vorliegt, durchgefuehrt werden soll.
 
 ##### Parameter
-- **LetterClass**: Buchstabengruppe, nach der Woerter in der Nachbarschaft ueberprueft werden sollen.
-- **Range**: Spanne innerhalb der gesucht werden soll.
+- ***LetterClass***: Buchstabengruppe, nach der Woerter in der Nachbarschaft ueberprueft werden sollen.
+- ***Range***: Spanne innerhalb der gesucht werden soll.
 
-*Ueberprueft, ob fuer das jeweilige Wort ein Tauschpartner innerhalb der Spanne vorliegt.*
->Fuer das Wort erfolgt ein Abgleich, ob sich innerhalb der vorgegebenen Spanne ein Wort, das mit der gleichen Buchstabenart beginnt vorliegt. Falls ja, wird die Nummer des Wortes im Attribut 'NumberSwitchPartner' festgehalten und das Attribut 'SwitchPartForeign' auf '1' gesetzt, da der erste Teil des anderen Wortes getauscht wird. Die Ueberpruefung findet ab dem direkten Wortnachbarn rechts statt und endet bei dem Wort, dessen Nummer gleich der Nummer des aktuellen Wortes + der Spanne ist. 
+##### Beschreibung
+>Fuer das Wort erfolgt ein Abgleich, ob sich innerhalb der vorgegebenen Spanne ein Wort, das mit der gleichen Buchstabenart beginnt, vorliegt. Falls ja, wird die Nummer des Wortes im Attribut *NumberSwitchPartner* festgehalten und das Attribut *SwitchPartForeign* auf '1' gesetzt, da der erste Teil des anderen Wortes getauscht wird. Die Ueberpruefung findet ab dem direkten Wortnachbarn rechts statt und endet bei dem Wort, dessen Nummer gleich der Nummer des aktuellen Wortes + der Spanne ist.   
+Zurueckgegeben werden die Nummer der in der Spanne gefundenen passenden Tauschpartner.
 
-#### WordToBeAnalyzed.check_inner (self)
+#### WordToBeAnalyzed.check_inner (***self***)
+Ueberprueft, ob ein Buchstabentausch innerhalb des gleichen Wortes moeglich ist.
 
-WordToBeAnalyzed: Wort, bei dem ueberprueft werden soll, ob ein Tausch von Bestandteilen innerhalb des Wortes moeglich ist.
+##### Objekt
+**WordToBeAnalyzed**: Wort, bei dem ueberprueft werden soll, ob ein Tausch von Bestandteilen innerhalb des Wortes moeglich ist.
 
-*Ueberprueft, ob ein Buchstabentausch innerhalb des gleichen Wortes moeglich ist.*
->Innerhalb des Wortes werden die einzelnen Teile nacheinander durchgegangen. Fuer jeden Teil wird ueberprueft, zu welcher Buchstabengruppe er gehoert. Dazu wird die Methode **check_class_part** aufgerufen. Ist seine Gruppe gleich mit der des Wortanfangs, wird das Attribut 'SwitchForeignPart' auf die Nummer des Teils im Wort gesetzt.
+##### Beschreibung
+>Innerhalb des Wortes werden die einzelnen Teile nacheinander durchgegangen. Fuer jeden Teil wird ueberprueft, zu welcher Buchstabengruppe er gehoert. Dazu wird die Methode **check_class_part** aufgerufen. Ist seine Gruppe gleich mit der des Wortanfangs, wird das Attribut *SwitchForeignPart* auf die Nummer des Teils im Wort gesetzt. Der Rueckgabewert der Methode ist 'True', wenn ein Wortteil der gleichen Buchstabengruppe gefunden wird, sonst 'False'.
 
 -----------------------
 
