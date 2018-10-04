@@ -515,9 +515,9 @@ Ueberprueft, ob ein Buchstabentausch innerhalb des gleichen Wortes moeglich ist.
 ## Combination
 
 ### Attribute
-- SumPoints: Gesamtpunktzahl der Kombination für das Ranking. Grundeinstellung ist '0' / Typ Int
-- Part1: Liste aus Nummer Wort 1, Position in Wort 1
-- Part2: Liste aus Nummer Wort 2, Position in Wort 2
+- *SumPoints*: Gesamtpunktzahl der Kombination für das Ranking. Grundeinstellung ist '0' / Typ Int
+- *Part1*: Liste aus Nummer Wort 1, Position in Wort 1
+- *Part2*: Liste aus Nummer Wort 2, Position in Wort 2
 
 ### Methoden
 
