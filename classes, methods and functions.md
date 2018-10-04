@@ -354,16 +354,17 @@ Aufbau im Modul `M_Edit`.
 - *NodeContent*: Inhalt des Knotens
 - *NodeDown*: Zeiger zu tiefer gelegenen Ebene
 - *NodeRight*: Zeiger auf den naechten Inhalt in der gleichen Ebene
-- *NumberWord*:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ Int)
-- *NumberOfParts*: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ Int)
-- *SwitchPermit*: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ Bool)
-- *ConnectedWith*: Nummer des anderen Wortes, das mit dem aktuellene Wort ueber eine Kooplung verbunden ist (NumberWord). / Grundeinstellung: 'None' (Typ Int)
-- *Capital*: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False' (Typ Bool)
-- *Equal*: Gibt an, ob innerhalb der Spanne ein geeigneter Tauschpartner vorliegt, der mit der gleichen Buchstabenart beginnt / Grundeinstellung: 'False' (Typ Bool)
-- *SwitchPartOw**: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None' (Typ Int)
-- *SwitchPartForeign*: Teil welches fremden Wortes, der getauscht werden soll. (NumberWord:NumberPart) / Grundeinstellung: 'None' : 'None' (Typ Dic)
-- *LetterClassInitial*: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ Str)
-- *NumberSwitchPartner*: Liste mit Nummern der Woerter im Satz, mit denen innerhalb einer Spanne getauscht werden darf / Grundeinstellung: [] (Typ List) 
+- *NumberWord*:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ int)
+- *NumberOfParts*: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ int)
+- *SwitchPermit*: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ bool)
+- *ConnectedWith*: Nummer des anderen Wortes, das mit dem aktuellene Wort ueber eine Kooplung verbunden ist (NumberWord). / Grundeinstellung: 'None' (Typ int)
+- *Capital*: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False' (Typ bool)
+- *LetterClassInitial*: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ str)
+- *Equal*: Gibt an, ob innerhalb der Spanne ein geeigneter Tauschpartner vorliegt, der mit der gleichen Buchstabenart beginnt / Grundeinstellung: 'False' (Typ bool)
+- *SwitchPartOwn*: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None' (Typ int)
+- *SwitchPartForeign*: Teil welches fremden Wortes, der getauscht werden soll. (NumberWord:NumberPart) / Grundeinstellung: 'None' : 'None' (Typ dic)
+
+- *NumberSwitchPartner*: Liste mit Nummern der Woerter im Satz, mit denen innerhalb einer Spanne getauscht werden darf / Grundeinstellung: [] (Typ list) 
 
 ### Methoden
 
