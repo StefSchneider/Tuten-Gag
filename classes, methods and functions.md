@@ -16,8 +16,8 @@
         │   └ TextEdit
         │       └ Sentences
         │           └ Words
-        │               ├ Parts
-        │               │   └ PartsAnalyze
+        │               ├ Syllables
+        │               │   └ Parts   
         │               └ WordsAnalyze
         ├ TextOutput
         
@@ -239,6 +239,15 @@ Aufbau im Modul `M_Input`
     ▼                   
     ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐
     │Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌──── =None
+    │ =Silb1│     │     │ =Silb2│     │     │ =Silb3│     │     │ =Silb4│     │     │ =Silb5│     │
+    └───────┘     │     └───────┘     │     └───────┘     │     └───────┘     │     └───────┘     │
+    │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘
+    │Down   NodeRight   │Down   NodeRight   │Down   NodeRight   │Down   NodeRight   │Down   NodeRight
+    │                   │=None              │=None              │=None              │=None 
+    │
+    ▼                   
+    ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐           ┌───────┐
+    │Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌────►│Content│     ┌──── =None
     │ =Teil1│     │     │ =Teil2│     │     │ =Teil3│     │     │ =Teil4│     │     │ =Teil5│     │
     └───────┘     │     └───────┘     │     └───────┘     │     └───────┘     │     └───────┘     │
     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘     │Node   └─────┘
@@ -353,16 +362,16 @@ Aufbau im Modul `M_Edit`.
 ### Attribute
 - *NodeContent*: Inhalt des Knotens
 - *NodeDown*: Zeiger zu tiefer gelegenen Ebene
-- *NodeRight*: Zeiger auf den naechten Inhalt in der gleichen Ebene
+- *NodeRight*: Zeiger auf den naechsten Inhalt in der gleichen Ebene
 - *NumberWord*:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ int)
-- *NumberOfParts*: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ int)
+- *NumberOfSyllables*: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ int)
 - *SwitchPermit*: Gibt an, ob das Wort zum Tauschen freigegeben ist oder nicht, z.B. bei Artikeln / Grundeinstellung: 'False' (Typ bool)
 - *ConnectedWith*: Nummer des anderen Wortes, das mit dem aktuellene Wort ueber eine Kooplung verbunden ist (NumberWord). / Grundeinstellung: 'None' (Typ int)
 - *Capital*: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False' (Typ bool)
 - *LetterClassInitial*: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ str)
 - *Equal*: Gibt an, ob innerhalb der Spanne ein geeigneter Tauschpartner vorliegt, der mit der gleichen Buchstabenart beginnt / Grundeinstellung: 'False' (Typ bool)
-- *SwitchPartOwn*: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None' (Typ int)
-- *SwitchPartForeign*: Teil welches fremden Wortes, der getauscht werden soll. (NumberWord:NumberPart) / Grundeinstellung: 'None' : 'None' (Typ dic)
+- *SwitchPartnerList*: Liste mit moeglichen Tauschpartnern as verschachtelte Liste mit *NumberWord*, *NumberSyllable*, *NumberPart* / Grundeinstellung: [] (Typ list)
+
 
 - *NumberSwitchPartner*: Liste mit Nummern der Woerter im Satz, mit denen innerhalb einer Spanne getauscht werden darf / Grundeinstellung: [] (Typ list) 
 
@@ -375,7 +384,7 @@ Erzeugt einen Knoten fuer den Baum
 **WordNode**: Knoten fuer das Wort, der erzeugt werden soll.
 
 ##### Beschreibung
->Fuer den Inhalt des Knotens wird mit *NodeContent* = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: *NodeDown* = None und *NodeRight* = None. Die Attribute werden wie folgt gesetzt: *NumberWord* = 0; *NumberOfParts* = 0; SwitchPermit* = False; *ConnectedWith* = 0; Capital = False; *Equal* = False; *SwitchPartOwn* = None, *SwitchPartForeign* = None; *Initial* = None. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.  
+>Fuer den Inhalt des Knotens wird mit *NodeContent* = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: *NodeDown* = None und *NodeRight* = None. Die Attribute werden wie folgt gesetzt: *NumberWord* = 0; *NumberOfSyllables* = 0; SwitchPermit* = False; *ConnectedWith* = 0; Capital = False; *Equal* = False; *SwitchPartnerList* = []; *Initial* = None. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.  
 Zurueckgegen wird ein leerer Knoten mit den gesetzten Attributen.
 
 #### InsertWord.insert_string (***self, InTree, NumberWord***)
@@ -393,18 +402,66 @@ Fuegt ein einzelnes Wort mit einer laufenden Nummer in den Baum ein.
 Zurueckgegeben wird ein gefuellter Knoten fuer ein Wort.
 
 #### WordToSplit.split_string (***self***)  
-Teilt das jeweilige Wort in mehrere Wortbestandteile auf. 
+Teilt das jeweilige Wort in seine Silben auf. 
 
 ##### Objekt
 **WordToSplit**: Wort, das aufgeteilt werden soll.
 
 ##### Beschreibung
->Es werden zwei Marker benötigt, einer für den Wortbestandteilanfang und einer für das Wortbestandteilende. Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt -, wird der aktuelle Wortbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Wortbestandteilanfang wird auf die neue Textstelle (Wortbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter. Die Marker für Wortbestandteilanfang (*WordElementStart*) und Satzende (*WordElementEnd*) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable *NumberElement* (Typ: Int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt . Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.  
-Zurueckgegeben wird ein in seine Bestamdteile zerlegtes Wort.
+>Das Wort wird mit dem Woerterbuch und der entsprechenden Sibentrennung abgeglichen. Jede Silbe wird abgetrennt und in den Baum gehangen.  
+Zurueckgegeben wird ein Wort, das in seine Silben auftrennt wurde.
+
+## Syllables (Words)
+Die Klasse enthaelt die Silben der einzelnen Woerter.
+Aufbau im Model `M_Edit`.
+
+### Attribute
+- *NodeContent*: Inhalt des Knotens
+- *NodeDown*: Zeiger zu tiefer gelegenen Ebene
+- *NodeRight*: Zeiger auf den naechsten Inhalt in der gleichen Ebene
+- *NumberSyllable*:Nummer der Reihenfolge des Wortes im jeweiligen Satz. (Typ int)
+- *NumberOfParts*: Anzahl der einzelnen Teile, in der Regel Silben, des Wortes. (Typ int)
+
+### Methoden
+
+#### SyllableNode.--init-- (***self***)
+Erzeugt einen Knoten fuer den Baum
+
+##### Objekt
+**SyllableNode**: Knoten fuer das Wort, der erzeugt werden soll.
+
+##### Beschreibung
+>Fuer den Inhalt des Knotens wird mit *NodeContent* = '' ein leerer String angelegt, die Zeiger werden auf 'None' gesetzt: *NodeDown* = None und *NodeRight* = None. Die Attribute werden wie folgt gesetzt: *NumberSyllable* = 0; *NumberOfParts* = 0. Die Attribute koennen spaeter mit dem jeweiligen Inhalt ueberschrieben werden.  
+Zurueckgegen wird ein leerer Knoten mit den gesetzten Attributen.
+
+#### InsertSyllable.insert_string (***self, InTree, NumberSyllable***)
+Fuegt eine einzelne Silbe mit einer laufenden Nummer in den Baum ein.
+
+##### Objekt
+**InsertSyllable**: Silbe, das in den Baum eingefuegt werden soll.
+
+##### Parameter
+- ***InTree***: Baum, in den der Satz gehangen wird.
+- ***NumberSyllable***: Nummer des Worts im Satz, der in den Baum gehangen wird.
+
+##### Beschreibung
+>Die einzufuegende Silbe wird mit den Attributen in den Baum auf der viertem Ebene eingefuegt. Handelt es sich um die erste Silbe, wird *NodeContent* mit dem einzufuegenden Wort und *NumberSyllable* mit '1' ueberschrieben. Ab den folgenden Silben muss zuerst ein neuer Knoten initiiert werden und anschließend der Zeiger der vorherigen Silbe auf den neuen Knoten gestellt werden: *SyllablePredecessor.NodeRight* = NodeNeu.  
+Zurueckgegeben wird ein gefuellter Knoten fuer eine Silbe.
+
+
+#### SyllableToSplit.split_string (***self***)  
+Teilt die jeweilige Silbe in mehrere Wortbestandteile auf. 
+
+##### Objekt
+**SyllableToSplit**: Silbe, das aufgeteilt werden soll.
+
+##### Beschreibung
+>Es werden zwei Marker benötigt, einer für den Silbenbestandteilanfang und einer für das Silbenbestandteilende. Wechselt der aktuelle Buchstabe von Vokal zu Konsonant oder Satzzeichen oder Sonstige - oder umgekehrt -, wird der aktuelle Silbenbestandteil abgeschnitten und als String in einen Baum gehangen. Der Marker für den Silbenbestandteilanfang wird auf die neue Textstelle (Silbenbestandteilende + 1) verschoben. Anschließend geht die Überprüfung an der Stelle weiter. Die Marker für Silbenbestandteilanfang (*SyllableElementStart*) und Satzende (*SyllabeElementEnd*) sind Variablen, die nur in der Funktion benötigt werden. Es wird eine interne Variable *NumberElement* (Typ: Int) eingesetzt, die die laufende Nummer des Wortbestandteils abspeichert und mit in den Baum überträgt . Damit können später die einzelnen Wortbestandteile gezielt angesteuert werden.  
+Zurueckgegeben wird ein in ihre Bestamdteile zerlegte Silbe.
 
 
 ## Parts (Words)
-Enthaelt die einzelnen Bestandteile des Wortes, z.B. St|e|f|a|n
+Enthaelt die einzelnen Bestandteile der Silbe, z.B. St|e-(|f|a|n)
 Aufbau im Modul `M_Edit`.
 
 ### Attribute
@@ -455,7 +512,10 @@ Steuert die gesamten Ueberpruefungsprozess, z.B. Grossschreibung am Wortanfang, 
 **WordToBeAnalyzed**: Wort, fuer das die Checks durchgefuehrt werden sollen.
 
 ##### Beschreibung
->Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden die Ergebnisse der Checks in die Attribute des jeweiligen Wortes geschrieben, z.B. *Capital* = True, falls das Wort mit einem Großbuchstaben beginnt. Ausserdem muss vor der Suche nach moeglichen Tauschpartnern in der Nachbarschaft zuerst die Buchstabenklasse ermittelt werden. Es werden auf jeden Fall alle moeglichen Checks fuer ein Wort durchgefuehrt, damit zukuenftige Erweiterungen einfacher umgesetzt werden koennen.  
+>Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden in Abhaengigkeit der Check-Ergebnisse die Attribute des jeweiligen Wortes gefuellt
+    falls **check_switch_permit** 'True' zurueckliefert, wird *SwitchPermit* = True gesetzt, sonst bleibt es bei der Grundeinstellung 'False'
+    falls **check_capital** 'True' zurueckliefert, wird *Capital* = True gesetzt, sonst bleibt es bei der Grundeinstellung 'False'
+    mi. Ausserdem muss vor der Suche nach moeglichen Tauschpartnern in der Nachbarschaft zuerst die Buchstabenklasse ermittelt werden. Es werden auf jeden Fall alle moeglichen Checks fuer ein Wort durchgefuehrt, damit zukuenftige Erweiterungen einfacher umgesetzt werden koennen.  
 Zurueckgegeben wird ein mit allen Checks versehenes Wort.
 
 #### WordToBeAnalyzed.check_switch_permit (***self***)
@@ -465,7 +525,7 @@ Ueberprueft, ob das jeweilige Wort ueberhaupt zum Tausch herangezogen werden dar
 **WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung, ob es zum Tausch herangezogen werden darf, durchgefuehrt werden soll.
 
 ##### Beschreibung
->Fuer das Wort erfolgt ein Abgleich, ob es in einer der Wort-Mengen, z.B. Artikel, ist, die nicht zum Tausch herangezogen werden duerfen. Falls getauscht werden darf, wird *SwitchPermit* mit 'True' zurueckgeliefert, sonst mit 'False'.
+>Fuer das Wort erfolgt ein Abgleich, ob es in einer der Wort-Mengen, z.B. Artikel, ist, die nicht zum Tausch herangezogen werden duerfen. Falls getauscht werden darf, wird **check_switch_permit** mit 'True' zurueckgeliefert, sonst mit 'False'.
 
 #### WordToBeAnalyzed.check_capital (***self***)
 Ueberprueft, ob das jeweilige Wort mit einem Grossbhuchstaben anfaengt.
@@ -474,7 +534,7 @@ Ueberprueft, ob das jeweilige Wort mit einem Grossbhuchstaben anfaengt.
 **WordToBeAnalyzed**: Wort, fuer das die Ueberpruefung auf einen Grossbuchstaben durchgefuehrt werden soll.
 
 ##### Beschreibung
->Fuer das Wort erfolgt ein Abgleich, ob es mit einem Grossbuchstaben (Funktion **capital**) beginnt. Falls das der Fall ist, wird *Capital* mit 'True' zurueckgeliefert, sonst mit 'False'.
+>Fuer das Wort erfolgt ein Abgleich, ob es mit einem Grossbuchstaben (Funktion **capital**) beginnt. Falls das der Fall ist, wird **check_capital** mit 'True' zurueckgeliefert, sonst mit 'False'.
 
 #### WordToBeAnalyzed.check_class_part (***self, NumberCheckPart = 1***)
 Ueberprueft, mit mit welcher Buchstabenklasse das Wort beginnt, z.B. Vokale.
@@ -488,7 +548,7 @@ Ueberprueft, mit mit welcher Buchstabenklasse das Wort beginnt, z.B. Vokale.
 ##### Beschreibung
 >Zur Ueberpruefung wird der angegebene Wortbestandteil herangezogen und mit den entsprechenden Mengen, die ueber die Config-Datei eingelesen wurden, abgeglichen. Die Methode liefert dann als Ergebnis die Buchstabenklasse zurueck. Diese wird ueber die Methode **check** in das Attribut des Worts *LetterClassInitial* ueberspielt.
 
-#### WordToBeAnalyzed.check_equal (***self, LetterClass, Range**)
+#### WordToBeAnalyzed.check_equal (***self, LetterClass, Range***)
 Ueberprueft, ob fuer das jeweilige Wort ein Tauschpartner innerhalb der Spanne vorliegt.
 
 ##### Objekt
@@ -557,8 +617,10 @@ CurrentCombination: Aktuell
 
 
 
+- *SwitchPartOwn*: Gibt an, welcher Bestandteil des eigenen Wortes getauscht werden soll / Grundeinstellung: 'None' (Typ int)
+- *SwitchPartForeign*: Teil welches fremden Wortes, der getauscht werden soll. (NumberWord:NumberPart) / Grundeinstellung: 'None' : 'None' (Typ dic)
 
-#### Methoden
+
 
 
 -----------------------
@@ -627,3 +689,6 @@ OutputText = TextOutput
  
  
  # Dateien
+
+
+
