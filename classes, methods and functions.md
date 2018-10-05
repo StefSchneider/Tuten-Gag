@@ -515,7 +515,9 @@ Steuert die gesamten Ueberpruefungsprozess, z.B. Grossschreibung am Wortanfang, 
 >Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden in Abhaengigkeit der Check-Ergebnisse die Attribute des jeweiligen Wortes gefuellt  
     - falls **check_switch_permit** 'True' zurueckliefert, wird *SwitchPermit* = True gesetzt, sonst bleibt es bei der Grundeinstellung 'False'  
     - falls **check_capital** 'True' zurueckliefert, wird *Capital* = True gesetzt, sonst bleibt es bei der Grundeinstellung 'False'  
-    mi. Ausserdem muss vor der Suche nach moeglichen Tauschpartnern in der Nachbarschaft zuerst die Buchstabenklasse ermittelt werden. Es werden auf jeden Fall alle moeglichen Checks fuer ein Wort durchgefuehrt, damit zukuenftige Erweiterungen einfacher umgesetzt werden koennen.  
+    - in Abhaengigkeit des Rueckgabewertes von **checl_class_part** wird *LetterClassInitial* gesetzt.  
+    
+    Es werden auf jeden Fall alle moeglichen Checks fuer ein Wort durchgefuehrt, damit zukuenftige Erweiterungen einfacher umgesetzt werden koennen.  
 Zurueckgegeben wird ein mit allen Checks versehenes Wort.
 
 #### WordToBeAnalyzed.check_switch_permit (***self***)
@@ -536,14 +538,15 @@ Ueberprueft, ob das jeweilige Wort mit einem Grossbhuchstaben anfaengt.
 ##### Beschreibung
 >Fuer das Wort erfolgt ein Abgleich, ob es mit einem Grossbuchstaben (Funktion **capital**) beginnt. Falls das der Fall ist, wird **check_capital** mit 'True' zurueckgeliefert, sonst mit 'False'.
 
-#### WordToBeAnalyzed.check_class_part (***self, NumberCheckPart = 1***)
+#### WordToBeAnalyzed.check_class_part (***self, NumerCheckSyllable = 1, NumberCheckPart = 1***)
 Ueberprueft, mit mit welcher Buchstabenklasse das Wort beginnt, z.B. Vokale.
 
 ##### Ojekt
 **WordToBeAnalyzed**: Wort, fuer das ueberprueft werden soll, mit welcher Buchstabengruppe der erste Buchstabe beginnt.
 
 ##### Parameter
-- ***NumberCheckPart***: Teil des Wortes der ueberprueft werden soll, standardmaessig der erste Teil
+- ***NumberCheckSyllable***: Silbe des Wortes, der ueberprueft werden soll, standardmaessig die erste Silbe
+- ***NumberCheckPart***: Teil der Silbe, der ueberprueft werden soll, standardmaessig der erste Teil
 
 ##### Beschreibung
 >Zur Ueberpruefung wird der angegebene Wortbestandteil herangezogen und mit den entsprechenden Mengen, die ueber die Config-Datei eingelesen wurden, abgeglichen. Die Methode liefert dann als Ergebnis die Buchstabenklasse zurueck. Diese wird ueber die Methode **check** in das Attribut des Worts *LetterClassInitial* ueberspielt.
