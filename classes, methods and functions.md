@@ -512,9 +512,9 @@ Steuert die gesamten Ueberpruefungsprozess, z.B. Grossschreibung am Wortanfang, 
 **WordToBeAnalyzed**: Wort, fuer das die Checks durchgefuehrt werden sollen.
 
 ##### Beschreibung
->Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden in Abhaengigkeit der Check-Ergebnisse die Attribute des jeweiligen Wortes gefuellt
-    - falls **check_switch_permit** 'True' zurueckliefert, wird *SwitchPermit* = True gesetzt, sonst bleibt es bei der Grundeinstellung 'False'
-    - falls **check_capital** 'True' zurueckliefert, wird *Capital* = True gesetzt, sonst bleibt es bei der Grundeinstellung 'False'
+>Die Methode ruft nach und nach die durchzufuehrenden Einzelchecks auf. Anschließend werden in Abhaengigkeit der Check-Ergebnisse die Attribute des jeweiligen Wortes gefuellt  
+    - falls **check_switch_permit** 'True' zurueckliefert, wird *SwitchPermit* = True gesetzt, sonst bleibt es bei der Grundeinstellung 'False'  
+    - falls **check_capital** 'True' zurueckliefert, wird *Capital* = True gesetzt, sonst bleibt es bei der Grundeinstellung 'False'  
     mi. Ausserdem muss vor der Suche nach moeglichen Tauschpartnern in der Nachbarschaft zuerst die Buchstabenklasse ermittelt werden. Es werden auf jeden Fall alle moeglichen Checks fuer ein Wort durchgefuehrt, damit zukuenftige Erweiterungen einfacher umgesetzt werden koennen.  
 Zurueckgegeben wird ein mit allen Checks versehenes Wort.
 
