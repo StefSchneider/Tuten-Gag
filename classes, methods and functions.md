@@ -370,7 +370,7 @@ Aufbau im Modul `M_Edit`.
 - *Capital*: Gibt an, ob das Wort mit einem Großbuchstaben anfängt / Grundeinstellung: 'False' (Typ bool)
 - *LetterClassInitial*: Typ der Wortbestandteile, zu dem der Anfang des Wortes gehört, z.B. Vokale oder Konsonanten_Stark / Grundeinstellung: 'None' (Typ str)
 - *Equal*: Gibt an, ob innerhalb der Spanne ein geeigneter Tauschpartner vorliegt, der mit der gleichen Buchstabenart beginnt / Grundeinstellung: 'False' (Typ bool)
-- *SwitchPartnerList*: Liste mit moeglichen Tauschpartnern as verschachtelte Liste mit *NumberWord*, *NumberSyllable*, *NumberPart* / Grundeinstellung: [] (Typ list)
+- *SwitchPartnerList*: Liste mit moeglichen Tauschpartnern als verschachtelte Liste mit *NumberWord*, *NumberSyllable*, *NumberPart* / Grundeinstellung: [] (Typ list)
 
 
 - *NumberSwitchPartner*: Liste mit Nummern der Woerter im Satz, mit denen innerhalb einer Spanne getauscht werden darf / Grundeinstellung: [] (Typ list) 
@@ -576,7 +576,7 @@ Ueberprueft, ob ein Buchstabentausch innerhalb des gleichen Wortes moeglich ist.
 
 -----------------------
 
-## Combination
+## WordsCombine (Words)
 
 ### Attribute
 - *SumPoints*: Gesamtpunktzahl der Kombination für das Ranking. Grundeinstellung ist '0' / Typ Int
@@ -585,12 +585,15 @@ Ueberprueft, ob ein Buchstabentausch innerhalb des gleichen Wortes moeglich ist.
 
 ### Methoden
 
-#### Combination.fill (self)
+#### AllWords.fill_switches (***self***)
+Erstellt fuer das aktuelle Wort eine Liste mit moeglichen Tauschpartnern.
 
-Combination:
+##### Objekt
+**AllWords**: Alle Woerter eines Satzes.
 
-*Zieht aus den Attributen des aktuellen Wortes die Nummern der erlaubten Kombinationen*
->Aus dem aktuell zu betrachtenden Wort werden die erlaubten Kombinationen aus dem Attribut 'NumberSwitchPartner' ausgelesen und in dem Atribut XXX (Dict) abgespeichert.
+##### Beschreibung
+>Der aktuelle Satz wird Wort fuer Wort durchgegangen. Dabei wird bei jedem Wort ueberprueft, ob es zum Tausch herangezogen werden darf, d.h. das Attribut *SwitchPermit* auf 'True' gesetzt wurde. In diesem Fall wird das Attribut *SwitchPartnerList* um eine verschachtelte Liste mit den Werten *NumberWord*, *NummerSyllable* = 1 und *NumberPart* = 1 gefuellt. Anschließend wird das naechster Wort aus der Liste von *NumerSwitchPartner* angesteuert. Auch von diesem Wort werden die Werte von *NumberWord*, *NumberSyllable* = 1 und *NumberPart* = 1 als verschachtelte Liste dort reingeschrieben.
+# Wie steuert das Routine eine Tauschoperation innerhalb eines Wortes an?
 
 #### CurrentWord.combine (self)
 
